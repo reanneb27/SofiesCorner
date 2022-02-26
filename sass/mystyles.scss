@@ -30,6 +30,8 @@ $footer-background-color: $green;
 $title-color: $white;
 $subtitle-color: $white;
 
+$footer-padding: 2rem 5rem 2rem;
+
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/components/_all.sass";
 @import "../node_modules/bulma/sass/elements/_all.sass";
