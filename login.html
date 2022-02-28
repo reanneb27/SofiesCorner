@@ -9,40 +9,55 @@
   </head>
   <body>
      
-    <nav class="navbar is-primary has-shadow" style="min-height:unset">
-        <div class="navbar-brand">
-            <a href="index.html" class="navbar-item">
-                <img src="assets/logo/sofies_corner_logo_light.png" alt="site logo" style="max-height: 50px;" class="py-2 px-2">
+    <nav class="navbar is-primary has-shadow level">
+        <p class="level-item has-text-centered">
+            <a href="index.html">
+                <img src="assets/logo/sofies_corner_logo_light.png" alt="site logo" style="max-height: 70px;">
             </a>
-        </div>
-
-        <div class="navbar-menu" id="nav-links">
-            <div class="navbar-start">
-                <a href="index.html" class="navbar-item">
-                    Home
-                </a>
-                <a href="#" class="navbar-item">
-                    Plants
-                </a>
-                <a href="#" class="navbar-item">
-                    About Us
-                </a>
-            </div>
-            <div class="navbar-end">
-                <div class="navbar-item field is-grouped">
-                    <div class="control has-icons-right">
-                        <input class="input is-small" type="text" placeholder="Search">
-                        <span class="icon is-small is-left">
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </p>
     </nav>
 
-    <section class="hero is-fullheight">
-        <div class="hero-body container has-text-centered"></div>           
-    </section>
+    <section class="hero is-halfheight">
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <div class="column is-6 is-offset-3">
+              <div class="box">
+                <h4 class="title is-4">Login</h4>
+                <p class="subtitle is-6">Enter your email and password.</p>
+                <form>
+                    <div class="field">
+                        <p class="control has-icons-left has-icons-right">
+                        <input class="input" type="email" placeholder="Email" />
+                        <span class="icon is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <span class="icon is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control has-icons-left">
+                        <input class="input" type="password" placeholder="Password" />
+                        <span class="icon is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                        </p>
+                    </div>
+                    <button class="button is-block is-link is-fullwidth">Login</button>
+                    <br>
+                    <p> <a href="">Forgot password?</a> </p>
+                    <p>
+                        Don't have and account yet? <a href="">Register here</a>
+                    </p>
+                </form>
+              </div>
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   </body>

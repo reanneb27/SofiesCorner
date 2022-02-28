@@ -10,13 +10,15 @@ $light-green: #8EEEA8;
 $white: #FDFAF6;
 $brown: #9C9184;
 $beige: #FAF1E6;
+$orange: #FF8C00;
+$gray: #e0dede;
 
 // Update Bulma's global variables
 $family-sans-serif: "Inter", sans-serif;
-$grey-dark: $brown;
-$grey-light: $beige;
+$dark: $brown;
+$light: $beige;
 $primary: $green;
-$link: $light-green;
+$link: $orange;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 
@@ -30,7 +32,19 @@ $footer-background-color: $green;
 $title-color: $white;
 $subtitle-color: $white;
 
+$navbar-padding-vertical: 0.5rem;
 $footer-padding: 2rem 5rem 2rem;
+
+$box-background-color: $gray;
+
+h4.title {
+    color: $green;
+}
+
+p.subtitle {
+    color: $green;
+    padding-top: 0.5rem;
+}
 
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/components/_all.sass";
