@@ -6,6 +6,16 @@ p.subtitle {
   color: #064420;
   padding-top: 0.5rem; }
 
+#tabs-with-content .tabs:not(:last-child) {
+  margin-bottom: 0; }
+
+#tabs-with-content .tab-content {
+  padding: 2rem;
+  display: none; }
+
+#tabs-with-content .tab-content.is-active {
+  display: block; }
+
 /* Bulma Base */
 /*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
 html,

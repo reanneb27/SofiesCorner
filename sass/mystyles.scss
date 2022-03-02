@@ -46,6 +46,19 @@ p.subtitle {
     padding-top: 0.5rem;
 }
 
+#tabs-with-content .tabs:not(:last-child) {
+    margin-bottom: 0;
+  }
+  
+#tabs-with-content .tab-content {
+    padding: 2rem;
+    display: none;
+}
+
+#tabs-with-content .tab-content.is-active {
+    display: block;
+}
+
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/components/_all.sass";
 @import "../node_modules/bulma/sass/elements/_all.sass";
