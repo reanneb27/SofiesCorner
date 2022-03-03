@@ -37,10 +37,12 @@ $footer-padding: 2rem 5rem 2rem;
 
 $box-background-color: $gray;
 
+// navbar
 #brand-title {
   font-family: "Oswald";
 }
 
+// register
 h4.title {
   color: $green;
 }
@@ -50,6 +52,7 @@ p.subtitle {
   padding-top: 0.5rem;
 }
 
+// account profile
 #tabs-with-content .tabs:not(:last-child) {
   margin-bottom: 0;
 }
@@ -65,6 +68,11 @@ p.subtitle {
 
 #box-account .box {
     $box-background-color: $beige;
+}
+
+// about us
+#about-us {
+  color: $green;
 }
 
 @import "../node_modules/bulma/sass/base/_all.sass";

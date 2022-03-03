@@ -10,9 +10,11 @@
   <body>
      
     <nav class="navbar is-primary has-shadow" style="min-height:unset">
-        <div class="navbar-brand px-4">
-            <a href="../index.html">
-                <img src="../assets/logo/sofies_corner_logo_light.png" alt="site logo" style="max-height: 70px;">
+        <div class="navbar-brand px-2">
+            <a href="../index.html" class="navbar-item">
+                <h2 class="title is-3" id="brand-title">
+                    SOFIE'S CORNER
+                </h2>
             </a>
         </div>
 
@@ -21,7 +23,7 @@
                 <a href="../index.html" class="navbar-item">
                     Home
                 </a>
-                <a href="" class="navbar-item">
+                <a href="plants.html" class="navbar-item">
                     Plants
                 </a>
                 <a href="about.html" class="navbar-item">
@@ -29,44 +31,82 @@
                 </a>
             </div>
             <div class="navbar-end">
-                <div class="navbar-item field is-grouped">
+                <div class="navbar-item">
                     <div class="control has-icons-right">
                         <input class="input is-small" type="text" placeholder="Search">
-                        <span class="icon is-small is-left">
+                        <span class="icon is-small is-right">
+                            <a href="">
+                                <i class="fas fa-search"></i>
+                            </a>
                         </span>
                     </div>
-                    <p class="control">
-                        <a class="button is-primary" href="#">
-                            <span class="icon">
-                            <i class="fas fa-shopping-cart"></i>
-                            </span>
-                            <span>Cart</span>
-                        </a>
-                    </p>
-                    <p class="control">
-                        <a class="button is-primary" href="pages/login.html">
-                            <span class="icon">
-                            <i class="fas fa-user"></i>
-                            </span>
-                            <span>Login</span>
-                        </a>
-                    </p>
                 </div>
+                <p class="buttons">
+                    <a href="">
+                        <button class="button is-medium is-primary">
+                            <span class="icon is-medium">
+                                <i class="fas fa-shopping-cart fa-lg"></i>
+                            </span>
+                        </button>
+                    </a>
+                    <a href="login.html" class="px-2">
+                        <button class="button is-medium is-primary">
+                            <span class="icon is-medium">
+                                <i class="fas fa-user fa-lg"></i>
+                            </span>
+                        </button>
+                    </a>
+                </p>
             </div>
         </div>
     </nav>
 
+    <!-- Begin Main Content -->
+    <div class="main-content">
+        <!-- Begin About Me Section -->
+        <div class="section about-me" id="about-us">
+          <div class="container">
+                <div class="column is-12 about-us">
+                    <h1 class="title has-text-centered section-title" id="about-us">About Us</h1>
+                </div>
+                <!-- <div class="columns is-multiline is-centered is-vcentered"> -->
+                <div class="columns is-mobile is-centered is-vcentered">
+                    <div class="column is-3">
+                        <img src="../assets/owner.png" alt=""/>
+                    </div>
+                    <div class="column is-6">
+                        <p class="has-text-left">
+                            Sofie's Corner is an online plant shop that provides good quality plants located in Parañaque City. It offers a wide variety of plants and flowers that can be taken care of in your home.  It was founded by <strong>Maria Sofia F. Alberto</strong> in 2019 when the Pandemic started. It all started when she was finding new hobbies to cure her boredom because of Pandemic. Planting became famous and she started to get interested with the idea of it.
+                        </p>
+                    </div>
+                </div>
+                <div class="columns is-mobile is-centered is-vcentered">
+                    <div class="column is-6">
+                        <p class="has-text-right">
+                            She started to collect and take care plants like succulent and cactus. She thinks that taking care of plants can relieve stress and so she used this opportunity to make it as a business. She started to sell small plants like succulent and cactus. When the customers increased, customers demand to have more variety of plants. She expands her shop by providing more plants. Now, it can accommodate plant lovers from Metro Manila and CALABARZON province.
+                        </p>
+                    </div>
+                    <div class="column is-3">
+                        <img src="../assets/plant.png" alt=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="columns">
-            <div class="column is-one-third">
-                <img src="assets/logo/sofies_corner_logo_light.png" alt="" style="max-height: 200px;">
+            <div class="column">
+                <img src="../assets/logo/sofies_corner_logo_light.png" alt="" style="max-height: 200px;">
                 <h6 class="title is-6">Good quality and wide variety of plants for your home!</h6>
             </div>
-        
+
             <div class="column">
                 <h5 class="title is-5">Map</h5>
                 <div class="map-responsive">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15453.043506177384!2d121.0019428!3d14.4697038!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd9af20e2d0f9e55b!2sSofie&#39;s%20Corner!5e0!3m2!1sen!2sph!4v1645779206384!5m2!1sen!2sph" style="width:400px;height:200px;" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15453.043506177384!2d121.0019428!3d14.4697038!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd9af20e2d0f9e55b!2sSofie&#39;s%20Corner!5e0!3m2!1sen!2sph!4v1645779206384!5m2!1sen!2sph"
+                        style="width:400px;height:200px;" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
 
@@ -77,27 +117,29 @@
                 </h6>
                 <br>
                 <h5 class="title is-5">Contact Us</h5>
-
-                <p class="buttons">
-                    <button class="button is-primary">
-                        <span class="icon">
-                            <i class="fas fa-envelope"></i>
-                        </span>
-                        <span>Email</span>
-                    </button>
-                    <button class="button is-primary">
-                        <span class="icon">
-                            <i class="fa-brands fa-facebook"></i>
-                        </span>
-                        <span>Facebook</span>
-                    </button>
-                    <button class="button is-primary">
-                        <span class="icon is-small">
-                            <i class="fa-solid fa-phone"></i>
-                        </span>
-                        <span>0966 571 9983</span>
-                    </button>
-                </p>
+                <div class="is-divider"></div>
+                <div class="columns">
+                    <div class="column">
+                        <a href="" class="button is-primary">
+                            <span class="icon is-medium">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span>Email</span>
+                        </a>
+                        <a href="" class="button is-primary">
+                            <span class="icon is-medium">
+                                <i class="fa-brands fa-facebook"></i>
+                            </span>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="" class="button is-primary">
+                            <span class="icon is-medium">
+                                <i class="fa-solid fa-phone"></i>
+                            </span>
+                            <span>0966 571 9983</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
