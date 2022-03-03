@@ -1,16 +1,16 @@
 @charset "utf-8";
 
 // Import a Google Font
-@import url('https://fonts.googleapis.com/css?family=Inter:400,700');
-
+@import url("https://fonts.googleapis.com/css?family=Inter:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald:400,700");
 
 // Set your brand colors
 $green: #064420;
-$light-green: #8EEEA8;
-$white: #FDFAF6;
-$brown: #9C9184;
-$beige: #FAF1E6;
-$orange: #FF8C00;
+$light-green: #8eeea8;
+$white: #fdfaf6;
+$brown: #9c9184;
+$beige: #faf1e6;
+$orange: #ff8c00;
 $gray: #e0dede;
 
 // Update Bulma's global variables
@@ -37,26 +37,34 @@ $footer-padding: 2rem 5rem 2rem;
 
 $box-background-color: $gray;
 
+#brand-title {
+  font-family: "Oswald";
+}
+
 h4.title {
-    color: $green;
+  color: $green;
 }
 
 p.subtitle {
-    color: $green;
-    padding-top: 0.5rem;
+  color: $green;
+  padding-top: 0.5rem;
 }
 
 #tabs-with-content .tabs:not(:last-child) {
-    margin-bottom: 0;
-  }
-  
+  margin-bottom: 0;
+}
+
 #tabs-with-content .tab-content {
-    padding: 2rem;
-    display: none;
+  padding: 2rem;
+  display: none;
 }
 
 #tabs-with-content .tab-content.is-active {
-    display: block;
+  display: block;
+}
+
+#box-account .box {
+    $box-background-color: $beige;
 }
 
 @import "../node_modules/bulma/sass/base/_all.sass";
