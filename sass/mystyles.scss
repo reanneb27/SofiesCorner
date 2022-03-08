@@ -11,6 +11,7 @@ $white: #fdfaf6;
 $brown: #9c9184;
 $beige: #faf1e6;
 $orange: #ff8c00;
+$dark-orange: #693b01;
 $gray: #e0dede;
 
 // Update Bulma's global variables
@@ -19,6 +20,7 @@ $dark: $brown;
 $light: $beige;
 $primary: $green;
 $link: $orange;
+$hover: $dark-orange;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 
@@ -74,6 +76,23 @@ p.subtitle {
 #about-us {
   color: $green;
 }
+
+h5.title {
+  color: $green;
+}
+
+.product-item {
+  color: $green;
+}
+
+.addCartBtn {
+  color: $white;
+}
+.addCartBtn:hover {
+  color: $hover;
+}
+
+$card-footer-background-color: $link;
 
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/components/_all.sass";

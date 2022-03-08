@@ -23,6 +23,18 @@ p.subtitle {
 #about-us {
   color: #064420; }
 
+h5.title {
+  color: #064420; }
+
+.product-item {
+  color: #064420; }
+
+.addCartBtn {
+  color: #fdfaf6; }
+
+.addCartBtn:hover {
+  color: #693b01; }
+
 /* Bulma Base */
 /*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
 html,
@@ -329,7 +341,7 @@ table th {
   padding: 1.5rem; }
 
 .card-footer {
-  background-color: transparent;
+  background-color: #ff8c00;
   border-top: 1px solid #ededed;
   align-items: stretch;
   display: flex; }
