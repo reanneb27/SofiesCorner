@@ -1,20 +1,21 @@
 @charset "utf-8";
 
-// Import a Google Font
+// Google Font
 @import url("https://fonts.googleapis.com/css?family=Inter:400,700");
 @import url("https://fonts.googleapis.com/css?family=Oswald:400,700");
 
-// Set your brand colors
+// brand colors
 $green: #064420;
 $light-green: #8eeea8;
 $white: #fdfaf6;
 $brown: #9c9184;
 $beige: #faf1e6;
+$dark-beige: #e9e0d6;
 $orange: #ff8c00;
 $dark-orange: #693b01;
 $gray: #e0dede;
 
-// Update Bulma's global variables
+// Bulma's global variables
 $family-sans-serif: "Inter", sans-serif;
 $dark: $brown;
 $light: $beige;
@@ -24,7 +25,7 @@ $hover: $dark-orange;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 
-// Update some of Bulma's component variables
+// Bulma's component variables
 $body-background-color: $white;
 $control-border-width: 2px;
 $input-border-color: transparent;
@@ -39,12 +40,12 @@ $footer-padding: 2rem 5rem 2rem;
 
 $box-background-color: $gray;
 
-// navbar
+// NAVBAR
 #brand-title {
   font-family: "Oswald";
 }
 
-// register
+// REGISTER
 h4.title {
   color: $green;
 }
@@ -54,7 +55,7 @@ p.subtitle {
   padding-top: 0.5rem;
 }
 
-// account profile
+// ACCOUNT PROFILE
 #tabs-with-content .tabs:not(:last-child) {
   margin-bottom: 0;
 }
@@ -72,27 +73,39 @@ p.subtitle {
     $box-background-color: $beige;
 }
 
-// about us
+// ABOUT US
 #about-us {
   color: $green;
 }
 
-h5.title {
+h5.filter-title {
   color: $green;
 }
 
+// PLANTS PAGE
 .product-item {
   color: $green;
 }
 
+// Add to Cart button
 .addCartBtn {
   color: $white;
 }
+
 .addCartBtn:hover {
   color: $hover;
 }
 
+.price {
+  color: $orange;
+}
+
+$card-background-color: $dark-beige;
 $card-footer-background-color: $link;
+
+h1.plant-care, h2.subtitle{
+  color: $green;
+}
 
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/components/_all.sass";

@@ -23,7 +23,7 @@ p.subtitle {
 #about-us {
   color: #064420; }
 
-h5.title {
+h5.filter-title {
   color: #064420; }
 
 .product-item {
@@ -34,6 +34,12 @@ h5.title {
 
 .addCartBtn:hover {
   color: #693b01; }
+
+.price {
+  color: #ff8c00; }
+
+h1.plant-care, h2.subtitle {
+  color: #064420; }
 
 /* Bulma Base */
 /*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
@@ -278,7 +284,7 @@ table th {
     content: "\0227B"; }
 
 .card {
-  background-color: #fdfaf6;
+  background-color: #e9e0d6;
   border-radius: 0.25rem;
   box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
   color: #4a4a4a;
