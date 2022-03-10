@@ -3,7 +3,7 @@
 #brand-title {
   font-family: "Oswald"; }
 
-h4.title {
+h3.title, h4.title {
   color: #064420; }
 
 p.subtitle {
