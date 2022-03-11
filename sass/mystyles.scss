@@ -112,6 +112,12 @@ h1.plant-care, h2.subtitle{
   $input-border-color: $green;
 }
 
+h5.plant-name {
+  color: $green;
+}
+
+$divider-background-color: $green;
+
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/components/_all.sass";
 @import "../node_modules/bulma/sass/elements/_all.sass";
@@ -120,3 +126,6 @@ h1.plant-care, h2.subtitle{
 @import "../node_modules/bulma/sass/helpers/_all.sass";
 @import "../node_modules/bulma/sass/layout/_all.sass";
 @import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/@creativebulma/bulma-divider/dist/bulma-divider.css";
+@import "../node_modules/@creativebulma/bulma-divider/dist/bulma-divider.min.css";
+@import "~@creativebulma/bulma-divider";

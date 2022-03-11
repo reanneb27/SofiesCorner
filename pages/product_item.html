@@ -91,7 +91,18 @@
           <div class="field">
             <div class="control">
               <label class="label">Quantity:</label>
-              <input type="number" class="input has-text-centered quantity-input is-outlined" min="0" value="1" style="width:70px; height: 50px; border: 2px solid #064420">
+              <div class="field has-addons" style=" width:100px; border: 2px solid #9baa9f">
+                <p class="control">
+                  <a class="button has-text-centered">-</a>
+                  </span>
+                </p>
+                <p class="control">
+                  <input class="input has-text-centered" type="text" placeholder="" value="1">
+                </p>
+                <p class="control">
+                  <a class="button has-text-centered">+</a>
+                </p>
+              </div>
             </div>
           </div>
 
@@ -108,7 +119,7 @@
 
   <hr style="height:2px; border-width:0; color:gray; background-color:gray; width: 80%; margin: auto;">
   
-  <section class="section">
+  <section class="section is-hidden-mobile">
     <div class="container">
       <h3 class="title is-size-4">You may also like</h3>
       <div class="columns mt-5 mx-2 is-10 is-variable is-centered">
