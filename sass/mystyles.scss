@@ -30,6 +30,7 @@ $body-background-color: $white;
 $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
+$input-placeholder-color: #a5a3a3;
 
 $footer-background-color: $green;
 $title-color: $white;
@@ -136,6 +137,11 @@ $divider-background-color: $green;
 }
 
 $dropdown-menu-min-width: 25rem;
+
+
+h5.checkout-label, h5.total-label {
+  color: $green;
+}
 
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/components/_all.sass";
