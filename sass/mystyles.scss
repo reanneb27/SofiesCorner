@@ -118,6 +118,25 @@ h5.plant-name {
 
 $divider-background-color: $green;
 
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.badge {
+  background-color: $light-green;
+  border-radius: 10px;
+  color: $green;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  padding: 3px 7px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+$dropdown-menu-min-width: 25rem;
+
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/components/_all.sass";
 @import "../node_modules/bulma/sass/elements/_all.sass";
@@ -128,4 +147,4 @@ $divider-background-color: $green;
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/@creativebulma/bulma-divider/dist/bulma-divider.css";
 @import "../node_modules/@creativebulma/bulma-divider/dist/bulma-divider.min.css";
-@import "~@creativebulma/bulma-divider";
+// @import "~@creativebulma/bulma-divider";
