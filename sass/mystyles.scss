@@ -143,6 +143,8 @@ h5.checkout-label, h5.total-label {
   color: $green;
 }
 
+$modal-background-background-color: $beige;
+
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/components/_all.sass";
 @import "../node_modules/bulma/sass/elements/_all.sass";

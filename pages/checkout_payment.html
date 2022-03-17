@@ -174,35 +174,95 @@
           <nav class="breadcrumb is-small" aria-label="breadcrumbs">
             <ul>
               <li><a href="cart.html">Cart</a></li>
-              <li class="is-active"><a href="checkout_info.html">Information</a></li>
+              <li><a href="checkout_info.html">Information</a></li>
               <li><a href="checkout_shipping.html">Shipping</a></li>
-              <li><a href="checkout_payment.html">Payment</a></li>
+              <li class="is-active"><a href="">Payment</a></li>
             </ul>
           </nav>
         </div>
 
         <div class="columns">
-          <div class="column is-half mr-5">     
-            <form action="">
-              <div class="field">
-                <div class="level">
-                  <div class="level-left">
-                    <div class="level-item">
-                      <h5 class="title is-5 checkout-label">Contact Information</h5>
-                    </div>
-                  </div>
-                  <div class="level-right">
-                    <div class="level-item">
-                      <a href="">Already have an account? Login</a>
-                    </div>
-                  </div>
+          <div class="column is-half">
+            <form class="box">
+              <div class="columns">
+                <div class="column is-one-fifth">
+                  <label class="label">Contact</label>
                 </div>
+                <div class="column is-three-fifths">
+                  <p>email@gmail.com</p>
+                </div>
+                <div class="column has-text-right">
+                  <a href="">Change</a>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                </div>
+              </div>
+              
+              <hr class="mb-5" style="height:2px; border-width:0; color:gray; background-color:gray; width: 100%; margin: auto;">
 
-                <label for="" class="label">Email</label>
-                <input class="input is-primary is-focused" type="email" placeholder="Email" />
+              <div class="columns">
+                <div class="column is-one-fifth">
+                  <label class="label">Ship to</label>
+                </div>
+                <div class="column is-three-fifths">
+                  <p>shipping_address</p>
+                </div>
+                <div class="column has-text-right">
+                  <a href="">Change</a>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                </div>
               </div>
 
-              <h5 class="title is-5 checkout-label">Shipping Address</h5>
+              <hr class="mb-5" style="height:2px; border-width:0; color:gray; background-color:gray; width: 100%; margin: auto;">
+
+              <div class="columns">
+                <div class="column is-one-fifth">
+                  <label class="label">Method</label>
+                </div>
+                <div class="column is-three-fifths">
+                  <p>Standard <span class="has-text-weight-bold">&#8369;0.00</span></p>
+                </div>
+              </div>
+            </form>
+
+            <h5 class="title is-5 checkout-label">Payment Method</h5>
+
+            <form action="" class="box">
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" name="answer" checked>
+                  Cash on Delivery
+                </label>
+              </div>
+            </form>
+
+            <h5 class="title is-5 checkout-label">Billing Address</h5>
+
+            <form action="" class="box">
+              <div class="columns">
+                <div class="column">
+                  <label class="radio">
+                    <input type="radio" name="answer" checked>
+                    Same as shipping address
+                  </label>
+                </div>
+              </div>
+
+              <div class="columns">
+                <div class="column">
+                  <label class="radio">
+                    <input type="radio" name="answer">
+                    Use a different billing address
+                  </label>
+                </div>
+              </div>
+
+              <hr class="mb-5" style="height:2px; border-width:0; color:gray; background-color:gray; width: 100%; margin: auto;">
 
               <div class="field">
                 <p class="control">
@@ -337,65 +397,74 @@
               <div class="field">
                 <input class="input is-primary" type="text" placeholder="Phone Number" />
               </div>
+            </form>
 
+            <div class="columns">
+              <div class="column is-half">
+                <a href="checkout_info.html">Return to shipping</a>
+              </div>
+              <div class="column">
+                <button class="button is-block is-link is-fullwidth" href="">Complete Order</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="column ml-5">
+            <div class="columns">
+              <div class="column is-one-fifth">
+                <img src="https://unsplash.it/g/200/200" alt="">
+              </div>
+              <div class="column">
+                <p class="plant-name has-text-weight-bold">Plant Name</p>
+              </div>
+              <div class="column">
+                <p class="price is-size-5 has-text-right">&#8369;0.00</p>
+              </div>
+            </div>
+
+            <hr class="mt-5 mb-5" style="height:2px; border-width:0; color:gray; background-color:gray; width: 100%; margin: auto;">
+
+            <div class="container">
               <div class="columns">
-                <div class="column is-half">
-                  <a href="cart.html">Return to cart</a>
+                <div class="column">
+                  <p class="has-text-weight-bold">Subtotal</p>
+                  <br>
+                  <p class="has-text-weight-bold">Shipping</p>
                 </div>
                 <div class="column">
-                  <button class="button is-block is-link is-fullwidth" href="checkout_shipping.html">Continue to Shipping</button>
+                  <p class="has-text-right">&#8369;0.00</p>
+                  <br>
+                  <p class="has-text-right">&#8369;0.00</p>
                 </div>
               </div>
-            </form>
-          </div>
-            
-            <div class="column ml-5">
+            </div>
+
+            <hr class="mt-5 mb-5" style="height:2px; border-width:0; color:gray; background-color:gray; width: 100%; margin: auto;">
+
+            <div class="container mt-5 mb-5">
               <div class="columns">
-                <div class="column is-one-fifth">
-                  <img src="https://unsplash.it/g/200/200" alt="">
-                </div>
                 <div class="column">
-                  <p class="plant-name has-text-weight-bold">Plant Name</p>
+                  <h5 class="title is-5 total-label">Total</p>
                 </div>
                 <div class="column">
                   <p class="price is-size-5 has-text-right">&#8369;0.00</p>
-                </div>
-              </div>
-
-              <hr style="height:2px; border-width:0; color:gray; background-color:gray; width: 100%; margin: auto;">
-
-              <div class="container mt-5 mb-5">
-                <div class="columns">
-                  <div class="column">
-                    <p class="has-text-weight-bold">Subtotal</p>
-                    <br>
-                    <p class="has-text-weight-bold">Shipping</p>
-                  </div>
-                  <div class="column">
-                    <p class="has-text-right">&#8369;0.00</p>
-                    <br>
-                    <p class="has-text-right">Calculated at next step</p>
-                  </div>
-                </div>
-              </div>
-
-              <hr style="height:2px; border-width:0; color:gray; background-color:gray; width: 100%; margin: auto;">
-
-              <div class="container mt-5 mb-5">
-                <div class="columns">
-                  <div class="column">
-                    <h5 class="title is-5 total-label">Total</p>
-                  </div>
-                  <div class="column">
-                    <p class="price is-size-5 has-text-right">&#8369;0.00</p>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
   </section>
+
+  <div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <h5 class="title is-5 checkout-label">Your order is complete!</h5>
+        <p class="subtitle is-6">You will be receiving a confirmation email with order details.</p>
+        <button class="button is-block is-link" href="../index.html">Back to shop</button>
+    </div>
+  </div>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <script src="../scripts/script.js"></script>
 </body>
