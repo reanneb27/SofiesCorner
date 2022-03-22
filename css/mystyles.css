@@ -61,6 +61,9 @@ h5.plant-name {
   vertical-align: middle;
   white-space: nowrap; }
 
+.dropdown-width {
+  width: 30vw; }
+
 h5.checkout-label, h5.total-label {
   color: #064420; }
 
@@ -417,7 +420,7 @@ table th {
 .dropdown-menu {
   display: none;
   left: 0;
-  min-width: 25rem;
+  min-width: 12rem;
   padding-top: 4px;
   position: absolute;
   top: 100%;

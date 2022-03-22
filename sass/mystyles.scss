@@ -136,7 +136,11 @@ $divider-background-color: $green;
   white-space: nowrap;
 }
 
-$dropdown-menu-min-width: 25rem;
+.dropdown-width {
+  width:30vw;   
+ }
+
+// $dropdown-menu-min-width: 25rem;
 
 h5.checkout-label, h5.total-label {
   color: $green;
