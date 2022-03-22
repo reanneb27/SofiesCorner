@@ -3,15 +3,18 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="description" content="Indoor Plant Delivery in the Philippines">
+    <meta name="keywords" content="indoor plants, indoor plants philippines, plants, plants philippines, succulent, moon cactus, air plants, hanging plants, pots, plant delivery, indoor plant delivery">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sofie's Corner | Home</title>
+    <title>Sofie's Corner | Plants</title>
     <link rel="shortcut icon" href="../assets/logo/sofies_corner_logo_light.png">
     <link rel="stylesheet" href="../css/mystyles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
 
-    <nav class="navbar is-primary has-shadow" style="min-height:unset">
+    <nav class="navbar is-primary" style="min-height:unset">
         <div class="navbar-brand px-2">
             <a href="../index.html" class="navbar-item">
                 <h2 class="title is-3" id="brand-title">
@@ -34,31 +37,102 @@
             </div>
             <div class="navbar-end">
                 <div class="navbar-item">
-                    <div class="control has-icons-right">
-                        <input class="input is-small" type="text" placeholder="Search">
-                        <span class="icon is-small is-right">
-                            <a href="">
-                                <i class="fas fa-search"></i>
-                            </a>
-                        </span>
+                    <div class="field has-addons">
+                        <div class="control">
+                          <input class="input is-small" type="text" placeholder="Search">
+                        </div>
+                        <div class="control">
+                          <a class="button is-link is-small">
+                            <i class="fas fa-search"></i>
+                          </a>
+                        </div>
                     </div>
                 </div>
-                <p class="buttons">
-                    <a href="">
-                        <button class="button is-medium is-primary">
-                            <span class="icon is-medium">
-                                <i class="fas fa-shopping-cart fa-lg"></i>
-                            </span>
-                        </button>
-                    </a>
-                    <a href="login.html" class="px-2">
-                        <button class="button is-medium is-primary">
-                            <span class="icon is-medium">
-                                <i class="fas fa-user fa-lg"></i>
-                            </span>
-                        </button>
-                    </a>
-                </p>
+                <div class="dropdown is-right is-hoverable">
+                    <div class="dropdown-trigger">
+                      <button class="button is-medium is-primary" aria-haspopup="true" aria-controls="dropdown-menu6">
+                        <span>
+                            <i class="fa fa-shopping-cart fa-lg"></i>
+                            <span class="badge">0</span>
+                        </span>
+                      </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu6" role="menu">
+                      <div class="dropdown-content">
+                        <div class="dropdown-item">
+                            <div class="container">
+                                <div class="columns">
+                                    <div class="column is-two-thirds">
+                                        <div class="columns is-mobile is-centered">
+                                            <div class="column is-one-third">
+                                              <img src="https://unsplash.it/g/200/200" alt="">
+                                            </div>
+                                            <div class="column">
+                                              <p class="plant-name has-text-weight-bold">Plant Name</p>
+                                              <p class="price is-size-5">&#8369;0.00</p>
+                                              <a href="">Remove</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="field">
+                                            <div class="control">
+                                              <div class="field has-addons" style="width:100px; border: 2px solid #9baa9f">
+                                                <p class="control">
+                                                  <a class="button has-text-centered">-</a>
+                                                  </span>
+                                                </p>
+                                                <p class="control">
+                                                  <input class="input has-text-centered" type="text" placeholder="" value="1">
+                                                </p>
+                                                <p class="control">
+                                                  <a class="button has-text-centered">+</a>
+                                                </p>
+                                              </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="dropdown-divider">
+                                <div id="total">
+                                    <div class="level">
+                                        <div class="level-left">
+                                        <div class="level-item">
+                                            <p class="total subtitle">Total</p>
+                                        </div>
+                                        </div>
+                                        <div class="level-right">
+                                        <div class="level-item">
+                                            <p class="total subtitle">&#8369;0.00 </p>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="dropdown-divider">
+                                <div class="columns">
+                                    <div class="column is-half">
+                                        <button class="button is-block is-primary is-fullwidth">
+                                            <span>View Cart</span>
+                                        </button>
+                                    </div>
+                                    <div class="column">
+                                        <button class="button is-block is-link is-fullwidth">
+                                            <span>Checkout</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <a href="login.html" class="px-2">
+                    <button class="button is-medium is-primary">
+                        <span class="icon is-medium">
+                            <i class="fas fa-user fa-lg"></i>
+                        </span>
+                    </button>
+                </a>
             </div>
         </div>
     </nav>
@@ -338,11 +412,11 @@
         <div class="columns">
             <div class="column">
                 <img src="../assets/logo/sofies_corner_logo_light.png" alt="" style="max-height: 200px;">
-                <h6 class="title is-6">Good quality and wide variety of plants for your home!</h6>
+                <h4 class="subtitle">Good quality and wide variety of plants for your home!</h4>
             </div>
 
             <div class="column">
-                <h5 class="title is-5">Map</h5>
+                <h5 class="title is-5 mb-2">Map</h5>
                 <div class="map-responsive">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15453.043506177384!2d121.0019428!3d14.4697038!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd9af20e2d0f9e55b!2sSofie&#39;s%20Corner!5e0!3m2!1sen!2sph!4v1645779206384!5m2!1sen!2sph"
@@ -356,27 +430,25 @@
                     17 Guerrero Compound, Papa Pio St., San Antonio Valley 13, San Isidro, Parañaque City, Metro Manila
                 </h6>
                 <br>
-                <h5 class="title is-5">Contact Us</h5>
+                <h5 class="title is-5 mb-1">Contact Us</h5>
                 <div class="is-divider"></div>
                 <div class="columns">
                     <div class="column">
-                        <a href="" class="button is-primary">
+                        <a href="mailto:sofiescornerph@gmail.com" class="button is-primary">
                             <span class="icon is-medium">
                                 <i class="fas fa-envelope"></i>
                             </span>
-                            <span>Email</span>
                         </a>
-                        <a href="" class="button is-primary">
+                        <a href="https://www.facebook.com/Sofiescornerph" class="button is-primary">
                             <span class="icon is-medium">
                                 <i class="fa-brands fa-facebook"></i>
                             </span>
-                            <span>Facebook</span>
                         </a>
-                        <a href="" class="button is-primary">
+                        <a href="tel:09979871445" class="button is-primary">
                             <span class="icon is-medium">
                                 <i class="fa-solid fa-phone"></i>
                             </span>
-                            <span>0966 571 9983</span>
+                            <span>0997 987 1445</span>
                         </a>
                     </div>
                 </div>
@@ -384,7 +456,6 @@
         </div>
     </footer>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="../scripts/script.js"></script>
 </body>
 

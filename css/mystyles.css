@@ -64,6 +64,16 @@ h5.plant-name {
 h5.checkout-label, h5.total-label {
   color: #064420; }
 
+.px-1,
+.p-1 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem; }
+
+.py-1,
+.p-1 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem; }
+
 /* Bulma Base */
 /*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
 html,
