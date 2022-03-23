@@ -75,12 +75,12 @@
             <div class="menu">
               <ul class="menu-list">
                 <li>
-                  <a href="admin_dashboard.html" class="is-active has-background-primary">
+                  <a href="admin_dashboard.html" class="has-text-black">
                     <i class="fa-solid fa-gauge p-1"></i>
                     Dashboard</a>
                 </li>
                 <li>
-                  <a href="admin_products.html" class="has-text-black">
+                  <a href="admin_products.html" class="is-active has-background-primary">
                     <i class="fa-solid fa-bag-shopping p-1"></i>
                     Products</a>
                 </li>
@@ -113,51 +113,96 @@
         <div class="p-1 pt-3 mx-2">
           <div class="columns is-variable is-desktop">
             <div class="column">
-              <h1 class="title has-text-primary">
-                Dashboard
+              <h1 class="title has-text-primary mb-2">
+                Create Product
               </h1>
+
+              <nav class="breadcrumb is-small" aria-label="breadcrumbs">
+                <ul>
+                  <li><a href="admin_dashboard.html">Dashboard</a></li>
+                  <li><a href="admin_products.html">Products</a></li>
+                  <li class="is-active"><a href="create_product.html" aria-current="page">Create Product</a></li>
+                </ul>
+              </nav>
             </div>
           </div>
+        </div>
 
-          <div class="columns is-variable is-desktop">
-            <div class="column">
-              <div class="card has-background-primary has-text-white">
-                <div class="card-header">
-                  <div class="card-header-title has-text-white is-uppercase">
-                    Revenue
-                  </div>
-                </div>
-                <div class="card-content">
-                  <p class="is-size-3">55%</p>
+        <div class="column">
+          <div class="column" style="max-width: 500px;">
+            <div class="field">
+              <label class="label">Product Name</label>
+              <div class="control">
+                <input class="input is-primary" type="text" placeholder="Enter Name">
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Description</label>
+              <div class="control">
+                <textarea class="textarea is-primary" placeholder="Enter Description"></textarea>
+              </div>
+            </div>
+            
+            <div class="file has-name is-boxed is-primary">
+              <label class="file-label">
+                <input class="file-input" type="file" name="resume">
+                <span class="file-cta">
+                  <span class="file-icon">
+                    <i class="fas fa-upload"></i>
+                  </span>
+                  <span class="file-label">
+                    Choose a file…
+                  </span>
+                </span>
+                <span class="file-name">
+                  file_name
+                </span>
+              </label>
+            </div>
+            
+            <div class="field">
+              <label class="label">Category</label>
+              <div class="control">
+                <div class="select is-primary">
+                  <select name="Plant Categories">
+                    <option selected>Category</option>
+                    <option value="Succulent w/ Pots">Succulent w/ Pots</option>
+                    <option value="Succulent w/o Pots">Succulent w/o Pots</option>
+                    <option value="Moon Cactus">Moon Cactus</option>
+                    <option value="Air Plants">Air Plants</option>
+                    <option value="Hanging Plants">Hanging Plants</option>
+                    <option value="Pots">Pots</option>
+                  </select>
                 </div>
               </div>
             </div>
-            <div class="column">
-              <div class="card has-background-warning has-text-black">
-                <div class="card-header">
-                  <div class="card-header-title has-text-black is-uppercase">
-                    Products
-                  </div>
-                </div>
-                <div class="card-content">
-                  <p class="is-size-3">78</p>
-                </div>
+            
+            <label class="label">Price</label>
+            <div class="field has-addons">
+              <div class="control">
+                <a class="button is-primary is-diabled">
+                  &#8369;
+                </a>
+              </div>
+              <div class="control">
+                <input class="input is-primary" type="text" placeholder="0.00">
               </div>
             </div>
-            <div class="column">
-              <div class="card has-background-info has-text-white">
-                <div class="card-header">
-                  <div class="card-header-title has-text-white">Orders</div>
-                </div>
-                <div class="card-content">
-                  <p class="is-size-3">425k</p>
-                </div>
+            
+            <div class="field is-grouped">
+              <div class="control">
+                <button class="button is-link">Submit</button>
+              </div>
+              <div class="control">
+                <button class="button is-link is- is-outlined">Cancel</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+    </div> <!-- content container -->
     
   </body>
 </html>
