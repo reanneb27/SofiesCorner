@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Sofie's Corner | Admin Dashboard</title>
+    <title>Sofie's Corner | Manage Team</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
@@ -75,7 +75,7 @@
             <div class="menu">
               <ul class="menu-list">
                 <li>
-                  <a href="admin_dashboard.html" class="is-active has-background-primary">
+                  <a href="admin_dashboard.html" class="has-text-black">
                     <i class="fa-solid fa-gauge p-1"></i>
                     Dashboard</a>
                 </li>
@@ -90,9 +90,9 @@
                     Categories</a>
                 </li>
                 <li>
-                  <a href="admin_clients.html" class="has-text-black">
+                  <a href="admin_customers.html" class="has-text-black">
                     <i class="fa-solid fa-users p-1"></i>
-                    Clients</a>
+                    Customers</a>
                 </li>
                 <li>
                   <a href="admin_transactions.html" class="has-text-black">
@@ -100,7 +100,7 @@
                     Transactions</a>
                 </li>
                 <li>
-                  <a href="admin_team.html" class="has-text-black">
+                  <a href="admin_team.html" class="is-active has-background-primary">
                     <i class="fa-solid fa-user-gear p-1"></i>
                     Manage Team</a>
                 </li>
@@ -113,51 +113,46 @@
         <div class="p-1 pt-3 mx-2">
           <div class="columns is-variable is-desktop">
             <div class="column">
-              <h1 class="title has-text-primary">
-                Dashboard
+              <h1 class="title has-text-primary mb-2">
+                Create Staff
               </h1>
+
+              <nav class="breadcrumb is-small" aria-label="breadcrumbs">
+                <ul>
+                  <li><a href="admin_dashboard.html">Dashboard</a></li>
+                  <li><a href="admin_products.html">Manage Team</a></li>
+                  <li class="is-active"><a href="create_staff.html" aria-current="page">Create Staff</a></li>
+                </ul>
+              </nav>
             </div>
           </div>
+        </div>
 
-          <div class="columns is-variable is-desktop">
-            <div class="column">
-              <div class="card has-background-primary has-text-white">
-                <div class="card-header">
-                  <div class="card-header-title has-text-white is-uppercase">
-                    Revenue
-                  </div>
-                </div>
-                <div class="card-content">
-                  <p class="is-size-3">55%</p>
+        <div class="column">
+          <form class="box" style="max-width: 500px;"">
+            <div class="column" style="max-width: 500px;">
+              <div class="field">
+                <label class="label">Staff Name</label>
+                <div class="control">
+                  <input class="input is-primary" type="text" placeholder="Enter Name">
                 </div>
               </div>
-            </div>
-            <div class="column">
-              <div class="card has-background-warning has-text-black">
-                <div class="card-header">
-                  <div class="card-header-title has-text-black is-uppercase">
-                    Products
-                  </div>
+              
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link">Submit</button>
                 </div>
-                <div class="card-content">
-                  <p class="is-size-3">78</p>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <div class="card has-background-info has-text-white">
-                <div class="card-header">
-                  <div class="card-header-title has-text-white">Orders</div>
-                </div>
-                <div class="card-content">
-                  <p class="is-size-3">425k</p>
+                <div class="control">
+                  <a href="admin_categories.html">
+                    <button class="button is-link is-outlined">Cancel</button>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </form>
+    </div> <!-- content container -->
     
   </body>
 </html>

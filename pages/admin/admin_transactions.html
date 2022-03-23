@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Sofie's Corner | Categories</title>
+    <title>Sofie's Corner | Transactions</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
@@ -85,7 +85,7 @@
                     Products</a>
                 </li>
                 <li>
-                  <a href="admin_categories.html" class="is-active has-background-primary">
+                  <a href="admin_categories.html" class="has-text-black">
                     <i class="fa-solid fa-leaf p-1"></i>
                     Categories</a>
                 </li>
@@ -95,7 +95,7 @@
                     Clients</a>
                 </li>
                 <li>
-                  <a href="admin_transactions.html" class="has-text-black">
+                  <a href="admin_transactions.html" class="is-active has-background-primary">
                     <i class="fa-solid fa-coins p-1"></i>
                     Transactions</a>
                 </li>
@@ -114,18 +114,8 @@
           <div class="columns is-variable is-desktop">
             <div class="column">
               <h1 class="title has-text-primary">
-                Categories
+                Transactions
               </h1>
-            </div>
-            <div class="column is-2" align="right">
-              <a href="create_category.html">
-                <button class="button is-block is-link is-fullwidth" >
-                  <span class="icon">
-                    <i class="fa-solid fa-circle-plus"></i>                  
-                  </span>
-                  <span>Create New</span>
-                </button>
-              </a>
             </div>
           </div>
 
@@ -151,6 +141,8 @@
                   <div class="select is-link">
                     <select>
                       <option selected>Sort</option>
+                      <option>Ascending, 1-9</option>
+                      <option>Descending, 9-1</option>
                       <option>Alphabetically, A-Z</option>
                       <option>Alphabetically, Z-A</option>
                       <option>Date, new to old</option>
@@ -165,118 +157,136 @@
             </div>
           </div>
 
-          <div class="column">
-            <table class="table is-striped is-hoverable is-fullwidth">
-              <thead>
-                <tr>
-                  <th>No.</th>
-                  <th>Category</th>
-                  <th>Actions</th>                  
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>1</th>
-                  <td>Succulent w/ Pots</td>
-                  <td>
-                    <a href="" class="has-text-primary">
-                      <span class="icon is-right">
-                        <i class="fa-regular fa-pen-to-square"></i>
+          <div class="columns">
+            <div class="column is-three-quarters">
+              <table class="table is-striped is-hoverable is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Transaction ID</th>
+                    <th>Client Name</th>
+                    <th>Paid</th>
+                    <th>Method</th>
+                    <th>Date Created</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>0001</th>
+                    <td>Client Name</td>
+                    <td>&#8369;100.00</td>
+                    <td>COD</td>
+                    <td>01/01/2022 16:01</td>
+                    <td>
+                      <a href="" class="has-text-primary">
+                        <button class="button is-link is-outlined">View</button>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>0002</th>
+                    <td>Client Name</td>
+                    <td>&#8369;100.00</td>
+                    <td>COD</td>
+                    <td>01/01/2022 16:02</td>
+                    <td>
+                      <a href="" class="has-text-primary">
+                        <button class="button is-link is-outlined">View</button>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>0002</th>
+                    <td>Client Name</td>
+                    <td>&#8369;100.00</td>
+                    <td>COD</td>
+                    <td>01/01/2022 16:03</td>
+                    <td>
+                      <a href="" class="has-text-primary">
+                        <button class="button is-link is-outlined">View</button>
+                      </a>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+
+            <div class="column">
+              <div class="card">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Transaction Details
+                  </p>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                    <label class="label">Date</label>
+                    <p>January 1, 2022</p>
+                    <label class="label">Billing Address</label>
+                    <p>Sample Address</p>
+                    <label class="label">Email</label>
+                    <p>juandelacruz@gmail.com</p>
+                    <label class="label">Item(s) Purchased</label>
+                    <div class="level">
+                      <div class="level-left">
+                        <div class="level-item">
+                          <p>Item 1</p>
+                        </div>
+                      </div>
+                      <div class="level-right">
+                        <div class="level-item">
+                          &#8369;0.00
+                        </div>
+                      </div>
+                    </div>
+                    <div class="level">
+                      <div class="level-left">
+                        <div class="level-item">
+                          <p>Item 2</p>
+                        </div>
+                      </div>
+                      <div class="level-right">
+                        <div class="level-item">
+                          &#8369;0.00
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="">
+                    <div class="level">
+                      <div class="level-left">
+                        <div class="level-item">
+                            <p class="total subtitle">Total</p>
+                        </div>
+                      </div>
+                      <div class="level-right">
+                        <div class="level-item">
+                            <p class="total subtitle">&#8369;0.00</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <footer class="card-footer">
+                  <a href="#" class="card-footer-item has-text-white">
+                    <span class="icon-text">
+                      <span class="icon">
+                        <i class="fa-solid fa-download"></i>
                       </span>
-                    </a>
-                    <a href="" class="has-text-danger">
-                      <span class="icon is-right">
-                        <i class="fa-solid fa-trash"></i>
-                      </span>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <th>2</th>
-                  <td>Succulent w/o Pots</td>
-                  <td>
-                    <a href="" class="has-text-primary">
-                      <span class="icon is-right">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                      </span>
-                    </a>
-                    <a href="" class="has-text-danger">
-                      <span class="icon is-right">
-                        <i class="fa-solid fa-trash"></i>
-                      </span>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <th>3</th>
-                  <td>Moon Cactus</td>
-                  <td>
-                    <a href="" class="has-text-primary">
-                      <span class="icon is-right">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                      </span>
-                    </a>
-                    <a href="" class="has-text-danger">
-                      <span class="icon is-right">
-                        <i class="fa-solid fa-trash"></i>
-                      </span>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <th>4</th>
-                  <td>Air Plants</td>
-                  <td>
-                    <a href="" class="has-text-primary">
-                      <span class="icon is-right">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                      </span>
-                    </a>
-                    <a href="" class="has-text-danger">
-                      <span class="icon is-right">
-                        <i class="fa-solid fa-trash"></i>
-                      </span>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <th>5</th>
-                  <td>Hanging Plants</td>
-                  <td>
-                    <a href="" class="has-text-primary">
-                      <span class="icon is-right">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                      </span>
-                    </a>
-                    <a href="" class="has-text-danger">
-                      <span class="icon is-right">
-                        <i class="fa-solid fa-trash"></i>
-                      </span>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <th>6</th>
-                  <td>Pots</td>
-                  <td>
-                    <a href="" class="has-text-primary">
-                      <span class="icon is-right">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                      </span>
-                    </a>
-                    <a href="" class="has-text-danger">
-                      <span class="icon is-right">
-                        <i class="fa-solid fa-trash"></i>
-                      </span>
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          
-        </div> <!-- column container -->
+                      <span>Download Receipt</span>
+                    </span>
+                  </a>
+                </footer>
+              </div>
+            </div><!-- box container-->
+
+          </div> <!-- 1st column container -->
+
+        </div>
       </div>
-    </div>
+    </div> <!-- content container -->
+    
   </body>
 </html>
