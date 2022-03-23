@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Sofie's Corner - Admin Dashboard</title>
+    <title>Sofie's Corner - Products</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
@@ -75,12 +75,12 @@
             <div class="menu">
               <ul class="menu-list">
                 <li>
-                  <a href="admin_dashboard.html" class="is-active has-background-primary">
+                  <a href="admin_dashboard.html" class="has-text-black">
                     <i class="fa-solid fa-gauge p-1"></i>
                     Dashboard</a>
                 </li>
                 <li>
-                  <a href="admin_products.html" class="has-text-black">
+                  <a href="admin_products.html" class="has-text-white is-active has-background-primary">
                     <i class="fa-solid fa-bag-shopping p-1"></i>
                     Products</a>
                 </li>
@@ -110,68 +110,179 @@
         </div>
       </div>
       <div class="column">
-        <div class="pt-2">
-          <div class="column">
-            <h1 class="title has-text-primary">
-              Products
-            </h1>
+        <div class="p-1 pt-5 mx-2">
+          <div class="columns is-variable is-desktop">
+            <div class="column">
+              <h1 class="title has-text-primary">
+                Products
+              </h1>
+            </div>
+            <div class="column is-2" align="right">
+              <button class="button is-block is-link is-fullwidth">
+                <span class="icon">
+                  <i class="fa-solid fa-circle-plus"></i>                  
+                </span>
+                <span>Create New</span>
+              </button>
+            </div>
           </div>
           
-          <div class="columns">
-            <div class="column is-three-fifths">
-              <div class="field has-addons">
-                <div class="control">
-                  <input class="input is-small" size="50" type="text" placeholder="Search">
-                </div>
-                <div class="control">
-                  <a class="button is-small is-link">
-                    <i class="fas fa-search"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <div class="control has-icons-left">
-                <div class="select is-small">
-                  <select>
-                    <option>Category</option>
-                    <option>Succulent w/ Pots</option>
-                    <option>Succulent w/o Pots</option>
-                    <option>Moon Cactus</option>
-                    <option>Air Plants</option>
-                    <option>Hanging Plants</option>
-                    <option>Pots</option>
-                  </select>
-                </div>
-                <div class="icon is-small is-left">
-                  <i class="fa-solid fa-filter"></i>
+          <div class="level">
+            <div class="level-left">
+              <div class="level-item">
+                <div class="field has-addons">
+                  <div class="control">
+                    <input class="input is-link" size="50" type="text" placeholder="Search">
+                  </div>
+                  <div class="control">
+                    <a class="button is-link">
+                      <i class="fas fa-search"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="column">
-              <div class="control has-icons-left">
-                <div class="select">
-                  <select>
-                    <option selected>Sort</option>
-                    <option>Price, low to high</option>
-                    <option>Price, high to low</option>
-                    <option>Alphabetically, A-Z</option>
-                    <option>Alphabetically, Z-A</option>
-                    <option>Date, new to old</option>
-                    <option>Date, old to new</option>
-                  </select>
+
+            <div class="level-right">
+              <div class="level-item">
+                <div class="control has-icons-left">
+                  <div class="select is-link">
+                    <select name="Plant Categories">
+                      <option selected>Category</option>
+                      <option value="Succulent w/ Pots">Succulent w/ Pots</option>
+                      <option value="Succulent w/o Pots">Succulent w/o Pots</option>
+                      <option value="Moon Cactus">Moon Cactus</option>
+                      <option value="Air Plants">Air Plants</option>
+                      <option value="Hanging Plants">Hanging Plants</option>
+                      <option value="Pots">Pots</option>
+                    </select>
+                  </div>
+                  <span class="icon is-left">
+                    <i class="fa-solid fa-filter"></i>
+                  </span>
                 </div>
-                <div class="icon is-small is-left">
-                  <i class="fa-solid fa-sort"></i>
+              </div>
+
+              <div class="level-item">
+                <div class="control has-icons-left">
+                  <div class="select is-link">
+                    <select>
+                      <option selected>Sort</option>
+                      <option>Price, low to high</option>
+                      <option>Price, high to low</option>
+                      <option>Alphabetically, A-Z</option>
+                      <option>Alphabetically, Z-A</option>
+                      <option>Date, new to old</option>
+                      <option>Date, old to new</option>
+                    </select>
+                  </div>
+                  <span class="icon is-left">
+                    <i class="fa-solid fa-sort"></i>
+                  </span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="columns is-variable is-desktop">
+          <div class="columns mt-5 mx-2 is-10 is-variable">
+            <div class="column is-2">
+              <div class="card">
+                  <div class="card-image has-text-centered pt-4 px-2">
+                      <img src="https://unsplash.it/g/300/300" alt="">
+                  </div>
+                  <div class="card-content">
+                      <p class="price">&#8369;0.00</p>
+                      <p class="title is-size-5 has-text-primary">Plant Name</p>
+                  </div>
+                  
+                      <footer class="card-footer">
+                          <p class="card-footer-item has-background-primary">
+                            <a href="" class="has-text-white">
+                              <span class="icon">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                              </span>
+                                <span>Edit</span>
+                              </a>
+                          </p>
+                          <p class="card-footer-item has-background-danger">
+                            <a href="" class="has-text-white">
+                              <span class="icon">
+                                <i class="fa-solid fa-trash"></i>
+                              </span>
+                                <span>Delete</span>
+                              </a>
+                          </p>
+                      </footer>
+                  </a>
+              </div>
+            </div>
+            <div class="column is-2">
+              <div class="card">
+                  <div class="card-image has-text-centered pt-4 px-2">
+                      <img src="https://unsplash.it/g/300/300" alt="">
+                  </div>
+                  <div class="card-content">
+                      <p class="price">&#8369;0.00</p>
+                      <p class="title is-size-5 has-text-primary">Plant Name</p>
+                  </div>
+                  
+                      <footer class="card-footer">
+                          <p class="card-footer-item has-background-primary">
+                            <a href="" class="has-text-white">
+                              <span class="icon">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                              </span>
+                                <span>Edit</span>
+                              </a>
+                          </p>
+                          <p class="card-footer-item has-background-danger">
+                            <a href="" class="has-text-white">
+                              <span class="icon">
+                                <i class="fa-solid fa-trash"></i>
+                              </span>
+                                <span>Delete</span>
+                              </a>
+                          </p>
+                      </footer>
+                  </a>
+              </div>
+            </div>
+            <div class="column is-2">
+              <div class="card">
+                  <div class="card-image has-text-centered pt-4 px-2">
+                      <img src="https://unsplash.it/g/300/300" alt="">
+                  </div>
+                  <div class="card-content">
+                      <p class="price">&#8369;0.00</p>
+                      <p class="title is-size-5 has-text-primary">Plant Name</p>
+                  </div>
+                  
+                      <footer class="card-footer">
+                          <p class="card-footer-item has-background-primary">
+                            <a href="" class="has-text-white">
+                              <span class="icon">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                              </span>
+                                <span>Edit</span>
+                              </a>
+                          </p>
+                          <p class="card-footer-item has-background-danger">
+                            <a href="" class="has-text-white">
+                              <span class="icon">
+                                <i class="fa-solid fa-trash"></i>
+                              </span>
+                                <span>Delete</span>
+                              </a>
+                          </p>
+                      </footer>
+                  </a>
+              </div>
+            </div>
+
           </div>
-        </div>
+
+        </div> <!-- column container -->
       </div>
-    
+    </div>
   </body>
 </html>
