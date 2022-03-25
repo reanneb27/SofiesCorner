@@ -111,12 +111,12 @@
                                 <hr class="dropdown-divider">
                                 <div class="columns">
                                     <div class="column is-half">
-                                        <button class="button is-block is-primary is-fullwidth">
+                                        <button class="button is-block is-primary is-fullwidth" id='view-cart-p'onclick="location.href = 'cart.html';">
                                             <span>View Cart</span>
                                         </button>
                                     </div>
                                     <div class="column">
-                                        <button class="button is-block is-link is-fullwidth">
+                                        <button class="button is-block is-link is-fullwidth" id='checkout-p' onclick="location.href = 'checkout_info.html';">
                                             <span>Checkout</span>
                                         </button>
                                     </div>
@@ -277,7 +277,13 @@
                       </button>
                     </div>
                     <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                      <div class="dropdown-content">
+                        <select class="dropdown-content" name="filter" id="filter" style="width: 200px">
+                            <option class="dropdown-item is-active"value="">Alphabetically, A-Z</option>
+                            <option class="dropdown-item" value="">Alphabetically, Z-A</option>
+                            <option class="dropdown-item" value="">Price, low to high</option>
+                            <option class="dropdown-item" value="">Price, high to low</option>
+                        </select>
+                      <!-- <div class="dropdown-content">
                         <a href="#" class="dropdown-item is-active">
                             Alphabetically, A-Z
                         </a>
@@ -291,7 +297,7 @@
                             Price, high to low
                         </a>
                       </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -455,7 +461,8 @@
             </div>
         </div>
     </footer>
-
+    <script src="../scripts/target.js"></script>
+    <script src="../scripts/plant.js"></script>
     <script src="../scripts/script.js"></script>
 </body>
 
