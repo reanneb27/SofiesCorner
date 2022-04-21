@@ -20,6 +20,11 @@
                     SOFIE'S CORNER
                 </h2>
             </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="nav-links">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
         </div>
 
         <div class="navbar-menu" id="nav-links">
@@ -110,12 +115,12 @@
                                 <hr class="dropdown-divider">
                                 <div class="columns">
                                     <div class="column is-half">
-                                        <button class="button is-block is-primary is-fullwidth">
+                                        <button class="button is-block is-primary is-fullwidth" id='view-cart'onclick="location.href = 'pages/cart.html';">
                                             <span>View Cart</span>
                                         </button>
                                     </div>
                                     <div class="column">
-                                        <button class="button is-block is-link is-fullwidth">
+                                        <button class="button is-block is-link is-fullwidth" id='checkout' onclick="location.href = 'pages/checkout_info.html';">
                                             <span>Checkout</span>
                                         </button>
                                     </div>
@@ -315,6 +320,38 @@
             </div>
         </div>
     </footer>
+    <script src="../scripts/target.js"></script>
     <script src="../scripts/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    
+    if ($navbarBurgers.length > 0) {
+    
+      $navbarBurgers.forEach( el => {
+        el.addEventListener('click', () => {
+    
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+    
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+    
+        });
+      });
+    }
+    
+    });
+    $(document).ready(function() {
+    
+    $(".navbar-burger").click(function() {
+    
+        $(".navbar-burger").toggleClass("is-active");
+        $(".navbar-menu").toggleClass("is-active");
+    
+    });
+    });
+    </script>
 </body>
 </html>

@@ -1,0 +1,22 @@
+#fname-err{
+    color: red;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: none;
+}
+
+#lname-err{
+    color: red;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: none;
+}
+
+.fa-check #email-err{
+    color:black;
+    display: none;
+}
