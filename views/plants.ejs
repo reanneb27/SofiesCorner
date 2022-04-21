@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head') %>
+
+<body>
+
+<%- include('partials/nav') %>
+    
+    <section class="main-content columns is-fullheight">
+  
+        <aside class="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile">
+          <h5 class="title is-size-5 is-primary filter-title">Filters</h5>
+          <p class="menu-label is-hidden-touch">Plant Size</p>
+          <ul class="menu-list">
+            <li>
+              <div class="container">
+  
+                  <div class="field">
+                    <label class="b-checkbox checkbox">
+                      <input type="checkbox" value="false" checked="">
+                      <span class="check"></span>
+                      <span class="control-label">Small</span>
+                    </label>
+                  </div>
+              
+                  <div class="field">
+                      <label class="b-checkbox checkbox">
+                        <input type="checkbox" value="false" checked="">
+                        <span class="check"></span>
+                        <span class="control-label">Medium</span>
+                      </label>
+                  </div>
+  
+                  <div class="field">
+                      <label class="b-checkbox checkbox">
+                        <input type="checkbox" value="false" checked="">
+                        <span class="check"></span>
+                        <span class="control-label">Large</span>
+                      </label>
+                  </div>
+              </div>
+            </li>
+          </ul>
+          <p class="menu-label is-hidden-touch">Price</p>
+          <ul class="menu-list">
+            <li>
+              <div class="field">
+                  <label class="b-radio radio">
+                    <input type="radio" name="group_1" value="One" checked="">
+                    <span class="check"></span>
+                    <span class="control-label">Below &#8369;100</span>
+                  </label>
+                </div>
+            
+                <div class="field">
+                  <label class="b-radio radio">
+                    <input type="radio" name="group_1" value="Two" data-com.bitwarden.browser.user-edited="yes">
+                    <span class="check"></span>
+                    <span class="control-label">&#8369;100 - &#8369;300</span>
+                  </label>
+                </div>
+            
+                <div class="field">
+                  <label class="b-radio radio">
+                    <input type="radio" name="group_1" value="Three" data-com.bitwarden.browser.user-edited="yes">
+                    <span class="check"></span>
+                    <span class="control-label">Above &#8369;300</span>
+                  </label>
+                </div>
+              </div>
+            </li>
+          </ul>
+  
+          <p class="menu-label is-hidden-touch">Category</p>
+          <ul class="menu-list">
+            <li>
+              <div class="container">
+  
+                  <div class="field">
+                    <label class="b-checkbox checkbox">
+                      <input type="checkbox" value="false" checked="">
+                      <span class="check"></span>
+                      <span class="control-label">Succulent w/ Pots</span>
+                    </label>
+                  </div>
+  
+                  <div class="field">
+                    <label class="b-checkbox checkbox">
+                      <input type="checkbox" value="false" checked="">
+                      <span class="check"></span>
+                      <span class="control-label">Succulent w/o Pots</span>
+                    </label>
+                  </div>
+  
+                  <div class="field">
+                    <label class="b-checkbox checkbox">
+                      <input type="checkbox" value="false" checked="">
+                      <span class="check"></span>
+                      <span class="control-label">Moon Cactus</span>
+                    </label>
+                  </div>
+              
+                  <div class="field">
+                      <label class="b-checkbox checkbox">
+                        <input type="checkbox" value="false" checked="">
+                        <span class="check"></span>
+                        <span class="control-label">Air Plants</span>
+                      </label>
+                  </div>
+  
+                  <div class="field">
+                      <label class="b-checkbox checkbox">
+                        <input type="checkbox" value="false" checked="">
+                        <span class="check"></span>
+                        <span class="control-label">Hanging Plants</span>
+                      </label>
+                  </div>
+  
+                  <div class="field">
+                      <label class="b-checkbox checkbox">
+                        <input type="checkbox" value="false" checked="">
+                        <span class="check"></span>
+                        <span class="control-label">Pots</span>
+                      </label>
+                  </div>
+              </div>
+            </li>
+          </ul>
+        </aside>
+      
+        <div class="column is-10">
+          <div class="level">
+              <div class="level-item level-left">
+                  <h4 class="title is-size-4 mt-5 mx-5 is-primary">
+                      Indoor Plants
+                  </h4>
+              </div>
+              <div class="level-item level-right mx-5">
+                  <div class="dropdown is-active is-right">
+                      <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                          <span>Sort by: </span>
+                          <span class="icon is-small">
+                            <i class="fas fa-angle-down" aria-hidden="true"></i>
+                          </span>
+                        </button>
+                      </div>
+                      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                          <a href="#" class="dropdown-item is-active">
+                              Alphabetically, A-Z
+                          </a>
+                          <a class="dropdown-item">
+                              Alphabetically, Z-A
+                          </a>
+                          <a href="#" class="dropdown-item">
+                              Price, low to high
+                          </a>
+                          <a class="dropdown-item">
+                              Price, high to low
+                          </a>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          <div class="columns mt-5 mx-2 is-10 is-variable is-centered">
+              <a href="product_item.html" class="product-item">
+                  <div class="column is-3-desktop">
+                      <div class="card">
+                          <div class="card-image has-text-centered pt-4 px-2">
+                              <img src="https://unsplash.it/g/300/300" alt="">
+                          </div>
+                          <div class="card-content">
+                              <p class="price">&#8369;0.00</p>
+                              <p class="title is-size-5 has-text-primary">Plant Name</p>
+                          </div>
+                          <a href="" class="addCartBtn">
+                              <footer class="card-footer">
+                                  <p class="card-footer-item">
+                                      <span class="icon is-medium">
+                                          <i class="fas fa-shopping-cart"></i>
+                                      </span>
+                                      <span>Add to Cart</span>
+                                  </p>
+                              </footer>
+                          </a>
+                      </div>
+                  </div>
+              </a>
+              
+              <a href="product_item.html" class="product-item">
+                  <div class="column is-3-desktop">
+                      <div class="card">
+                          <div class="card-image has-text-centered pt-4 px-2">
+                              <img src="https://unsplash.it/g/300/300" alt="">
+                          </div>
+                          <div class="card-content">
+                              <p class="price">&#8369;0.00</p>
+                              <p class="title is-size-5 has-text-primary">Plant Name</p>
+                          </div>
+                          <a href="" class="addCartBtn">
+                              <footer class="card-footer">
+                                  <p class="card-footer-item">
+                                      <span class="icon is-medium">
+                                          <i class="fas fa-shopping-cart"></i>
+                                      </span>
+                                      <span>Add to Cart</span>
+                                  </p>
+                              </footer>
+                          </a>
+                      </div>
+                  </div>
+              </a>
+  
+              <a href="product_item.html" class="product-item">
+                  <div class="column is-3-desktop">
+                      <div class="card">
+                          <div class="card-image has-text-centered pt-4 px-2">
+                              <img src="https://unsplash.it/g/300/300" alt="">
+                          </div>
+                          <div class="card-content">
+                              <p class="price">&#8369;0.00</p>
+                              <p class="title is-size-5 has-text-primary">Plant Name</p>
+                          </div>
+                          <a href="" class="addCartBtn">
+                              <footer class="card-footer">
+                                  <p class="card-footer-item">
+                                      <span class="icon is-medium">
+                                          <i class="fas fa-shopping-cart"></i>
+                                      </span>
+                                      <span>Add to Cart</span>
+                                  </p>
+                              </footer>
+                          </a>
+                      </div>
+                  </div>
+              </a>
+              
+              <a href="product_item.html" class="product-item">
+                  <div class="column is-3-desktop">
+                      <div class="card">
+                          <div class="card-image has-text-centered pt-4 px-2">
+                              <img src="https://unsplash.it/g/300/300" alt="">
+                          </div>
+                          <div class="card-content">
+                              <p class="price">&#8369;0.00</p>
+                              <p class="title is-size-5 has-text-primary">Plant Name</p>
+                          </div>
+                          <a href="" class="addCartBtn">
+                              <footer class="card-footer">
+                                  <p class="card-footer-item">
+                                      <span class="icon is-medium">
+                                          <i class="fas fa-shopping-cart"></i>
+                                      </span>
+                                      <span>Add to Cart</span>
+                                  </p>
+                              </footer>
+                          </a>
+                      </div>
+                  </div>
+              </a>
+          </div>
+        </div>
+        
+      </section>
+  
+      <div class="container">
+          <p class="has-text-centered is-italic">
+              "In my garden there is a large place for sentiment. My garden of flowers is also my garden of thoughts and dreams. The thoughts grow as freely as the flowers, and the dreams are [just] as beautiful"
+          </p>
+          <br>
+          <p class="has-text-centered">
+              - Abraham Lincoln
+          </p>
+          <br>
+      </div>
+
+      <%- include('partials/footer') %>
+
+</body>
+</html>
