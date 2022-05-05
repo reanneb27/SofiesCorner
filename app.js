@@ -1,5 +1,7 @@
+require("dotenv").config();
 const express = require('express');
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 const session = require('express-session');
 const MongoDbSession = require('connect-mongodb-session')(session);
 const flash = require('connect-flash');
@@ -8,9 +10,10 @@ const User = require('./model/User');
 
 const app = express();
 
-const DBUri = ''; // request kenneth for URI
+const DBUri = process.env.MONGODB_URI;
+
 mongoose.connect(DBUri)
-.then(result => app.listen(8888))
+.then(result => app.listen(process.env.PORT))
 .catch(err => console.log(err));
 
 const store = new MongoDbSession({
@@ -72,42 +75,42 @@ app.get('/plants', (req, res) => {
 app.get('/login', unauthedOnly, (req, res) => {
     const flashType = req.flash('type')
     const flashMsg = req.flash('message');
-    console.log("Flash Type: " + flashType + "\nFlash Message: " + flashMsg);
+
     res.render('login', {title: 'Login', flashObj: {type: flashType, message: flashMsg}});
 });
 
 app.post('/login', unauthedOnly, async (req, res) => {
     const {email, password} = req.body;
 
-    const user = await User.findOne({email});
+    // check if email exists first
+    const existingUser = await User.findOne({email});
 
-    if (!user) {
+    if (!existingUser) {
         req.flash('type', 'error');
         req.flash('message', 'Email or Password is wrong or does not exist!');
-        res.redirect('/login');
-    }
-    else {
-        req.session.isAuth = true;
-        req.flash('type', 'success');
-        req.flash('message', 'Successfully logged in!');
-        res.redirect('/account_profile');
+        req.session.save(() => res.redirect('/login'));
+    } else {
+        // now check if password matches the hashed password in database
+        const isMatch = await bcrypt.compare(password, existingUser.password);
+
+        if (!isMatch) {
+            req.flash('type', 'error');
+            req.flash('message', 'Email or Password is wrong or does not exist!');
+            req.session.save(() => res.redirect('/login'));
+        } else {
+            req.flash('type', 'success');
+            req.flash('message', 'Successfully logged in!');
+            req.session.isAuth = true;
+            req.session.save(() => res.redirect('/account_profile'));
+        }
     }
 });
 
-app.post('/logout', (req, res) => {
-    req.session.destroy((err) => {
-
-        // TODO: research how to make session manually,
-        // because I can't add flash messages after destroying session
-        // create new session
-        console.log('session deleted! ' + req.session);
-
-        // add new session creation code here
-        
-        console.log('created new session: ');
-
-        res.redirect('/login');
-    });
+app.post('/logout', authedOnly, (req, res) => {
+    req.flash('type', 'success');
+    req.flash('message', 'Successfully logged out!');
+    req.session.isAuth = false;
+    req.session.save(() => res.redirect('/login'));
 });
 
 app.get('/register', unauthedOnly, (req, res) => {
@@ -118,36 +121,39 @@ app.get('/register', unauthedOnly, (req, res) => {
 });
 
 app.post('/register', unauthedOnly, async (req, res) => {
-    const email = req.body['email'];
-    const user = new User({
-        first_name: req.body['first_name'],
-        last_name: req.body['last_name'],
-        email: req.body['email'],
-        password: req.body['password']
-    });
+    const {first_name, last_name, email, password } = req.body;
 
     // check first if email already exists
     const existingUser = await User.findOne({email});
     
-    if (!existingUser){
+    if (existingUser){
+        req.flash('type', 'error');
+        req.flash('message', 'Email already exists!');
+        req.session.save(() => res.redirect('/register'));
+    } else {
         try {
+            // hash password first
+            let hashedPassword = await bcrypt.hash(password, 10);
+
+            const user = new User({
+                first_name: first_name,
+                last_name: last_name,
+                email: email,
+                password: hashedPassword
+            });
+
             await user.save();
             req.flash('type', 'success');
             req.flash('message', 'Successfully Registered! You can login now.');
-            res.redirect('/login');
+
+            req.session.save(() => res.redirect('/login'));
         } catch(err) {
             console.log(err);
             req.flash('type', 'error');
             req.flash('message', 'There was an error with your registration.');
-            res.redirect('/register');
+            req.session.save(() => res.redirect('/register'));
         };
     }
-    else {
-        req.flash('type', 'error');
-        req.flash('message', 'Email already exists!');
-        res.redirect('/register');
-    }
-    
 });
 
 app.get('/forgot_password', unauthedOnly, (req, res) => {
@@ -162,8 +168,10 @@ app.get('/account_profile', authedOnly, (req, res) => {
     res.render('account_profile', {title: 'Profile', flashObj: {type: flashType, message: flashMsg}});
 })
 
-app.get('/test', (req, res) => {
-    console.log(req.session);
-    req.flash('flashMsg', 'boyow');
-    res.send('braaah test');
-});
+
+// test routes
+// app.get('/test', (req, res) => {
+//     console.log(req.session);
+//     req.flash('flashMsg', 'boyow');
+//     res.send('braaah test');
+// });
