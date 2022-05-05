@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head') %>
+
+    <body>
+        <%- include('partials/nav') %>
+
+            <section class="hero is-halfheight">
+                <div class="hero-body">
+                    <div class="container">
+                        <div class="box" id="box-account">
+                            <div id="tabs-with-content" class="my-5 mx-5">
+                                <div class="tabs is-boxed">
+                                    <ul>
+                                        <li><a>Profile</a></li>
+                                        <li><a>My Orders</a></li>
+                                        <li><a>Delivery Address</a></li>
+                                        <li><a>Change Password</a></li>
+                                        <li>
+                                        <form id="form1" action="/logout" method="post">
+                                            <a href="javascript:;" onclick="document.getElementById('form1').submit();">
+                                                Log out
+                                            </a>
+                                        </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <section class="tab-content">
+                                        <div>
+                                            First Name:
+                                            <br>
+                                            Last Name:
+                                            <br>
+                                            Email:
+                                            <br>
+                                            <br>
+                                            <button class="button is-responsive is-block is-link">Edit</button>
+                                        </div>
+                                    </section>
+                                    <section class="tab-content">
+                                        <div class="is-centered has-text-centered">
+                                            <p>You haven't placed any orders yet.</p>
+                                            <br>
+                                            <button class="button is-link">Shop Now</button>
+                                        </div>
+                                    </section>
+                                    <section class="tab-content">
+                                        <h4 class="title is-4">My Addresses</h4>
+                                        <div class="column is-8 is-offset-2">
+                                            <div class="box">
+                                                <p>Name</p>
+                                                <p>Block</p>
+                                                <p>Street</p>
+                                                <p>Zip Code</p>
+                                                <p>Country</p>
+                                            </div>
+                                            <button class="button is-block is-link is-fullwidth">
+                                                <span class="icon is-left">
+                                                    <i class="fa-solid fa-circle-plus"></i>
+                                                </span>
+                                                <span>Add a new address</span>
+                                            </button>
+                                        </div>
+                                    </section>
+
+                                    <section class="tab-content">
+                                        <div class="column is-4">
+                                            <form>
+                                                <div class="field">
+                                                    <label for="" class="label has-text-left">New Password</label>
+                                                    <p class="control has-icons-left">
+                                                        <input class="input is-focused" type="password"
+                                                            placeholder="Enter Password" />
+                                                        <span class="icon is-left">
+                                                            <i class="fas fa-lock"></i>
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                                <div class="field">
+                                                    <label for="" class="label has-text-left">Confirm Password</label>
+                                                    <p class="control has-icons-left">
+                                                        <input class="input" type="password"
+                                                            placeholder="Confirm Password" />
+                                                        <span class="icon is-left">
+                                                            <i class="fas fa-lock"></i>
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                                <button class="button is-block is-link is-fullwidth">Update
+                                                    Password</button>
+                                            </form>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <%- include('partials/footer') %>
+            
+            <script src="scripts/script.js"></script>
+    </body>
+
+</html>

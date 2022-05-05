@@ -4,8 +4,6 @@
 <%- include('partials/head') %>
 
     <body>
-        <%= flashObj.message %>
-
         <%- include('partials/nav2') %>
 
             <section class="hero is-halfheight">
@@ -15,11 +13,11 @@
                             <div class="box">
                                 <h4 class="title is-4">Login</h4>
                                 <p class="subtitle is-6">Enter your email and password.</p>
-                                <form>
+                                <form action="/login" method="post">
                                     <div class="field">
                                         <label for="" class="label has-text-left">Email</label>
                                         <p class="control has-icons-left has-icons-right">
-                                            <input class="input is-focused" type="email" placeholder="Enter Email" />
+                                            <input class="input is-focused" type="email" placeholder="Enter Email" name="email" required/>
                                             <span class="icon is-left">
                                                 <i class="fas fa-envelope"></i>
                                             </span>
@@ -31,7 +29,7 @@
                                     <div class="field">
                                         <label for="" class="label has-text-left">Password</label>
                                         <p class="control has-icons-left">
-                                            <input class="input" type="password" placeholder="Enter Password" />
+                                            <input class="input" type="password" placeholder="Enter Password" name="password" required/>
                                             <span class="icon is-left">
                                                 <i class="fas fa-lock"></i>
                                             </span>

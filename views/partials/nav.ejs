@@ -1,3 +1,7 @@
+<% if(typeof flashObj !== 'undefined'){ %>
+    <%= flashObj.message %>
+<% } %>
+
 <nav class="navbar is-primary" style="min-height:unset">
     <div class="navbar-brand px-2">
         <a href="index" class="navbar-item">
@@ -110,11 +114,12 @@
                   </div>
                 </div>
             </div>
-            <a href="login" class="px-2">
-                <button class="button is-medium is-primary">
-                    <span class="icon is-medium">
+            <a href="account_profile" class="px-2 py-1">
+                <button class="button is-primary">
+                    <span class="icon">
                         <i class="fas fa-user fa-lg"></i>
                     </span>
+                    <span>username</span>
                 </button>
             </a>
         </div>
