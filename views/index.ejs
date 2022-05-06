@@ -6,6 +6,10 @@
     <body>
         <%- include('partials/nav') %>
 
+        <% if (typeof flashObj !== 'undefined') { %>
+            <%- include('partials/flash-msgs/success'); %>
+        <% } %>
+
             <div class="hero is-medium is-primary has-text-centered has-background"
                 style="background-image: url('assets/hero_image.jpg'); background-size: cover; background-blend-mode: soft-light;">
                 <div class="hero-body">

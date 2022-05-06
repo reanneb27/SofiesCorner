@@ -5,6 +5,12 @@
 
     <body>
         <%- include('partials/nav') %>
+        
+        <% if (locals.flashObj) { %>
+            <% if (flashObj.type == 'success') { %>
+                <%- include('partials/flash-msgs/success'); %>
+            <% } %>
+        <% } %>
 
             <section class="hero is-halfheight">
                 <div class="hero-body">

@@ -168,10 +168,15 @@ app.get('/account_profile', authedOnly, (req, res) => {
     res.render('account_profile', {title: 'Profile', flashObj: {type: flashType, message: flashMsg}});
 })
 
-
 // test routes
 // app.get('/test', (req, res) => {
 //     console.log(req.session);
 //     req.flash('flashMsg', 'boyow');
 //     res.send('braaah test');
 // });
+
+// 404 page
+app.use((req, res) => {
+    res.render('error_page', {title: '404'});
+});
+
