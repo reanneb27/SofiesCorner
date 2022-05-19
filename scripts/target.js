@@ -16,4 +16,9 @@ document.getElementById("view-cart-c").onclick = function () {
 document.getElementById("checkout-c").onclick = function () {
     location.href = "checkout_info.html";
 };
-
+document.getElementById("complete_order_btn").onclick = function () {
+    location.href = "order_complete.html";
+};
+document.getElementById("homeBtn").onclick = function () {
+    location.href = "../index.html";
+};
