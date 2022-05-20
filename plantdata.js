@@ -237,7 +237,7 @@ const data = {
             image: '../assets/plants/pots/groot_with_bird.jpg', 
         },
         {
-            id: '32',
+            id: '31',
             typeofplant: 'pots',
             plantname: 'Groot with flower',
             price: '200',
@@ -251,7 +251,7 @@ const data = {
             image: '../assets/plants/pots/male1.jpg', 
         },
         {
-            id: '34',
+            id: '33',
             typeofplant: 'pots',
             plantname: 'Silver hanging holder',
             price: '160',
@@ -261,7 +261,7 @@ const data = {
         //SUCCULENT WITH POTS DATA
 
         {
-            id: '35',
+            id: '33',
             typeofplant: 'Succulent with pots',
             plantname: 'Black prince with white pot v1',
             price: '130',
