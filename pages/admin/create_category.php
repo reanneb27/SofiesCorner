@@ -129,7 +129,7 @@
         </div>
 
         <div class="column">
-          <form class="box" action="../../post/create_categories.php" method="POST" style="max-width: 500px;"">
+          <form class="box" action="../../post/create_categories.php" method="POST" style="max-width: 500px;">
             <div class="column" style="max-width: 500px;">
               <div class="field">
                 <label class="label">Category Name</label>
@@ -143,7 +143,7 @@
                   <button class="button is-link">Submit</button>
                 </div>
                 <div class="control">
-                  <a href="admin_categories.html">
+                  <a href="admin_categories.php">
                     <button class="button is-link is-outlined">Cancel</button>
                   </a>
                 </div>

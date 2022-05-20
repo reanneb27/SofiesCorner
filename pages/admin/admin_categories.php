@@ -118,7 +118,7 @@
               </h1>
             </div>
             <div class="column is-2" align="right">
-              <a href="create_category.html">
+              <a href="create_category.php">
                 <button class="button is-block is-link is-fullwidth" >
                   <span class="icon">
                     <i class="fa-solid fa-circle-plus"></i>                  
@@ -151,7 +151,7 @@
                 <div class="control has-icons-left">
                   <div class="select is-link">
                     <select name='sort' onchange="document.getElementById('report_filter').submit();">
-                    <option value='' selected>Sort</option>
+                    <option selected>Sort</option>
                       <option value='ASC'>Alphabetically, A-Z</option>
                       <option value='DESC'>Alphabetically, Z-A</option>
                       <option value='ASC'>Date, new to old</option>
