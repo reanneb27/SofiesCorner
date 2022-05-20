@@ -258,7 +258,7 @@ const data = {
             image: '../assets/plants/pots/silver_hanging holder.jpg', 
         },
 
-        //SUCCULENT WITH POTS DATA
+        //SUCCULENT WITH POTS data
 
         {
             id: '35',
@@ -288,8 +288,6 @@ const data = {
             price: '130',
             image: '../assets/plants/succulent_w_pots/blue_chalk.jpg', 
         },
-
-
 
 
     ]
