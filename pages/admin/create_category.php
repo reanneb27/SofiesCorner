@@ -85,7 +85,7 @@
                     Products</a>
                 </li>
                 <li>
-                  <a href="admin_categories.html" class="is-active has-background-primary">
+                  <a href="admin_categories.php" class="is-active has-background-primary">
                     <i class="fa-solid fa-leaf p-1"></i>
                     Categories</a>
                 </li>
@@ -129,12 +129,12 @@
         </div>
 
         <div class="column">
-          <form class="box" style="max-width: 500px;"">
+          <form class="box" action="../../post/create_categories.php" method="POST" style="max-width: 500px;"">
             <div class="column" style="max-width: 500px;">
               <div class="field">
                 <label class="label">Category Name</label>
                 <div class="control">
-                  <input class="input is-primary" type="text" placeholder="Enter Name">
+                  <input class="input is-primary" name='category_name' type="text" placeholder="Enter Name">
                 </div>
               </div>
               

@@ -85,7 +85,7 @@
                     Products</a>
                 </li>
                 <li>
-                  <a href="admin_categories.html" class="is-active has-background-primary">
+                  <a href="admin_categories.php" class="is-active has-background-primary">
                     <i class="fa-solid fa-leaf p-1"></i>
                     Categories</a>
                 </li>
@@ -147,20 +147,22 @@
 
             <div class="level-right">
               <div class="level-item">
+              <form method="GET" id='report_filter' action="<?= $_SERVER['PHP_SELF'];?>">  
                 <div class="control has-icons-left">
                   <div class="select is-link">
-                    <select>
-                      <option selected>Sort</option>
-                      <option>Alphabetically, A-Z</option>
-                      <option>Alphabetically, Z-A</option>
-                      <option>Date, new to old</option>
-                      <option>Date, old to new</option>
+                    <select name='sort' onchange="document.getElementById('report_filter').submit();">
+                    <option value='' selected>Sort</option>
+                      <option value='ASC'>Alphabetically, A-Z</option>
+                      <option value='DESC'>Alphabetically, Z-A</option>
+                      <option value='ASC'>Date, new to old</option>
+                      <option value='DESC'>Date, old to new</option>
                     </select>
                   </div>
                   <span class="icon is-left">
                     <i class="fa-solid fa-sort"></i>
                   </span>
                 </div>
+              </form>  
               </div>
             </div>
           </div>
@@ -175,7 +177,36 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+              <?php 
+                ini_set('display_errors', 0);
+                require_once '../../classes/db.php';
+               
+                $sort = $_GET['sort'];
+                $sql = "SELECT product_category_id, name from product_category order by name $sort";
+                $result = $con->query($sql);
+
+                if($result->num_rows > 0 ){
+                  while($row = $result->fetch_assoc()){
+                    echo "<tr>";
+                    echo "<th>" .$row['product_category_id']."</th>";
+                    echo "<td>".$row['name']."</td>";
+                    echo"<td>";
+                    echo  "<a href='' class='has-text-primary'>";
+                    echo   "<span class='icon is-right'>";
+                    echo      "<i class='fa-regular fa-pen-to-square'></i>";
+                    echo   " </span>";
+                    echo  "</a>";
+                    echo " <a href='' class='has-text-danger'>";
+                    echo   " <span class='icon is-right'>";
+                    echo      "<i class='fa-solid fa-trash'></i>";
+                    echo    "</span>";
+                    echo  "</a>";
+                    echo "</td>";
+                    echo "</tr>";
+                  }
+                }
+                ?>
+                <!-- <tr>
                   <th>1</th>
                   <td>Succulent w/ Pots</td>
                   <td>
@@ -270,7 +301,7 @@
                       </span>
                     </a>
                   </td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>
