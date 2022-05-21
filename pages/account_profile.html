@@ -140,6 +140,12 @@
 	<section class="hero is-halfheight">
 		<div class="hero-body">
 			<div class="container">
+
+                <div class="notification is-success py-2">
+                    <button class="delete" onclick="console.log(this.parentNode.remove())"></button>
+                    Successfully updated password
+                </div>
+
 				<div class="box" id="box-account">
 					<div id="tabs-with-content" class="my-5 mx-5">
 						<div class="tabs is-boxed">
@@ -153,33 +159,96 @@
 						</div>
 						<div>
 							<section class="tab-content">
-								<div>
-									First Name:
-									<br>
-									Last Name:
-									<br>
-									Email:
-									<br>
-									<br>
-									<button class="button is-responsive is-block is-link">Edit</button>
-								</div>
+                                <h4 class="title is-4">Profile</h4>
+                                <div class="column is-8 is-offset-2">
+                                    <div>
+                                        First Name:
+                                        <br>
+                                        Last Name:
+                                        <br>
+                                        Email:
+                                        <br>
+                                        <br>
+                                        <button class="button is-responsive is-block is-fullwidth is-link">Edit</button>
+                                    </div>
+                                </div>
+                                <div class="column is-8 is-offset-2">
+									<div class="box">
+                                        <h4 class="title is-4">Edit Profile</h4>
+                                        <form action="">
+                                            <div class="field">
+                                                <label class="label">First Name</label>
+                                                <div class="control">
+                                                    <input class="input is-primary" type="text" placeholder="Enter Name">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Last Name</label>
+                                                <div class="control">
+                                                    <input class="input is-primary" type="text" placeholder="Enter Name">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Email</label>
+                                                <div class="control">
+                                                    <input class="input is-primary" type="email" placeholder="Enter Email">
+                                                </div>
+                                            </div>
+                                            <button class="button is-responsive is-block is-fullwidth is-link">Update</button>
+                                        </form>
+                                    </div>
+                                </div>
 							</section>
 							<section class="tab-content">
-								<div class="is-centered has-text-centered">
-									<p>You haven't placed any orders yet.</p>
-									<br>
-									<button class="button is-link">Shop Now</button>
+                                <h4 class="title is-4">My Orders</h4>
+                                <div class="column is-8 is-offset-2">
+                                    <div class="is-centered has-text-centered">
+                                        <p>You haven't placed any orders yet.</p>
+                                        <br>
+                                        <button class="button is-block is-fullwidth is-link">Shop Now</button>
+                                    </div>
+                                </div>
+                                <div class="column is-8 is-offset-2">
+									<div class="box">
+										<div class="columns">
+                                            <div class="column is-one-quarter">
+                                                <img src="https://unsplash.it/g/200/200" alt="">
+                                            </div>
+                                            <div class="column">
+                                                <div class="column">
+                                                    <p class="plant-name has-text-weight-bold">Plant Name</p>
+                                                    <p>Quantity:</p>
+                                                    <p>Price: ₱0.00</p>
+                                                </div>
+                                            </div>
+                                        </div>
+										<div class="columns">
+                                            <div class="column is-one-quarter">
+                                                <img src="https://unsplash.it/g/200/200" alt="">
+                                            </div>
+                                            <div class="column">
+                                                <div class="column">
+                                                    <p class="plant-name has-text-weight-bold">Plant Name</p>
+                                                    <p>Quantity:</p>
+                                                    <p>Price: ₱0.00</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="price is-size-5">Order Total: ₱0.00</p>
+									</div>
+                                    <button class="button is-block is-fullwidth is-link">Buy Again</button>
+
 								</div>
 							</section>
 							<section class="tab-content">
 								<h4 class="title is-4">My Addresses</h4>
 								<div class="column is-8 is-offset-2">
 									<div class="box">
-										<p>Name</p>
-										<p>Block</p>
-										<p>Street</p>
-										<p>Zip Code</p>
-										<p>Country</p>
+										<p>Full Name: </p>
+										<p>House No., Street Name, Building:</p>
+										<p>Barangay, Province, Region:</p>
+										<p>Zip Code: </p>
+										<p>Phone Number: </p>
 									</div>
 									<button class="button is-block is-link is-fullwidth">
 										<span class="icon is-left">
@@ -188,32 +257,80 @@
 										<span>Add a new address</span>
 									</button>
 								</div>
+                                <div class="column is-8 is-offset-2">
+                                    <form action="">
+                                        <div class="field">
+                                            <label class="label">Full Name</label>
+                                            <div class="control">
+                                              <input class="input is-primary" type="text" placeholder="Enter Full Name">
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <label class="label">House No., Street Name, Building</label>
+                                            <div class="control">
+                                              <input class="input is-primary" type="text" placeholder="Enter House No., Street Name, Building...">
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <label class="label">Barangay, Province, Region</label>
+                                            <div class="control">
+                                              <input class="input is-primary" type="text" placeholder="Enter Barangay, Province, Region...">
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <label class="label">Zip Code</label>
+                                            <div class="control">
+                                              <input class="input is-primary" type="text" placeholder="Enter Zip Code">
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <label class="label">Phone Number</label>
+                                            <div class="control">
+                                              <input class="input is-primary" type="email" placeholder="Enter phone number">
+                                            </div>
+                                        </div>
+                                        <button class="button is-responsive is-block is-fullwidth is-link">Update</button>
+                                    </form>
+                                </div>
 							</section>
 
 							<section class="tab-content">
-								<div class="column is-4">
-									<form>
-										<div class="field">
-											<label for="" class="label has-text-left">New Password</label>
-											<p class="control has-icons-left">
-												<input class="input is-focused" type="password"
-													placeholder="Enter Password" />
-												<span class="icon is-left">
-													<i class="fas fa-lock"></i>
-												</span>
-											</p>
-										</div>
-										<div class="field">
-											<label for="" class="label has-text-left">Confirm Password</label>
-											<p class="control has-icons-left">
-												<input class="input" type="password" placeholder="Confirm Password" />
-												<span class="icon is-left">
-													<i class="fas fa-lock"></i>
-												</span>
-											</p>
-										</div>
-										<button class="button is-block is-link is-fullwidth">Update Password</button>
-									</form>
+                                <div class="column is-8 is-offset-2">
+                                    <div class="box">
+                                        <h4 class="title is-4">Change Passsword</h4>
+                                        <form>
+                                            <div class="field">
+                                                <label for="" class="label has-text-left">Current Password</label>
+                                                <p class="control has-icons-left">
+                                                    <input class="input is-focused" type="password"
+                                                        placeholder="Enter Current Password" />
+                                                    <span class="icon is-left">
+                                                        <i class="fas fa-lock"></i>
+                                                    </span>
+                                                </p>
+                                            </div>
+                                            <div class="field">
+                                                <label for="" class="label has-text-left">New Password</label>
+                                                <p class="control has-icons-left">
+                                                    <input class="input" type="password"
+                                                        placeholder="Enter New Password" />
+                                                    <span class="icon is-left">
+                                                        <i class="fas fa-lock"></i>
+                                                    </span>
+                                                </p>
+                                            </div>
+                                            <div class="field">
+                                                <label for="" class="label has-text-left">Confirm Password</label>
+                                                <p class="control has-icons-left">
+                                                    <input class="input" type="password" placeholder="Confirm Password" />
+                                                    <span class="icon is-left">
+                                                        <i class="fas fa-lock"></i>
+                                                    </span>
+                                                </p>
+                                            </div>
+                                            <button class="button is-block is-link is-fullwidth">Update Password</button>
+                                        </form>
+                                    </div>
 								</div>
 							</section>
 						</div>
