@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
 const MongoDbSession = require('connect-mongodb-session')(session);
+const sendgrid = require('@sendgrid/mail');
+const nodemailer = require('nodemailer');
 const flash = require('connect-flash');
 
 const User = require('./model/User');
@@ -158,6 +160,91 @@ app.post('/register', unauthedOnly, async (req, res) => {
 
 app.get('/forgot_password', unauthedOnly, (req, res) => {
     res.render('forgot_password', {title: 'Forgot Password'});
+});
+
+app.post('/forgot_password', unauthedOnly, (req, res) => {
+    const {email} = req.body;
+    // sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
+    // const msg = {
+    //     to: email, // Change to your recipient
+    //     from: process.env.MY_SECRET_EMAIL, // Change to your verified sender
+    //     subject: 'Sending with SendGrid is Fun',
+    //     text: 'and easy to do anywhere, even with Node.js',
+    //     html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+    // };
+    // const msg2 = {
+    //     from: {
+    //         email: process.env.MY_SECRET_EMAIL,
+    //         name: 'senderTest'
+    //     },
+    //     to: {
+    //         email: email,
+    //         name: 'recieverTest'
+    //     },
+    //     subject: 'Just testing subject',
+    //     text: 'body text',
+    //     html: '<strong>body text</strong>',
+    //     templateId: 'd-2e3f502a238b4b4fa59d8e754c6a2688',
+    //     dynamicTemplateData: {
+    //         name: 'dynamicName'
+    //     }
+    // };
+
+    // sendgrid.send(msg)
+    // .then(success => {
+    //     res.send("email sent to: " + email + "\n" + JSON.stringify(success));
+    //     console.log(JSON.stringify(success));
+    // })
+    // .catch(err => {
+    //     res.send("unable to send email to " + email + "\n" + JSON.stringify(err));
+    //     console.log(JSON.stringify(err));
+    // });
+    var randPassword = Array(10).fill("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz").map(function(x) { return x[Math.floor(Math.random() * x.length)] }).join('');
+    const transporter = nodemailer.createTransport({
+        service: 'hotmail',
+        auth: {
+            user: process.env.OUTLOOK_EMAIL,
+            pass: process.env.OUTLOOK_EMAIL_PASS
+        }
+    });
+    const options = {
+        from: process.env.OUTLOOK_EMAIL,
+        to: email,
+        subject: "Reset Password | Sofies Corner",
+        text: 'Your new password is: ' + randPassword + '. You can now login with this password and change it.'
+    };
+
+    transporter.sendMail(options, async (err, info) => {
+        if (err){
+            console.log(err);
+            req.flash('type', 'error');
+            req.flash('message', 'Unable to send password reset to ' + email + '.');
+
+            req.session.save(() => res.redirect('/register'));
+        }
+        else {
+            // check first if email already exists
+            const existingUser = await User.findOne({email});
+            if (existingUser){
+                // hash password first
+                let hashedPassword = await bcrypt.hash(randPassword, 10);
+                
+                User.findOneAndUpdate({email: email}, {password: hashedPassword}, (err, data) => {
+                    if (err)
+                        console.log(err);
+                    else
+                        console.log(data);
+                });
+
+            }
+
+            console.log('Sent email to: ' + email);
+            req.flash('type', 'success');
+            req.flash('message', 'Successfully sent password reset to ' + email + '!');
+
+            req.session.save(() => res.redirect('/login'));
+        }
+    })
 });
 
 
