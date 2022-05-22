@@ -115,7 +115,14 @@
                     <span class="icon">
                         <i class="fas fa-user fa-lg"></i>
                     </span>
-                    <span>username</span>
+                    <span id="nav_profile_first_name">
+                        <% if (locals.first_name) { %> 
+                            <%= first_name %> 
+                        <% } else { %>
+                            Log In
+                        <% } %>    
+                    
+                    </span>
                 </button>
             </a>
         </div>

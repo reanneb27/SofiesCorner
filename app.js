@@ -31,6 +31,7 @@ app.use('/assets', express.static('assets'));
 app.use('/scripts', express.static('scripts'));
 
 app.use(express.urlencoded({extended: true}));
+app.use(express.json()); // support json encoded bodies
 
 app.use(session({ 
     secret: 'woot',
@@ -63,15 +64,15 @@ app.get('/', (req, res) => {
     console.log(req.session.id);
     if (req.session.isAuth)
         console.log('wottt');
-    res.render('index', {title: 'Home'});
+    res.render('index', {title: 'Home', first_name: req.session.first_name});
 });
 
 app.get('/about', (req, res) => {
-    res.render('about', {title: 'About Us'});
+    res.render('about', {title: 'About Us', first_name: req.session.first_name});
 });
 
 app.get('/plants', (req, res) => {
-    res.render('plants', {title: 'Plants'});
+    res.render('plants', {title: 'Plants', first_name: req.session.first_name});
 });
 
 app.get('/login', unauthedOnly, (req, res) => {
@@ -103,6 +104,8 @@ app.post('/login', unauthedOnly, async (req, res) => {
             req.flash('type', 'success');
             req.flash('message', 'Successfully logged in!');
             req.session.isAuth = true;
+            req.session.first_name = existingUser.first_name;
+            req.session.userID = existingUser._id;
             req.session.save(() => res.redirect('/account_profile'));
         }
     }
@@ -164,41 +167,7 @@ app.get('/forgot_password', unauthedOnly, (req, res) => {
 
 app.post('/forgot_password', unauthedOnly, (req, res) => {
     const {email} = req.body;
-    // sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
-    // const msg = {
-    //     to: email, // Change to your recipient
-    //     from: process.env.MY_SECRET_EMAIL, // Change to your verified sender
-    //     subject: 'Sending with SendGrid is Fun',
-    //     text: 'and easy to do anywhere, even with Node.js',
-    //     html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-    // };
-    // const msg2 = {
-    //     from: {
-    //         email: process.env.MY_SECRET_EMAIL,
-    //         name: 'senderTest'
-    //     },
-    //     to: {
-    //         email: email,
-    //         name: 'recieverTest'
-    //     },
-    //     subject: 'Just testing subject',
-    //     text: 'body text',
-    //     html: '<strong>body text</strong>',
-    //     templateId: 'd-2e3f502a238b4b4fa59d8e754c6a2688',
-    //     dynamicTemplateData: {
-    //         name: 'dynamicName'
-    //     }
-    // };
-
-    // sendgrid.send(msg)
-    // .then(success => {
-    //     res.send("email sent to: " + email + "\n" + JSON.stringify(success));
-    //     console.log(JSON.stringify(success));
-    // })
-    // .catch(err => {
-    //     res.send("unable to send email to " + email + "\n" + JSON.stringify(err));
-    //     console.log(JSON.stringify(err));
-    // });
+    
     var randPassword = Array(10).fill("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz").map(function(x) { return x[Math.floor(Math.random() * x.length)] }).join('');
     const transporter = nodemailer.createTransport({
         service: 'hotmail',
@@ -248,11 +217,31 @@ app.post('/forgot_password', unauthedOnly, (req, res) => {
 });
 
 
-app.get('/account_profile', authedOnly, (req, res) => {
+app.get('/account_profile', authedOnly, async (req, res) => {
     const flashType = req.flash('type');
     const flashMsg = req.flash('message');
 
-    res.render('account_profile', {title: 'Profile', flashObj: {type: flashType, message: flashMsg}});
+    // populate forms with authenticated user's data; Data is retrieved using user's ID stored in session
+    const authedUser = await User.findOne({_id: req.session.userID});
+
+    res.render('account_profile', {
+        title: 'Profile',
+        first_name: req.session.first_name, 
+        flashObj: { type: flashType, message: flashMsg },
+        profileData: {
+            profile: {
+                firstName: authedUser.first_name,
+                lastName: authedUser.last_name,
+                email: authedUser.email
+            },
+            orders: {
+
+            },
+            addresses: {
+
+            }
+        }
+    });
 })
 
 // test routes
@@ -261,6 +250,74 @@ app.get('/account_profile', authedOnly, (req, res) => {
 //     req.flash('flashMsg', 'boyow');
 //     res.send('braaah test');
 // });
+app.post('/account_profile/edit_profile', authedOnly, async (req, res) => {
+    const { first_name, last_name, email } = req.body;
+
+    User.findOneAndUpdate(
+        { _id: req.session.userID }, 
+        {
+            first_name: first_name,
+            last_name: last_name,
+            email: email
+        }, 
+        (err, data) => {
+            if (err) {
+                console.log(err);
+                res.send(JSON.stringify({
+                    type: 'error',
+                    message: 'There was an error on updating the profile.'
+                }));
+            } else {
+                console.log(data);
+                req.session.first_name = first_name;
+                res.send(JSON.stringify({
+                    type: 'success',
+                    message: 'Successfully updated profile!'
+                }));
+            }
+        }
+    );
+});
+
+app.post('/account_profile/change_password', authedOnly, async (req, res) => {
+    const { current_password, new_password } = req.body;
+    console.log("curr pass: " + current_password + " | New Pass:" + new_password);
+
+    // check first if the same password
+    let authedUser = await User.findOne({_id: req.session.userID});
+
+    const isMatch = await bcrypt.compare(current_password, authedUser.password);
+    if (isMatch){
+        authedUser.password = await bcrypt.hash(new_password, 10);
+        authedUser.save();
+        res.send(JSON.stringify({
+            type: 'success',
+            message: 'Successfully updated profile!'
+        }));
+        // User.findOneAndUpdate(
+        //     { password: hashed_current_password }, 
+        //     { password: hashed_new_password }, 
+        //     (err, data) => {
+        //         if (err) {
+        //             console.log(err);
+                    
+        //         } else {
+        //             console.log(data);
+        //             res.send(JSON.stringify({
+        //                 type: 'success',
+        //                 message: 'Successfully updated profile!'
+        //             }));
+        //         }
+        //     }
+        // );
+    }
+    else {
+        res.send(JSON.stringify({
+            type: 'error',
+            message: 'Incorrect password.'
+        }));
+    }
+});
 
 // 404 page
 app.use((req, res) => {
