@@ -90,9 +90,9 @@
                     Categories</a>
                 </li>
                 <li>
-                  <a href="admin_customers.html" class="has-text-black">
+                  <a href="admin_clients.html" class="has-text-black">
                     <i class="fa-solid fa-users p-1"></i>
-                    Customers</a>
+                    Clients</a>
                 </li>
                 <li>
                   <a href="admin_transactions.html" class="has-text-black">
