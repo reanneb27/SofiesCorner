@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Sofie's Corner | Products</title>
+    <title>Sofie's Corner | Manage Team</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
@@ -29,7 +29,7 @@
           <span aria-hidden="true"></span>
         </a> -->
 
-        <a href="admin_dashboard.html" class="navbar-item has-text-weight-bold has-text-white px-5">
+        <a href="admin_dashboard.php" class="navbar-item has-text-weight-bold has-text-white px-5">
           SOFIE'S CORNER
         </a>
         <!-- <a
@@ -75,12 +75,12 @@
             <div class="menu">
               <ul class="menu-list">
                 <li>
-                  <a href="admin_dashboard.html" class="has-text-black">
+                  <a href="admin_dashboard.php" class="has-text-black">
                     <i class="fa-solid fa-gauge p-1"></i>
                     Dashboard</a>
                 </li>
                 <li>
-                  <a href="admin_products.html" class="is-active has-background-primary">
+                  <a href="admin_products.php" class="has-text-black">
                     <i class="fa-solid fa-bag-shopping p-1"></i>
                     Products</a>
                 </li>
@@ -90,17 +90,17 @@
                     Categories</a>
                 </li>
                 <li>
-                  <a href="admin_clients.html" class="has-text-black">
+                  <a href="admin_clients.php" class="has-text-black">
                     <i class="fa-solid fa-users p-1"></i>
                     Clients</a>
                 </li>
                 <li>
-                  <a href="admin_transactions.html" class="has-text-black">
+                  <a href="admin_transactions.php" class="has-text-black">
                     <i class="fa-solid fa-coins p-1"></i>
                     Transactions</a>
                 </li>
                 <li>
-                  <a href="admin_team.html" class="has-text-black">
+                  <a href="admin_team.php" class="is-active has-background-primary">
                     <i class="fa-solid fa-user-gear p-1"></i>
                     Manage Team</a>
                 </li>
@@ -114,11 +114,11 @@
           <div class="columns is-variable is-desktop">
             <div class="column">
               <h1 class="title has-text-primary">
-                Products
+                Manage Team
               </h1>
             </div>
             <div class="column is-2" align="right">
-              <a href="create_product.html">
+              <a href="create_staff.php">
                 <button class="button is-block is-link is-fullwidth" >
                   <span class="icon">
                     <i class="fa-solid fa-circle-plus"></i>                  
@@ -149,29 +149,8 @@
               <div class="level-item">
                 <div class="control has-icons-left">
                   <div class="select is-link">
-                    <select name="Plant Categories">
-                      <option selected>Category</option>
-                      <option value="Succulent w/ Pots">Succulent w/ Pots</option>
-                      <option value="Succulent w/o Pots">Succulent w/o Pots</option>
-                      <option value="Moon Cactus">Moon Cactus</option>
-                      <option value="Air Plants">Air Plants</option>
-                      <option value="Hanging Plants">Hanging Plants</option>
-                      <option value="Pots">Pots</option>
-                    </select>
-                  </div>
-                  <span class="icon is-left">
-                    <i class="fa-solid fa-filter"></i>
-                  </span>
-                </div>
-              </div>
-
-              <div class="level-item">
-                <div class="control has-icons-left">
-                  <div class="select is-link">
                     <select>
                       <option selected>Sort</option>
-                      <option>Price, low to high</option>
-                      <option>Price, high to low</option>
                       <option>Alphabetically, A-Z</option>
                       <option>Alphabetically, Z-A</option>
                       <option>Date, new to old</option>
@@ -193,8 +172,7 @@
                       <img src="https://unsplash.it/g/300/300" alt="">
                   </div>
                   <div class="card-content">
-                      <p class="price">&#8369;0.00</p>
-                      <p class="title is-size-5 has-text-primary">Plant Name</p>
+                      <p class="title is-size-5 has-text-primary">Staff Name</p>
                   </div>
                   
                       <footer class="card-footer">
@@ -222,8 +200,7 @@
                       <img src="https://unsplash.it/g/300/300" alt="">
                   </div>
                   <div class="card-content">
-                      <p class="price">&#8369;0.00</p>
-                      <p class="title is-size-5 has-text-primary">Plant Name</p>
+                      <p class="title is-size-5 has-text-primary">Staff Name</p>
                   </div>
                   
                       <footer class="card-footer">
@@ -251,8 +228,7 @@
                       <img src="https://unsplash.it/g/300/300" alt="">
                   </div>
                   <div class="card-content">
-                      <p class="price">&#8369;0.00</p>
-                      <p class="title is-size-5 has-text-primary">Plant Name</p>
+                      <p class="title is-size-5 has-text-primary">Staff Name</p>
                   </div>
                   
                       <footer class="card-footer">
@@ -274,6 +250,7 @@
                   </a>
               </div>
             </div>
+            
 
           </div>
 

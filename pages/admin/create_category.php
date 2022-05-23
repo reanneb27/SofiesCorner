@@ -29,7 +29,7 @@
           <span aria-hidden="true"></span>
         </a> -->
 
-        <a href="admin_dashboard.html" class="navbar-item has-text-weight-bold has-text-white px-5">
+        <a href="admin_dashboard.php" class="navbar-item has-text-weight-bold has-text-white px-5">
           SOFIE'S CORNER
         </a>
         <!-- <a
@@ -75,12 +75,12 @@
             <div class="menu">
               <ul class="menu-list">
                 <li>
-                  <a href="admin_dashboard.html" class="has-text-black">
+                  <a href="admin_dashboard.php" class="has-text-black">
                     <i class="fa-solid fa-gauge p-1"></i>
                     Dashboard</a>
                 </li>
                 <li>
-                  <a href="admin_products.html" class="has-text-black">
+                  <a href="admin_products.php" class="has-text-black">
                     <i class="fa-solid fa-bag-shopping p-1"></i>
                     Products</a>
                 </li>
@@ -90,17 +90,17 @@
                     Categories</a>
                 </li>
                 <li>
-                  <a href="admin_clients.html" class="has-text-black">
+                  <a href="admin_clients.php" class="has-text-black">
                     <i class="fa-solid fa-users p-1"></i>
                     Clients</a>
                 </li>
                 <li>
-                  <a href="admin_transactions.html" class="has-text-black">
+                  <a href="admin_transactions.php" class="has-text-black">
                     <i class="fa-solid fa-coins p-1"></i>
                     Transactions</a>
                 </li>
                 <li>
-                  <a href="admin_team.html" class="has-text-black">
+                  <a href="admin_team.php" class="has-text-black">
                     <i class="fa-solid fa-user-gear p-1"></i>
                     Manage Team</a>
                 </li>
@@ -119,9 +119,9 @@
 
               <nav class="breadcrumb is-small" aria-label="breadcrumbs">
                 <ul>
-                  <li><a href="admin_dashboard.html">Dashboard</a></li>
-                  <li><a href="admin_products.html">Categories</a></li>
-                  <li class="is-active"><a href="create_product.html" aria-current="page">Create Category</a></li>
+                  <li><a href="admin_dashboard.php">Dashboard</a></li>
+                  <li><a href="admin_products.php">Categories</a></li>
+                  <li class="is-active"><a href="create_product.php" aria-current="page">Create Category</a></li>
                 </ul>
               </nav>
             </div>

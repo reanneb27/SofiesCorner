@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Sofie's Corner | Products</title>
+    <title>Sofie's Corner | Manage Team</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
@@ -29,7 +29,7 @@
           <span aria-hidden="true"></span>
         </a> -->
 
-        <a href="admin_dashboard.html" class="navbar-item has-text-weight-bold has-text-white px-5">
+        <a href="admin_dashboard.php" class="navbar-item has-text-weight-bold has-text-white px-5">
           SOFIE'S CORNER
         </a>
         <!-- <a
@@ -75,12 +75,12 @@
             <div class="menu">
               <ul class="menu-list">
                 <li>
-                  <a href="admin_dashboard.html" class="has-text-black">
+                  <a href="admin_dashboard.php" class="has-text-black">
                     <i class="fa-solid fa-gauge p-1"></i>
                     Dashboard</a>
                 </li>
                 <li>
-                  <a href="admin_products.html" class="is-active has-background-primary">
+                  <a href="admin_products.php" class="has-text-black">
                     <i class="fa-solid fa-bag-shopping p-1"></i>
                     Products</a>
                 </li>
@@ -90,17 +90,17 @@
                     Categories</a>
                 </li>
                 <li>
-                  <a href="admin_clients.html" class="has-text-black">
+                  <a href="admin_clients.php" class="has-text-black">
                     <i class="fa-solid fa-users p-1"></i>
                     Clients</a>
                 </li>
                 <li>
-                  <a href="admin_transactions.html" class="has-text-black">
+                  <a href="admin_transactions.php" class="has-text-black">
                     <i class="fa-solid fa-coins p-1"></i>
                     Transactions</a>
                 </li>
                 <li>
-                  <a href="admin_team.html" class="has-text-black">
+                  <a href="admin_team.php" class="is-active has-background-primary">
                     <i class="fa-solid fa-user-gear p-1"></i>
                     Manage Team</a>
                 </li>
@@ -114,14 +114,14 @@
           <div class="columns is-variable is-desktop">
             <div class="column">
               <h1 class="title has-text-primary mb-2">
-                Create Product
+                Create Staff
               </h1>
 
               <nav class="breadcrumb is-small" aria-label="breadcrumbs">
                 <ul>
-                  <li><a href="admin_dashboard.html">Dashboard</a></li>
-                  <li><a href="admin_products.html">Products</a></li>
-                  <li class="is-active"><a href="create_product.html" aria-current="page">Create Product</a></li>
+                  <li><a href="admin_dashboard.php">Dashboard</a></li>
+                  <li><a href="admin_products.php">Manage Team</a></li>
+                  <li class="is-active"><a href="create_staff.php" aria-current="page">Create Staff</a></li>
                 </ul>
               </nav>
             </div>
@@ -132,62 +132,9 @@
           <form class="box" style="max-width: 500px;"">
             <div class="column" style="max-width: 500px;">
               <div class="field">
-                <label class="label">Product Name</label>
+                <label class="label">Staff Name</label>
                 <div class="control">
                   <input class="input is-primary" type="text" placeholder="Enter Name">
-                </div>
-              </div>
-
-              <div class="field">
-                <label class="label">Description</label>
-                <div class="control">
-                  <textarea class="textarea is-primary" placeholder="Enter Description"></textarea>
-                </div>
-              </div>
-              
-              <div class="file has-name is-boxed is-primary">
-                <label class="file-label">
-                  <input class="file-input" type="file" name="resume">
-                  <span class="file-cta">
-                    <span class="file-icon">
-                      <i class="fas fa-upload"></i>
-                    </span>
-                    <span class="file-label">
-                      Choose a file…
-                    </span>
-                  </span>
-                  <span class="file-name">
-                    file_name
-                  </span>
-                </label>
-              </div>
-              
-              <div class="field">
-                <label class="label">Category</label>
-                <div class="control">
-                  <div class="select is-primary">
-                    <select name="Plant Categories">
-                      <option selected>Category</option>
-                      <option value="Succulent w/ Pots">Succulent w/ Pots</option>
-                      <option value="Succulent w/o Pots">Succulent w/o Pots</option>
-                      <option value="Moon Cactus">Moon Cactus</option>
-                      <option value="Air Plants">Air Plants</option>
-                      <option value="Hanging Plants">Hanging Plants</option>
-                      <option value="Pots">Pots</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              
-              <label class="label">Price</label>
-              <div class="field has-addons">
-                <div class="control">
-                  <a class="button is-primary is-diabled">
-                    &#8369;
-                  </a>
-                </div>
-                <div class="control">
-                  <input class="input is-primary" type="text" placeholder="0.00">
                 </div>
               </div>
               
@@ -196,7 +143,7 @@
                   <button class="button is-link">Submit</button>
                 </div>
                 <div class="control">
-                  <a href="admin_products.html">
+                  <a href="admin_categories.php">
                     <button class="button is-link is-outlined">Cancel</button>
                   </a>
                 </div>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Sofie's Corner | Clients</title>
+    <title>Sofie's Corner | Admin Dashboard</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
@@ -29,7 +29,7 @@
           <span aria-hidden="true"></span>
         </a> -->
 
-        <a href="admin_dashboard.html" class="navbar-item has-text-weight-bold has-text-white px-5">
+        <a href="admin_dashboard.php" class="navbar-item has-text-weight-bold has-text-white px-5">
           SOFIE'S CORNER
         </a>
         <!-- <a
@@ -75,12 +75,12 @@
             <div class="menu">
               <ul class="menu-list">
                 <li>
-                  <a href="admin_dashboard.html" class="has-text-black">
+                  <a href="admin_dashboard.php" class="is-active has-background-primary">
                     <i class="fa-solid fa-gauge p-1"></i>
                     Dashboard</a>
                 </li>
                 <li>
-                  <a href="admin_products.html" class="has-text-black">
+                  <a href="admin_products.php" class="has-text-black">
                     <i class="fa-solid fa-bag-shopping p-1"></i>
                     Products</a>
                 </li>
@@ -90,17 +90,17 @@
                     Categories</a>
                 </li>
                 <li>
-                  <a href="admin_clients.html" class="is-active has-background-primary">
+                  <a href="admin_clients.php" class="has-text-black">
                     <i class="fa-solid fa-users p-1"></i>
                     Clients</a>
                 </li>
                 <li>
-                  <a href="admin_transactions.html" class="has-text-black">
+                  <a href="admin_transactions.php" class="has-text-black">
                     <i class="fa-solid fa-coins p-1"></i>
                     Transactions</a>
                 </li>
                 <li>
-                  <a href="admin_team.html" class="has-text-black">
+                  <a href="admin_team.php" class="has-text-black">
                     <i class="fa-solid fa-user-gear p-1"></i>
                     Manage Team</a>
                 </li>
@@ -114,113 +114,50 @@
           <div class="columns is-variable is-desktop">
             <div class="column">
               <h1 class="title has-text-primary">
-                Clients
+                Dashboard
               </h1>
             </div>
           </div>
 
-          <div class="level">
-            <div class="level-left">
-              <div class="level-item">
-                <div class="field has-addons">
-                  <div class="control">
-                    <input class="input is-link" size="50" type="text" placeholder="Search">
+          <div class="columns is-variable is-desktop">
+            <div class="column">
+              <div class="card has-background-primary has-text-white">
+                <div class="card-header">
+                  <div class="card-header-title has-text-white is-uppercase">
+                    Revenue
                   </div>
-                  <div class="control">
-                    <a class="button is-link">
-                      <i class="fas fa-search"></i>
-                    </a>
-                  </div>
+                </div>
+                <div class="card-content">
+                  <p class="is-size-3">55%</p>
                 </div>
               </div>
             </div>
-
-            <div class="level-right">
-              <div class="level-item">
-                <div class="control has-icons-left">
-                  <div class="select is-link">
-                    <select>
-                      <option selected>Sort</option>
-                      <option>Alphabetically, A-Z</option>
-                      <option>Alphabetically, Z-A</option>
-                      <option>Date, new to old</option>
-                      <option>Date, old to new</option>
-                    </select>
+            <div class="column">
+              <div class="card has-background-warning has-text-black">
+                <div class="card-header">
+                  <div class="card-header-title has-text-black is-uppercase">
+                    Products
                   </div>
-                  <span class="icon is-left">
-                    <i class="fa-solid fa-sort"></i>
-                  </span>
+                </div>
+                <div class="card-content">
+                  <p class="is-size-3">78</p>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="card has-background-info has-text-white">
+                <div class="card-header">
+                  <div class="card-header-title has-text-white">Orders</div>
+                </div>
+                <div class="card-content">
+                  <p class="is-size-3">425k</p>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="column">
-            <table class="table is-striped is-hoverable is-fullwidth">
-              <thead>
-                <tr>
-                  <th>Client No.</th>
-                  <th>Client Name</th>
-                  <th>Actions</th>                  
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>0001</th>
-                  <td>Client Name</td>
-                  <td>
-                    <a href="" class="has-text-primary">
-                      <span class="icon is-right">
-                        <i class="fa-solid fa-user"></i>
-                      </span>
-                    </a>
-                    <a href="" class="has-text-danger">
-                      <span class="icon is-right">
-                        <i class="fa-solid fa-trash"></i>
-                      </span>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <th>0002</th>
-                  <td>Client Name</td>
-                  <td>
-                    <a href="" class="has-text-primary">
-                      <span class="icon is-right">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                      </span>
-                    </a>
-                    <a href="" class="has-text-danger">
-                      <span class="icon is-right">
-                        <i class="fa-solid fa-trash"></i>
-                      </span>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <th>0003</th>
-                  <td>Client Name</td>
-                  <td>
-                    <a href="" class="has-text-primary">
-                      <span class="icon is-right">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                      </span>
-                    </a>
-                    <a href="" class="has-text-danger">
-                      <span class="icon is-right">
-                        <i class="fa-solid fa-trash"></i>
-                      </span>
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-
         </div>
       </div>
-    </div> <!-- content container -->
+    </div>
     
   </body>
 </html>
