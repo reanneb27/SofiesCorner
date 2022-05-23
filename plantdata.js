@@ -404,6 +404,35 @@ const data = {
             price: '130',
             image: '../assets/plants/succulent_wo_pots/minibelle.jpg', 
         },
+        {
+            id: '56',
+            typeofplant: 'Succulent without pots',
+            plantname: 'Peperomia Rosso',
+            price: '130',
+            image: '../assets/plants/succulent_wo_pots/peperomia_rosso.jpg', 
+        },
+        {
+            id: '57',
+            typeofplant: 'Succulent without pots',
+            plantname: 'Portulaca tricolor',
+            price: '90',
+            image: '../assets/plants/succulent_wo_pots/portulaca tricolor.jpg', 
+        },
+        {
+            id: '58',
+            typeofplant: 'Succulent without pots',
+            plantname: 'Rose Cabbage',
+            price: '90',
+            image: '../assets/plants/succulent_wo_pots/rose_cabbage.jpg', 
+        },
+        {
+            id: '59',
+            typeofplant: 'Succulent without pots',
+            plantname: 'Tornad0',
+            price: '90',
+            image: '../assets/plants/succulent_wo_pots/tornado.jpg', 
+        },
+
 
 
 
