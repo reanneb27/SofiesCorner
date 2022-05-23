@@ -132,22 +132,16 @@ const data = {
             price: '175',
             image: '../assets/plants/hanging_plants/neon_pothos_and_wandering_dew.jpg', 
         },
+        
         {
             id: '19',
-            typeofplant: 'Hanging plants',
-            plantname: 'Neon pothos and wandering dew',
-            price: '175',
-            image: '../assets/plants/hanging_plants/neon_pothos_and_wandering_dew.jpg', 
-        },
-        {
-            id: '20',
             typeofplant: 'Hanging plants',
             plantname: 'Turtle vine',
             price: '150',
             image: '../assets/plants/hanging_plants/turtle_vine.jpg', 
         },
         {
-            id: '21',
+            id: '20',
             typeofplant: 'Hanging plants',
             plantname: 'Wandering dew',
             price: '150',
@@ -157,21 +151,21 @@ const data = {
         //MOON CACTUS DATA
 
         {
-            id: '22',
+            id: '21',
             typeofplant: 'Moon cactus',
             plantname: 'Moon cactus maroon',
             price: '280',
             image: '../assets/plants/moon_cactus/moon_cactus_maroon.jpg', 
         },
         {
-            id: '23',
+            id: '22',
             typeofplant: 'Moon cactus',
             plantname: 'Moon cactus pink',
             price: '280',
             image: '../assets/plants/moon_cactus/moon_cactus_pink.jpg', 
         },
         {
-            id: '24',
+            id: '23',
             typeofplant: 'Moon cactus',
             plantname: 'Moon cactus yellow',
             price: '280',
@@ -258,7 +252,7 @@ const data = {
             image: '../assets/plants/pots/silver_hanging holder.jpg', 
         },
 
-        //SUCCULENT WITH POTS data
+        //SUCCULENT WITH POTS DATA
 
         {
             id: '35',
@@ -288,6 +282,95 @@ const data = {
             price: '130',
             image: '../assets/plants/succulent_w_pots/blue_chalk.jpg', 
         },
+        {
+            id: '39',
+            typeofplant: 'Succulent with pots',
+            plantname: 'Chenille',
+            price: '120',
+            image: '../assets/plants/succulent_w_pots/chenille.jpg', 
+        },
+        {
+            id: '40',
+            typeofplant: 'Succulent with pots',
+            plantname: 'Green Prince',
+            price: '130',
+            image: '../assets/plants/succulent_w_pots/green_prince.jpg', 
+        },
+        {
+            id: '41',
+            typeofplant: 'Succulent with pots',
+            plantname: 'Horse shoes',
+            price: '130',
+            image: '../assets/plants/succulent_w_pots/horseshoes.jpg', 
+        },
+        {
+            id: '42',
+            typeofplant: 'Succulent with pots',
+            plantname: 'Jade plant with white pot',
+            price: '120',
+            image: '../assets/plants/succulent_w_pots/jade.jpg', 
+        },
+        {
+            id: '43',
+            typeofplant: 'Succulent with pots',
+            plantname: 'Ronda Echeveria',
+            price: '140',
+            image: '../assets/plants/succulent_w_pots/ronda_echeveria.jpg', 
+        },
+        {
+            id: '44',
+            typeofplant: 'Succulent with pots',
+            plantname: 'Shooting Star',
+            price: '130',
+            image: '../assets/plants/succulent_w_pots/shooting_star.jpg', 
+        },
+        {
+            id: '45',
+            typeofplant: 'Succulent with pots',
+            plantname: 'Rondo with white pot',
+            price: '130',
+            image: '../assets/plants/succulent_w_pots/rondo.jpg', 
+        },
+
+        //SUCCULENT WITHOUT POTS DATA
+
+        {
+            id: '46',
+            typeofplant: 'Succulent without pots',
+            plantname: 'Aloe',
+            price: '110',
+            image: '../assets/plants/succulent_w_pots/aloe.jpg', 
+        },
+        {
+            id: '47',
+            typeofplant: 'Succulent without pots',
+            plantname: 'Chinese Dunce Cap',
+            price: '70',
+            image: '../assets/plants/succulent_w_pots/chinese dunce cap.jpg', 
+        },
+        {
+            id: '48',
+            typeofplant: 'Succulent without pots',
+            plantname: 'Clustered rose cabbage',
+            price: '110',
+            image: '../assets/plants/succulent_w_pots/clustered rose cabbage.jpg', 
+        },
+        {
+            id: '49',
+            typeofplant: 'Succulent without pots',
+            plantname: 'Cutix',
+            price: '130',
+            image: '../assets/plants/succulent_w_pots/cutix.jpg', 
+        },
+        {
+            id: '50',
+            typeofplant: 'Succulent without pots',
+            plantname: 'Darley Sunshine',
+            price: '110',
+            image: '../assets/plants/succulent_w_pots/darley sunshine.jpg', 
+        },
+
+
 
 
     ]
