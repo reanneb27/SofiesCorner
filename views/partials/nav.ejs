@@ -23,10 +23,10 @@
             <div class="navbar-item">
                 <div class="field has-addons">
                     <div class="control">
-                      <input class="input is-small" type="text" placeholder="Search">
+                      <input id="searchInput" class="input is-small" type="text" placeholder="Search">
                     </div>
                     <div class="control">
-                      <a class="button is-link is-small">
+                      <a id="searchBtn" class="button is-link is-small">
                         <i class="fas fa-search"></i>
                       </a>
                     </div>
@@ -127,4 +127,18 @@
             </a>
         </div>
     </div>
+
+    <script>
+        const searchBtn = document.getElementById('searchBtn');
+        const searchInput = document.getElementById('searchInput');
+
+        searchBtn.addEventListener('click', e => {
+            window.location.href = "/plants?query="+searchInput.value.trim();
+        })
+        searchInput.addEventListener('keyup', e => {
+            if (e.key === "Enter"){
+                window.location.href = "/plants?query="+searchInput.value.trim();
+            }
+        })
+    </script>
 </nav>

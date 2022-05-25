@@ -3,12 +3,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const MongoDbSession = require('connect-mongodb-session')(session);
 const sendgrid = require('@sendgrid/mail');
 const nodemailer = require('nodemailer');
 const flash = require('connect-flash');
 
 const User = require('./model/User');
+const Plant = require('./model/Plant');
 
 const app = express();
 
@@ -35,10 +37,15 @@ app.use(express.json()); // support json encoded bodies
 
 app.use(session({ 
     secret: 'woot',
+    cookie : {
+        maxAge: 1000* 60 * 60 * 24 * 30 // 1 month
+    },
     resave: false, 
     saveUninitialized: false,
     store: store
 }));
+
+app.use(cookieParser());
 
 app.use(flash());
 
@@ -71,8 +78,78 @@ app.get('/about', (req, res) => {
     res.render('about', {title: 'About Us', first_name: req.session.first_name});
 });
 
-app.get('/plants', (req, res) => {
-    res.render('plants', {title: 'Plants', first_name: req.session.first_name});
+app.get('/plants', async (req, res) => {
+    console.log(req.cookies);
+    // get search query
+    let searchQuery = 'query' in req.query ? req.query['query'] : '';
+    searchQuery = searchQuery.toLowerCase();
+
+    // get categories to search
+    let categoryJSON = {"succulentwithpots":false,"succulentwithoutpots":false,"mooncactus":false,"airplants":false,"hangingplants":false,"pots":false};
+    if ('categories' in req.cookies)
+        categoryJSON = JSON.parse(req.cookies.categories);
+    let categoryFilter = [];
+    Object.keys(categoryJSON).forEach(key => {
+        if (categoryJSON[key])
+            categoryFilter.push(key.replaceAll(' ', '').toLowerCase());
+    })
+    if (categoryFilter.length == 0){
+        Object.keys(categoryJSON).forEach(key => {
+            categoryFilter.push(key.replaceAll(' ', '').toLowerCase());
+        });
+    }
+
+    // get price to search
+    let priceFilter = "one";
+    if ('price' in req.cookies)
+        priceFilter = req.cookies['price'].replaceAll(' ', '').toLowerCase();
+    
+    // get all products first
+    const plants = await Plant.find();
+
+    // filters the products
+    // filter by search query
+    let firstFilter = [];
+    if (searchQuery != ''){
+        plants.forEach(plant => {
+            if (plant.plant_name.toLowerCase().includes(searchQuery)){
+                firstFilter.push(plant);
+            } 
+        });
+    }
+    else firstFilter = plants;
+
+    // filter by category
+    let secondFilter = [];
+    firstFilter.forEach(plant => {
+        if (categoryFilter.includes(plant.plant_type.replaceAll(' ', '').toLowerCase()))
+        secondFilter.push(plant);
+    });
+    
+    // filter by price
+    let thirdFilter = [];
+    if (priceFilter != 'one'){
+        secondFilter.forEach(plant => {
+            switch (priceFilter){
+                case 'two': // below PHP 100
+                    if (plant.price < 100)
+                        thirdFilter.push(plant);
+                    break;
+                case 'three': // PHP 100 - PHP 300
+                    if (plant.price >= 100 && plant.price <= 300)
+                        thirdFilter.push(plant);
+                    break;
+                case 'four': // PHP 300+
+                    if (plant.price > 300)
+                        thirdFilter.push(plant);
+                    break;
+            }
+        });
+    }
+    else thirdFilter = secondFilter;
+
+
+    res.render('plants', {title: 'Plants', first_name: req.session.first_name, search_result: thirdFilter});
 });
 
 app.get('/login', unauthedOnly, (req, res) => {
@@ -318,6 +395,7 @@ app.post('/account_profile/change_password', authedOnly, async (req, res) => {
         }));
     }
 });
+
 
 // 404 page
 app.use((req, res) => {

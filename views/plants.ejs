@@ -11,37 +11,7 @@
 
         <aside class="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile">
           <h5 class="title is-size-5 is-primary filter-title">Filters</h5>
-          <p class="menu-label is-hidden-touch">Plant Size</p>
-          <ul class="menu-list">
-            <li>
-              <div class="container">
-
-                <div class="field">
-                  <label class="b-checkbox checkbox">
-                    <input type="checkbox" value="false" checked="">
-                    <span class="check"></span>
-                    <span class="control-label">Small</span>
-                  </label>
-                </div>
-
-                <div class="field">
-                  <label class="b-checkbox checkbox">
-                    <input type="checkbox" value="false" checked="">
-                    <span class="check"></span>
-                    <span class="control-label">Medium</span>
-                  </label>
-                </div>
-
-                <div class="field">
-                  <label class="b-checkbox checkbox">
-                    <input type="checkbox" value="false" checked="">
-                    <span class="check"></span>
-                    <span class="control-label">Large</span>
-                  </label>
-                </div>
-              </div>
-            </li>
-          </ul>
+          
           <p class="menu-label is-hidden-touch">Price</p>
           <ul class="menu-list">
             <li>
@@ -49,7 +19,7 @@
                 <label class="b-radio radio">
                   <input type="radio" name="group_1" value="One" checked="">
                   <span class="check"></span>
-                  <span class="control-label">Below &#8369;100</span>
+                  <span class="control-label">All</span>
                 </label>
               </div>
 
@@ -57,13 +27,21 @@
                 <label class="b-radio radio">
                   <input type="radio" name="group_1" value="Two" data-com.bitwarden.browser.user-edited="yes">
                   <span class="check"></span>
-                  <span class="control-label">&#8369;100 - &#8369;300</span>
+                  <span class="control-label">Below &#8369;100</span>
                 </label>
               </div>
 
               <div class="field">
                 <label class="b-radio radio">
                   <input type="radio" name="group_1" value="Three" data-com.bitwarden.browser.user-edited="yes">
+                  <span class="check"></span>
+                  <span class="control-label">&#8369;100 - &#8369;300</span>
+                </label>
+              </div>
+
+              <div class="field">
+                <label class="b-radio radio">
+                  <input type="radio" name="group_1" value="Four" data-com.bitwarden.browser.user-edited="yes">
                   <span class="check"></span>
                   <span class="control-label">Above &#8369;300</span>
                 </label>
@@ -79,23 +57,23 @@
 
                 <div class="field">
                   <label class="b-checkbox checkbox">
-                    <input type="checkbox" value="false" checked="">
+                    <input type="checkbox" value="Succulent with pots">
                     <span class="check"></span>
-                    <span class="control-label">Succulent w/ Pots</span>
+                    <span class="control-label">Succulent with pots</span>
                   </label>
                 </div>
 
                 <div class="field">
                   <label class="b-checkbox checkbox">
-                    <input type="checkbox" value="false" checked="">
+                    <input type="checkbox" value="Succulent without pots">
                     <span class="check"></span>
-                    <span class="control-label">Succulent w/o Pots</span>
+                    <span class="control-label">Succulent without pots</span>
                   </label>
                 </div>
 
                 <div class="field">
                   <label class="b-checkbox checkbox">
-                    <input type="checkbox" value="false" checked="">
+                    <input type="checkbox" value="Moon Cactus">
                     <span class="check"></span>
                     <span class="control-label">Moon Cactus</span>
                   </label>
@@ -103,7 +81,7 @@
 
                 <div class="field">
                   <label class="b-checkbox checkbox">
-                    <input type="checkbox" value="false" checked="">
+                    <input type="checkbox" value="Air Plants">
                     <span class="check"></span>
                     <span class="control-label">Air Plants</span>
                   </label>
@@ -111,7 +89,7 @@
 
                 <div class="field">
                   <label class="b-checkbox checkbox">
-                    <input type="checkbox" value="false" checked="">
+                    <input type="checkbox" value="Hanging Plants">
                     <span class="check"></span>
                     <span class="control-label">Hanging Plants</span>
                   </label>
@@ -119,7 +97,7 @@
 
                 <div class="field">
                   <label class="b-checkbox checkbox">
-                    <input type="checkbox" value="false" checked="">
+                    <input type="checkbox" value="Pots">
                     <span class="check"></span>
                     <span class="control-label">Pots</span>
                   </label>
@@ -135,9 +113,10 @@
               <h4 class="title is-size-4 mt-5 mx-5 is-primary">
                 Indoor Plants
               </h4>
+              <h2>Found <%= search_result.length %> plants!</h2>
             </div>
             <div class="level-item level-right mx-5">
-              <div class="dropdown is-active is-right">
+              <div id="sortDropdown" class="dropdown is-right">
                 <div class="dropdown-trigger">
                   <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
                     <span>Sort by: </span>
@@ -148,13 +127,13 @@
                 </div>
                 <div class="dropdown-menu" id="dropdown-menu" role="menu">
                   <div class="dropdown-content">
-                    <a href="#" class="dropdown-item is-active">
+                    <a class="dropdown-item is-active">
                       Alphabetically, A-Z
                     </a>
                     <a class="dropdown-item">
                       Alphabetically, Z-A
                     </a>
-                    <a href="#" class="dropdown-item">
+                    <a class="dropdown-item">
                       Price, low to high
                     </a>
                     <a class="dropdown-item">
@@ -166,7 +145,7 @@
             </div>
           </div>
 
-          <div class="columns mt-5 mx-2 is-10 is-variable is-centered">
+          <div id="products-container" class="columns mt-5 mx-2 is-10 is-variable is-centered">
             <a href="product_item.html" class="product-item">
               <div class="column is-3-desktop">
                 <div class="card">
@@ -285,6 +264,42 @@
       <script src="scripts/plant.js"></script>
       <script src="scripts/script.js"></script>
       <script>
+        var plants = '<%- JSON.stringify(search_result) %>';
+        plants = JSON.parse(plants);
+        console.log(plants);
+        const productsContainer = document.getElementById('products-container');
+
+        // add plant search results in products container
+        plants.forEach(plant => {
+          productsContainer.innerHTML += 
+        '<a href="product_item.html" class="product-item">\
+              <div class="column is-3-desktop">\
+                <div class="card">\
+                  <div class="card-image has-text-centered pt-4 px-2">\
+                    <img src="'+ plant.image_path +'" alt="">\
+                  </div>\
+                  <div class="card-content">\
+                    <p class="price">&#8369;'+ plant.price.$numberDecimal +'</p>\
+                    <p class="title is-size-5 has-text-primary">'+ plant.plant_name +'</p>\
+                  </div>\
+                  <a href="" class="addCartBtn">\
+                    <footer class="card-footer">\
+                      <p class="card-footer-item">\
+                        <span class="icon is-medium">\
+                          <i class="fas fa-shopping-cart"></i>\
+                        </span>\
+                        <span>Add to Cart</span>\
+                      </p>\
+                    </footer>\
+                  </a>\
+                </div>\
+              </div>\
+            </a>';
+        })
+        
+
+
+
         document.addEventListener('DOMContentLoaded', () => {
 
           const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
