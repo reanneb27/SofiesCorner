@@ -41,7 +41,7 @@ $subtitle-color: $white;
 $navbar-padding-vertical: 0.5rem;
 $footer-padding: 2rem 5rem 2rem;
 
-$box-background-color: $white;
+$box-background-color: #e0dede;
 
 // NAVBAR
 #brand-title {
@@ -150,7 +150,6 @@ h5.checkout-label, h5.total-label {
 
 $modal-background-background-color: $beige;
 
-
 // ADMIN
 
 .px-1,
@@ -164,52 +163,6 @@ $modal-background-background-color: $beige;
   padding-bottom: 0.75rem;
 }
 
-// .box-shadow-y {
-//   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.05);
-// }
-
-// .menu-container {
-//   position: fixed;
-//   bottom: 0;
-//   margin: auto;
-//   min-width: 300px;
-//   z-index: 10;
-//   background-color: transparent;
-//   transform: translateX(-100%);
-//   transition: all ease 0.5s;
-// }
-
-// .menu-container.active {
-//   transform: translateX(0%);
-// }
-// .icon {
-//   height: 30px;
-//   width: 30px;
-//   vertical-align: baseline;
-//   display: inline-flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-// .toggler {
-//   margin-left: 0;
-//   cursor: pointer;
-// }
-
-// @media (min-width: 769px) {
-//   .menu-container {
-//     width: 25%;
-//     min-width: auto;
-//     transform: translateX(0%);
-//   }
-// }
-
-// @media (min-width: 1024px) {
-//   .menu-container {
-//     width: 16.6667%;
-//     min-width: auto;
-//     transform: translateX(0%);
-//   }
-// }
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/components/_all.sass";
 @import "../node_modules/bulma/sass/elements/_all.sass";
@@ -220,4 +173,3 @@ $modal-background-background-color: $beige;
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/@creativebulma/bulma-divider/dist/bulma-divider.css";
 @import "../node_modules/@creativebulma/bulma-divider/dist/bulma-divider.min.css";
-// @import "~@creativebulma/bulma-divider";
