@@ -88,22 +88,26 @@ app.get('/plants', async (req, res) => {
     let categoryJSON = {"succulentwithpots":false,"succulentwithoutpots":false,"mooncactus":false,"airplants":false,"hangingplants":false,"pots":false};
     if ('categories' in req.cookies)
         categoryJSON = JSON.parse(req.cookies.categories);
+    
     let categoryFilter = [];
     Object.keys(categoryJSON).forEach(key => {
+        console.log(key);
         if (categoryJSON[key])
             categoryFilter.push(key.replaceAll(' ', '').toLowerCase());
     })
+
     if (categoryFilter.length == 0){
         Object.keys(categoryJSON).forEach(key => {
             categoryFilter.push(key.replaceAll(' ', '').toLowerCase());
         });
     }
 
+
     // get price to search
     let priceFilter = "one";
     if ('price' in req.cookies)
         priceFilter = req.cookies['price'].replaceAll(' ', '').toLowerCase();
-    
+
     // get all products first
     const plants = await Plant.find();
 
@@ -148,8 +152,35 @@ app.get('/plants', async (req, res) => {
     }
     else thirdFilter = secondFilter;
 
+    // finally, sort the products
+    let sortOption = req.cookies['sortOption'];
+    if (!sortOption){
+        sortOption = 'Alphabetically, A-Z';
+    }
+    switch (sortOption){
+        case 'Alphabetically, A-Z':
+            thirdFilter.sort((a, b) => a.plant_name.localeCompare(b.plant_name));
+            break;
+        case 'Alphabetically, Z-A':
+            thirdFilter.sort((a, b) => a.plant_name.localeCompare(b.plant_name)).reverse();
+            break;
+        case 'Price, low to high':
+            thirdFilter.sort((a, b) => {
+                if (parseFloat(a.price.toString()) < parseFloat(b.price.toString())) return -1;
+                if (parseFloat(a.price.toString()) > parseFloat(b.price.toString())) return 1;
+                return 0;
+            });
+            break;
+        case 'Price, high to low':
+            thirdFilter.sort((a, b) => {
+                if (parseFloat(a.price.toString()) < parseFloat(b.price.toString())) return -1;
+                if (parseFloat(a.price.toString()) > parseFloat(b.price.toString())) return 1;
+                return 0;
+            }).reverse();
+            break;
+    }
 
-    res.render('plants', {title: 'Plants', first_name: req.session.first_name, search_result: thirdFilter});
+    res.render('plants', {title: 'Plants', first_name: req.session.first_name, search_result: thirdFilter, search_query: searchQuery});
 });
 
 app.get('/login', unauthedOnly, (req, res) => {
@@ -192,6 +223,8 @@ app.post('/logout', authedOnly, (req, res) => {
     req.flash('type', 'success');
     req.flash('message', 'Successfully logged out!');
     req.session.isAuth = false;
+    delete req.session.first_name;
+    delete req.session.userID;
     req.session.save(() => res.redirect('/login'));
 });
 

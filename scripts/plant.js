@@ -84,6 +84,8 @@ sortOptions.forEach(sortOption => {
       currentSortOption = sortOption;
       
       document.cookie = 'sortOption=' + sortOption.innerText;
+
+      window.location.reload();
     }
   })
 });
