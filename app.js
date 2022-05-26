@@ -71,11 +71,11 @@ app.get('/', (req, res) => {
     console.log(req.session.id);
     if (req.session.isAuth)
         console.log('wottt');
-    res.render('index', {title: 'Home', first_name: req.session.first_name});
+    res.render('index', {title: 'Home', first_name: req.session.first_name, cart: req.session.cart});
 });
 
 app.get('/about', (req, res) => {
-    res.render('about', {title: 'About Us', first_name: req.session.first_name});
+    res.render('about', {title: 'About Us', first_name: req.session.first_name, cart: req.session.cart});
 });
 
 app.get('/plants', async (req, res) => {
@@ -180,7 +180,34 @@ app.get('/plants', async (req, res) => {
             break;
     }
 
-    res.render('plants', {title: 'Plants', first_name: req.session.first_name, search_result: thirdFilter, search_query: searchQuery});
+    res.render('plants', {title: 'Plants', first_name: req.session.first_name, search_result: thirdFilter, search_query: searchQuery, cart: req.session.cart});
+});
+
+app.post('/plants/add_to_cart', async (req, res) => {
+    const { plant_id, amount, action } = req.body;
+    let plant = await Plant.findOne({_id: plant_id});
+    if (req.session.cart){
+        if (plant_id in req.session.cart){
+            if (action == 'rewrite')
+                req.session.cart[plant_id] = {plant: plant, amount: amount};
+            else if (action =='add')
+                req.session.cart[plant_id].amount += amount;
+        }
+        else {
+            req.session.cart[plant_id] = {plant: plant, amount: amount};
+        }
+    }
+    else {
+        req.session.cart = {};
+        req.session.cart[plant_id] = {plant: plant, amount: amount};
+    }
+    res.send(req.session.cart);
+});
+
+app.post('/plants/remove_from_cart', async (req, res) => {
+    const { plant_id } = req.body;
+    delete req.session.cart[plant_id];
+    res.send(req.session.cart);
 });
 
 app.get('/login', unauthedOnly, (req, res) => {
@@ -225,6 +252,7 @@ app.post('/logout', authedOnly, (req, res) => {
     req.session.isAuth = false;
     delete req.session.first_name;
     delete req.session.userID;
+    delete req.session.cart;
     req.session.save(() => res.redirect('/login'));
 });
 
@@ -350,7 +378,8 @@ app.get('/account_profile', authedOnly, async (req, res) => {
             addresses: {
 
             }
-        }
+        },
+        cart: req.session.cart
     });
 })
 

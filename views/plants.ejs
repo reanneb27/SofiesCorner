@@ -197,38 +197,60 @@
     <script src="scripts/plant.js"></script>
     <script src="scripts/script.js"></script>
     <script>
-        var plants = '<%- JSON.stringify(search_result) %>';
-        plants = JSON.parse(plants);
-        const productsContainer = document.getElementById('products-container');
+      var plants = '<%- JSON.stringify(search_result) %>';
+      plants = JSON.parse(plants);
+      const productsContainer = document.getElementById('products-container');
 
-        // add plant search results in products container
-        plants.forEach(plant => {
-          productsContainer.innerHTML += 
-        '<a href="product_item.html" class="product-item">\
-              <div class="column is-3-desktop">\
-                <div class="card">\
-                  <div class="card-image has-text-centered pt-4 px-2">\
-                    <img src="'+ plant.image_path +'" alt="">\
-                  </div>\
-                  <div class="card-content">\
-                    <p class="price">&#8369;'+ plant.price.$numberDecimal +'</p>\
-                    <p class="title is-size-5 has-text-primary">'+ plant.plant_name +'</p>\
-                  </div>\
-                  <a href="" class="addCartBtn">\
-                    <footer class="card-footer">\
-                      <p class="card-footer-item">\
-                        <span class="icon is-medium">\
-                          <i class="fas fa-shopping-cart"></i>\
-                        </span>\
-                        <span>Add to Cart</span>\
-                      </p>\
-                    </footer>\
-                  </a>\
+      // add plant search results in products container
+      plants.forEach(plant => {
+        productsContainer.innerHTML += 
+      '<a href="product_item.html" class="product-item">\
+            <div class="column is-3-desktop">\
+              <div class="card">\
+                <div class="card-image has-text-centered pt-4 px-2">\
+                  <img src="'+ plant.image_path +'" alt="">\
                 </div>\
+                <div class="card-content">\
+                  <p class="price">&#8369;'+ plant.price.$numberDecimal +'</p>\
+                  <p class="title is-size-5 has-text-primary">'+ plant.plant_name +'</p>\
+                </div>\
+                <a onclick="'+ "addToCart(this);" +'" class="addCartBtn">\
+                  <footer class="card-footer">\
+                    <p class="card-footer-item">\
+                      <span class="icon is-medium">\
+                        <i class="fas fa-shopping-cart"></i>\
+                      </span>\
+                      <span>Add to Cart</span>\
+                    </p>\
+                  </footer>\
+                  <input type="hidden" value="'+ plant._id +'">\
+                </a>\
               </div>\
-            </a>';
-        })
+            </div>\
+          </a>';
+      })
       
+      function addToCart(e){
+        let plantID = e.querySelector('input').value;
+
+        fetch('/plants/add_to_cart', {
+            method: 'POST',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                plant_id: plantID,
+                amount: 1,
+                action: 'add'
+            })
+        })
+        .then(async response => {
+            let data = await response.json();
+            updateNavCart(data);
+        });
+      }
+
       document.addEventListener('DOMContentLoaded', () => {
 
         const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
