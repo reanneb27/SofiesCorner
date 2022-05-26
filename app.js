@@ -185,23 +185,30 @@ app.get('/plants', async (req, res) => {
 
 app.post('/plants/add_to_cart', async (req, res) => {
     const { plant_id, amount, action } = req.body;
-    let plant = await Plant.findOne({_id: plant_id});
-    if (req.session.cart){
-        if (plant_id in req.session.cart){
-            if (action == 'rewrite')
+
+    if (amount == 0) // remove instead if amount is 0
+        res.redirect(307, '/plants/remove_from_cart');
+    else{
+        let plant = await Plant.findOne({_id: plant_id});
+        if (req.session.cart){
+            if (plant_id in req.session.cart){
+                if (action == 'rewrite')
+                    req.session.cart[plant_id] = {plant: plant, amount: amount};
+                else if (action =='add')
+                    req.session.cart[plant_id].amount += amount;
+            }
+            else {
                 req.session.cart[plant_id] = {plant: plant, amount: amount};
-            else if (action =='add')
-                req.session.cart[plant_id].amount += amount;
+            }
         }
         else {
+            req.session.cart = {};
             req.session.cart[plant_id] = {plant: plant, amount: amount};
         }
+        res.send(req.session.cart);
     }
-    else {
-        req.session.cart = {};
-        req.session.cart[plant_id] = {plant: plant, amount: amount};
-    }
-    res.send(req.session.cart);
+
+    
 });
 
 app.post('/plants/remove_from_cart', async (req, res) => {
@@ -498,6 +505,30 @@ app.post('/account_profile/change_password', authedOnly, async (req, res) => {
     }
 });
 
+
+app.get('/cart', authedOnly, async (req, res) => {
+    // get 3 random products HAHAHA
+    const plants = await Plant.find();
+    const noOfPlantsToSuggest = 3;
+    let suggestedPlants = [];
+    let indices = [];
+    if (noOfPlantsToSuggest < plants.length){
+        while (indices.length != noOfPlantsToSuggest){
+            let index = Math.floor(Math.random()*plants.length);
+            if (!indices.includes(index)){
+                indices.push(index);
+                suggestedPlants.push(plants[index]);
+            }
+        }
+    }
+    else{
+        suggestedPlants = plants;
+    }
+
+    
+
+    res.render('cart', {title: 'Cart', first_name: req.session.first_name, cart: req.session.cart, suggested_plants: suggestedPlants} )
+});
 
 // 404 page
 app.use((req, res) => {

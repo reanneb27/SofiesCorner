@@ -50,6 +50,7 @@
                     <div class="dropdown-item">
                         <div class="container">
                             <div id="navCartDiv">
+                                No items added to cart
                                 <!-- S A M P L E  P R O D U C T  H T M L  C O D E
                                 <div class="columns">
                                     <div class="column is-two-thirds">
@@ -103,7 +104,7 @@
                             <hr class="dropdown-divider">
                             <div class="columns">
                                 <div class="column is-half">
-                                    <button class="button is-block is-primary is-fullwidth">
+                                    <button onclick="window.location.href='/cart'" class="button is-block is-primary is-fullwidth">
                                         <span>View Cart</span>
                                     </button>
                                 </div>
@@ -205,7 +206,7 @@
             }
         })
 
-        function removeFromCart(e){
+        function navRemoveFromCart(e){
             let plantID = e.parentNode.parentNode.parentNode.parentNode.querySelector('input[type=hidden]').value;
             fetch('/plants/remove_from_cart', {
                 method: 'POST',
@@ -220,6 +221,8 @@
             .then(async response => {
                 let data = await response.json();
                 updateNavCart(data);
+                if (typeof updateCart === 'function')
+                    updateCart(data);
             });
         }
 
@@ -242,12 +245,13 @@
             .then(async response => {
                 let data = await response.json();
                 updateNavCart(data);
+                if (typeof updateCart === 'function')
+                    updateCart(data);
             });
         }
 
         function updateNavCart(cart){
             // add products to nav cart
-            console.log(cart);
             let resultingHTML = ''
             let totalPrice = 0;
             Object.keys(cart).forEach(key => {
@@ -261,7 +265,7 @@
                                             <div class="column">\
                                                 <p class="plant-name has-text-weight-bold">'+ cartItem.plant.plant_name +'</p>\
                                                 <p class="price is-size-5">&#8369;'+ cartItem.plant.price.$numberDecimal +'</p>\
-                                                <a onclick="'+ "removeFromCart(this);" +'">Remove</a>\
+                                                <a onclick="'+ "navRemoveFromCart(this);" +'">Remove</a>\
                                             </div>\
                                         </div>\
                                     </div>\
@@ -294,7 +298,10 @@
 
         // get session cart
         if (cart){
-            updateNavCart(cart)
+            updateNavCart(cart);
+
+            if (typeof updateCart === 'function')
+                updateCart(cart);
         }
         else{
             console.log('no cart!');

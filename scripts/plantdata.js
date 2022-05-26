@@ -64,7 +64,7 @@ const data = {
             typeofplant: 'Airplants',
             plantname: 'Medusae',
             price: '125',
-            image: 'assets/plants/air_plants/medussae.jpg', 
+            image: 'assets/plants/air_plants/medusae.jpg', 
         },
         {
             id: '10',

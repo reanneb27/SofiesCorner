@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head') %>
+
+<body>
+
+    <%- include('partials/nav') %>
+
+    <div class="columns">
+        <div class="column is-two-thirds">
+            <section class="section products-table">
+                <div class="columns table-header">
+                    <div class="column is-half">Product</div>
+                    <div class="column has-text-centered">Price</div>
+                    <div class="column has-text-centered">Quantity</div>
+                    <div class="column has-text-centered">Total</div>
+                </div>
+                <div id="shopping_cart">
+                    <!--  S A M P L E  S H O P P I N G  C A R T  I T E M
+                        <div class="columns product-row">
+                            <div class="column is-half product-title">
+                                <div class="columns is-mobile is-centered">
+                                    <div class="column is-2">
+                                        <img src="https://unsplash.it/g/100/100" alt="">
+                                    </div>
+                                    <div class="column">
+                                        <h5 class="title is-size-5 plant-name">Plant Name</h5>
+                                        <a href="">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column center-container has-text-centered">
+                                &#8369;0.00
+                            </div>
+                            <div class="column center-container">
+                                <div class="field has-addons has-addons-centered" style="border: 2px solid #9baa9f">
+                                    <p class="control">
+                                        <a class="button has-text-centered">-</a>
+                                        </span>
+                                    </p>
+                                    <p class="control">
+                                        <input class="input is-expanded has-text-centered" type="text" placeholder=""
+                                            value="1">
+                                    </p>
+                                    <p class="control">
+                                        <a class="button has-text-centered">+</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="column center-container has-text-centered">
+                                &#8369;0.00
+                            </div>
+                        </div> 
+                    -->
+                </div>
+            </section>
+        </div>
+        <div class="vl" style="border-left: 2px solid #064420"></div>
+        <div class="column">
+            <section class="section submit-form">
+                <h4 class="title is-size-4 is-primary">Order Summary</h4>
+                <div id="total">
+                    <div class="level">
+                        <div class="level-left">
+                            <div class="level-item">
+                                <p class="total subtitle">Total</p>
+                            </div>
+                        </div>
+                        <div class="level-right">
+                            <div class="level-item">
+                                <p id="shopping_cart_total_price" class="total subtitle">&#8369;0.00 </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="button is-block is-link is-fullwidth mt-5 mb-3" href="">Checkout</button>
+                <a class="is-primary" href="/plants">Continue Shopping</a>
+            </section>
+        </div>
+    </div>
+
+    <hr style="height:2px; border-width:0; color:gray; background-color:gray; width: 100%; margin: auto;">
+
+    <section class="section is-hidden-mobile">
+        <div class="container">
+            <h3 class="title is-size-4">You may also like</h3>
+            <div id="suggested_plants_container" class="columns mt-5 mx-2 is-10 is-variable is-centered">
+                <!-- S A M P L E  S U G G E S T E D  I T E M    
+                    <a href="product_item.html" class="product-item">
+                        <div class="column is-4-desktop">
+                            <div class="card">
+                                <div class="card-image has-text-centered pt-4 px-2">
+                                    <img src="https://unsplash.it/g/300/300" alt="">
+                                </div>
+                                <div class="card-content">
+                                    <p class="price">&#8369;0.00</p>
+                                    <p class="title is-size-5 has-text-primary">Plant Name</p>
+                                </div>
+                                <a href="" class="addCartBtn">
+                                    <footer class="card-footer">
+                                        <p class="card-footer-item">
+                                            <span class="icon is-medium">
+                                                <i class="fas fa-shopping-cart"></i>
+                                            </span>
+                                            <span>Add to Cart</span>
+                                        </p>
+                                    </footer>
+                                    <input type="hidden" value="'+ plant._id +'">\
+                                </a>
+                            </div>
+                        </div>
+                    </a> 
+                -->
+                <a href="product_item.html" class="product-item">
+                    <div class="column is-4-desktop">
+                        <div class="card">
+                            <div class="card-image has-text-centered pt-4 px-2">
+                                <img src="https://unsplash.it/g/300/300" alt="">
+                            </div>
+                            <div class="card-content">
+                                <p class="price">&#8369;0.00</p>
+                                <p class="title is-size-5 has-text-primary">Plant Name</p>
+                            </div>
+                            <a href="" class="addCartBtn">
+                                <footer class="card-footer">
+                                    <p class="card-footer-item">
+                                        <span class="icon is-medium">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </span>
+                                        <span>Add to Cart</span>
+                                    </p>
+                                </footer>
+                            </a>
+                        </div>
+                    </div>
+                </a>
+                <a href="product_item.html" class="product-item">
+                    <div class="column is-4-desktop">
+                        <div class="card">
+                            <div class="card-image has-text-centered pt-4 px-2">
+                                <img src="https://unsplash.it/g/300/300" alt="">
+                            </div>
+                            <div class="card-content">
+                                <p class="price">&#8369;0.00</p>
+                                <p class="title is-size-5 has-text-primary">Plant Name</p>
+                            </div>
+                            <a href="" class="addCartBtn">
+                                <footer class="card-footer">
+                                    <p class="card-footer-item">
+                                        <span class="icon is-medium">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </span>
+                                        <span>Add to Cart</span>
+                                    </p>
+                                </footer>
+                            </a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <%- include('partials/footer') %>
+    
+    <script src="scripts/target.js"></script>
+    <script src="scripts/script.js"></script>
+    <% if (locals.suggested_plants) { %> 
+        <script>
+            var suggested_plants = '<%- JSON.stringify(suggested_plants) %>';
+            suggested_plants = JSON.parse(suggested_plants);
+        </script>    
+    <% } else { %>
+        <script>
+            var suggested_plants = null;
+        </script>
+    <% } %>
+    <script>
+        const shopping_cart = document.getElementById('shopping_cart');
+        const shopping_cart_total_price = document.getElementById('shopping_cart_total_price');
+
+        function removeFromCart(e){
+            let plantID = e.parentNode.parentNode.parentNode.parentNode.querySelector('input[type=hidden]').value;
+            fetch('/plants/remove_from_cart', {
+                method: 'POST',
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    plant_id: plantID
+                })
+            })
+            .then(async response => {
+                let data = await response.json();
+                updateNavCart(data);
+                if (typeof updateCart === 'function')
+                    updateCart(data);
+            });
+        }
+
+        function addToCart(e){
+            let amount = parseInt(e.value);
+            let plantID = e.parentNode.parentNode.parentNode.parentNode.querySelector('input[type=hidden]').value;
+            
+            fetch('/plants/add_to_cart', {
+                method: 'POST',
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    plant_id: plantID,
+                    amount: amount,
+                    action: 'rewrite'
+                })
+            })
+            .then(async response => {
+                let data = await response.json();
+                updateNavCart(data);
+                if (typeof updateCart === 'function')
+                    updateCart(data);
+            });
+        }
+
+        function addSuggestionToCart(e){
+            let plantID = e.querySelector('input').value;
+
+            fetch('/plants/add_to_cart', {
+                method: 'POST',
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    plant_id: plantID,
+                    amount: 1,
+                    action: 'add'
+                })
+            })
+            .then(async response => {
+                let data = await response.json();
+                updateNavCart(data);
+                updateCart(data);
+
+            });
+        }
+
+        function updateCart(cart){
+            // add products to nav cart
+            let resultingHTML = ''
+            let totalPrice = 0;
+            Object.keys(cart).forEach(key => {
+                let cartItem = cart[key];
+                resultingHTML += '<div class="columns product-row">\
+                                    <div class="column is-half product-title">\
+                                        <div class="columns is-mobile is-centered">\
+                                            <div class="column is-2">\
+                                                <img src="'+ cartItem.plant.image_path +'" alt="">\
+                                            </div>\
+                                            <div class="column">\
+                                                <h5 class="title is-size-5 plant-name">'+ cartItem.plant.plant_name +'</h5>\
+                                                <a onclick="'+ "removeFromCart(this);" +'">Remove</a>\
+                                            </div>\
+                                        </div>\
+                                    </div>\
+                                    <div class="column center-container has-text-centered">\
+                                        &#8369;'+ cartItem.plant.price.$numberDecimal +'\
+                                    </div>\
+                                    <div class="column center-container">\
+                                        <div class="field has-addons has-addons-centered" style="border: 2px solid #9baa9f">\
+                                            <p class="control">\
+                                                <input onchange="'+ "addToCart(this);" +'" class="input is-expanded has-text-centered" type="number" placeholder=""\
+                                                    value="'+ cartItem.amount +'">\
+                                            </p>\
+                                        </div>\
+                                    </div>\
+                                    <div class="column center-container has-text-centered">\
+                                        &#8369;'+ parseFloat(cartItem.amount) * parseFloat(cartItem.plant.price.$numberDecimal) +'\
+                                    </div>\
+                                    <input type="hidden" value="'+ key +'">\
+                                </div> ';
+                totalPrice += cartItem.amount * parseFloat(cartItem.plant.price.$numberDecimal);
+            });
+
+            if (resultingHTML){
+                shopping_cart.innerHTML = resultingHTML;
+                shopping_cart_total_price.innerText = '\u20B1'+totalPrice;
+            } else { // when cart is empty
+                shopping_cart.innerHTML = "No items added to cart";
+                shopping_cart_total_price.innerText = '\u20B1'+0.00;
+            }
+        }
+
+        if (cart){
+            updateCart(cart);
+        }
+
+        if (suggested_plants){
+            let suggested_plants_container = document.getElementById('suggested_plants_container');
+            let resultingHTML = '';
+            suggested_plants.forEach(plant => {
+                resultingHTML += '<a href="product_item.html" class="product-item">\
+                                    <div class="column is-4-desktop">\
+                                        <div class="card">\
+                                            <div class="card-image has-text-centered pt-4 px-2">\
+                                                <img src="'+ plant.image_path +'" alt="">\
+                                            </div>\
+                                            <div class="card-content">\
+                                                <p class="price">&#8369;0.00</p>\
+                                                <p class="title is-size-5 has-text-primary">'+ plant.plant_name +'</p>\
+                                            </div>\
+                                            <a onclick="'+ "addSuggestionToCart(this);" +'" class="addCartBtn">\
+                                                <footer class="card-footer">\
+                                                    <p class="card-footer-item">\
+                                                        <span class="icon is-medium">\
+                                                            <i class="fas fa-shopping-cart"></i>\
+                                                        </span>\
+                                                        <span>Add to Cart</span>\
+                                                    </p>\
+                                                </footer>\
+                                                <input type="hidden" value="'+ plant._id +'">\
+                                            </a>\
+                                        </div>\
+                                    </div>\
+                                </a> ';
+            });
+            if (resultingHTML){
+                suggested_plants_container.innerHTML = resultingHTML;
+            }
+        }
+    </script>
+</body>
+
+</html>
