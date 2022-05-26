@@ -30,8 +30,6 @@
           <nav class="breadcrumb is-small" aria-label="breadcrumbs">
             <ul>
               <li><a href="cart.html">Cart</a></li>
-              <li><a href="checkout_info.html">Information</a></li>
-              <li><a href="checkout_shipping.html">Shipping</a></li>
               <li class="is-active"><a href="">Payment</a></li>
             </ul>
           </nav>
@@ -41,14 +39,11 @@
           <div class="column is-half">
             <form class="box">
               <div class="columns">
-                <div class="column is-one-fifth">
+                <div class="column is-one-quarter">
                   <label class="label">Contact</label>
                 </div>
-                <div class="column is-three-fifths">
+                <div class="column">
                   <p>email@gmail.com</p>
-                </div>
-                <div class="column has-text-right">
-                  <a href="">Change</a>
                 </div>
               </div>
               <div class="field">
@@ -59,14 +54,11 @@
               <hr class="mb-5" style="height:2px; border-width:0; color:gray; background-color:gray; width: 100%; margin: auto;">
 
               <div class="columns">
-                <div class="column is-one-fifth">
-                  <label class="label">Ship to</label>
+                <div class="column is-one-quarter">
+                  <label class="label">Deliver to</label>
                 </div>
-                <div class="column is-three-fifths">
-                  <p>shipping_address</p>
-                </div>
-                <div class="column has-text-right">
-                  <a href="">Change</a>
+                <div class="column">
+                  <p>delivery_address</p>
                 </div>
               </div>
               <div class="field">
@@ -77,11 +69,11 @@
               <hr class="mb-5" style="height:2px; border-width:0; color:gray; background-color:gray; width: 100%; margin: auto;">
 
               <div class="columns">
-                <div class="column is-one-fifth">
+                <div class="column is-one-quarter">
                   <label class="label">Method</label>
                 </div>
-                <div class="column is-three-fifths">
-                  <p>Standard <span class="has-text-weight-bold">&#8369;0.00</span></p>
+                <div class="column">
+                  <p>Standard <span class="has-text-weight-bold">&#8369;50.00</span></p>
                 </div>
               </div>
             </form>
@@ -97,174 +89,60 @@
               </div>
             </form>
 
+            <h5 class="title is-5 checkout-label">Delivery Address</h5>
+            <button class="button is-block is-fullwidth is-link">
+              <span class="icon is-left">
+                  <i class="fa-solid fa-plus"></i>
+              </span>
+              <span>Add a new address</span>
+            </button>
+            <br>
+            <div class="box">
+              <p>Full Name: </p>
+              <p>House No., Street Name, Building:</p>
+              <p>Barangay, Province, Region:</p>
+              <p>Zip Code: </p>
+              <p>Phone Number: </p>
+              <br>
+              <button class="button is-responsive is-block is-fullwidth is-link">
+                <span class="icon is-left">
+                    <i class="fa-solid fa-edit"></i>
+                </span>
+                <span>Edit</span>
+              </button>
+            </div>
+
             <h5 class="title is-5 checkout-label">Billing Address</h5>
-
-            <form action="" class="box">
-              <div class="columns">
-                <div class="column">
-                  <label class="radio">
-                    <input type="radio" name="answer" checked>
-                    Same as shipping address
-                  </label>
-                </div>
-              </div>
-
-              <div class="columns">
-                <div class="column">
-                  <label class="radio">
-                    <input type="radio" name="answer">
-                    Use a different billing address
-                  </label>
-                </div>
-              </div>
-
-              <hr class="mb-5" style="height:2px; border-width:0; color:gray; background-color:gray; width: 100%; margin: auto;">
-
-              <div class="field">
-                <p class="control">
-                  <span class="select is-fullwidth is-primary">
-                    <select>
-                      <option>Saved Addresses</option>
-                      <option></option>
-                    </select>
+            <button class="button is-block is-fullwidth is-link">
+              <span class="icon is-left">
+                  <i class="fa-solid fa-plus"></i>
+              </span>
+              <span>Add a new address</span>
+            </button>
+            <br>
+            <div class="box">
+              <p>Full Name: </p>
+              <p>House No., Street Name, Building:</p>
+              <p>Barangay, Province, Region:</p>
+              <p>Zip Code: </p>
+              <p>Phone Number: </p>
+              <br>
+                <button class="button is-responsive is-block is-fullwidth is-link">
+                  <span class="icon is-left">
+                      <i class="fa-solid fa-edit"></i>
                   </span>
-                </p>
-              </div>
-
-              <div class="field">
-                <input class="input is-primary" type="text" placeholder="Country" />
-              </div>
-
-              <div class="columns mb-1">
-                <div class="column">
-                  <input class="input is-primary" type="text" placeholder="First Name" />
-                </div>
-                <div class="column">
-                  <input class="input is-primary" type="text" placeholder="Last Name" />
-                </div>
-              </div>
-
-              <div class="field">
-                <input class="input is-primary" type="text" placeholder="Address" />
-              </div>
-              <div class="field">
-                <input class="input is-primary" type="text" placeholder="Apartment. suite, etc. (optional)" />
-              </div>
-
-              <div class="columns mb-1">
-                <div class="column">
-                  <input class="input is-primary" type="text" placeholder="Zip Code" />
-                </div>
-                <div class="column">
-                  <input class="input is-primary" type="text" placeholder="City" />
-                </div>
-              </div>
-
-              <div class="field">
-                <p class="control">
-                  <span class="select is-fullwidth is-primary">
-                    <select>
-                      <option value="Region">Region</option>
-                      <option value="Abra">Abra</option>
-                      <option value="Agusan del Norte">Agusan del Norte</option>
-                      <option value="Aklan">Aklan</option>
-                      <option value="Albay">Albay</option>
-                      <option value="Antique">Antique</option>
-                      <option value="Apayao">Apayao</option>
-                      <option value="Aurora">Aurora</option>
-                      <option value="Basilan">Basilan</option>
-                      <option value="Bataan">Bataan</option>
-                      <option value="Batanes">Batanes</option>
-                      <option value="Benguet">Benguet</option>
-                      <option value="Biliran">Biliran</option>
-                      <option value="Bohol">Bohol</option>
-                      <option value="Bukidnon">Bukidnon</option>
-                      <option value="Bulacan">Bulacan</option>
-                      <option value="Cagayan">Cagayan</option>
-                      <option value="Camarines Norte">Camarines Norte</option>
-                      <option value="Camarines Sur">Camarines Sur</option>
-                      <option value="Camiguin">Camiguin</option>
-                      <option value="Capiz">Capiz</option>
-                      <option value="Catanduanes">Catanduanes</option>
-                      <option value="Cavite">Cavite</option>
-                      <option value="Cebu">Cebu</option>
-                      <option value="Compostela Valley">Compostela Valley</option>
-                      <option value="Cotabato">Cotabato</option>
-                      <option value="Davao Occidental">Davao Occidental</option>
-                      <option value="Davao Oriental">Davao Oriental</option>
-                      <option value="Davao del Norte">Davao del Norte</option>
-                      <option value="Davao del Sur">Davao del Sur</option>
-                      <option value="Dinagat Islands">Dinagat Islands</option>
-                      <option value="Eastern Samar">Eastern Samar</option>
-                      <option value="Guimaras">Guimaras</option>
-                      <option value="Ifugao">Ifugao</option>
-                      <option value="Ilocos Norte">Ilocos Norte</option>
-                      <option value="Ilocos Sur">Ilocos Sur</option>
-                      <option value="Iloilo">Iloilo</option>
-                      <option value="Isabela">Isabela</option>
-                      <option value="Kalinga">Kalinga</option>
-                      <option value="La Union">La Union</option>
-                      <option value="Laguna">Laguna</option>
-                      <option value="Lanao del Norte">Lanao del Norte</option>
-                      <option value="Lanao del Sur">Lanao del Sur</option>
-                      <option value="Leyte">Leyte</option>
-                      <option value="Maguindanao">Maguindanao</option>
-                      <option value="Marinduque">Marinduque</option>
-                      <option value="Masbate">Masbate</option>
-                      <option value="Metro Manila">Metro Manila</option>
-                      <option value="Misamis Occidental">Misamis Occidental</option>
-                      <option value="Misamis Oriental">Misamis Oriental</option>
-                      <option value="Mountain Province">Mountain Province</option>
-                      <option value="Negros Occidental">Negros Occidental</option>
-                      <option value="Negros Oriental">Negros Oriental</option>
-                      <option value="Northern Samar">Northern Samar</option>
-                      <option value="Nueva Ecija">Nueva Ecija</option>
-                      <option value="Nueva Vizcaya">Nueva Vizcaya</option>
-                      <option value="Occidental Mindoro">Occidental Mindoro</option>
-                      <option value="Oriental Mindoro">Oriental Mindoro</option>
-                      <option value="Palawan">Palawan</option>
-                      <option value="Pampanga">Pampanga</option>
-                      <option value="Pangasinan">Pangasinan</option>
-                      <option value="Quezon">Quezon</option>
-                      <option value="Quirino">Quirino</option>
-                      <option value="Rizal">Rizal</option>
-                      <option value="Romblon">Romblon</option>
-                      <option value="Samar">Samar</option>
-                      <option value="Sarangani">Sarangani</option>
-                      <option value="Siquijor">Siquijor</option>
-                      <option value="Sorsogon">Sorsogon</option>
-                      <option value="South Cotabato">South Cotabato</option>
-                      <option value="Southern Leyte">Southern Leyte</option>
-                      <option value="Sultan Kudarat">Sultan Kudarat</option>
-                      <option value="Sulu">Sulu</option>
-                      <option value="Surigao del Norte">Surigao del Norte</option>
-                      <option value="Surigao del Sur">Surigao del Sur</option>
-                      <option value="Tarlac">Tarlac</option>
-                      <option value="Tawi-Tawi">Tawi-Tawi</option>
-                      <option value="Zambales">Zambales</option>
-                      <option value="Zamboanga Sibugay">Zamboanga Sibugay</option>
-                      <option value="Zamboanga del Norte">Zamboanga del Norte</option>
-                      <option value="Zamboanga del Sur">Zamboanga del Sur</option>
-                    </select>
-                  </span>
-                </p>
-              </div>
-                    
-              <div class="field">
-                <input class="input is-primary" type="text" placeholder="Phone Number" />
-              </div>
-            </form>
-
+                  <span>Edit</span>
+              </button>
+            </div>
             <div class="columns">
               <div class="column is-half">
-                <a href="checkout_info.html">Return to shipping</a>
+                <a href="cart.html">Return to cart</a>
               </div>
               <div class="column">
                 <button class="button is-block is-link is-fullwidth" id="complete_order_btn">Complete Order</button>
               </div>
             </div>
           </div>
-
           <div class="column ml-5">
             <div class="columns">
               <div class="column is-one-fifth">
