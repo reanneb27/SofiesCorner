@@ -154,7 +154,6 @@
 								<li><a>My Orders</a></li>
 								<li><a>Delivery Address</a></li>
 								<li><a>Change Password</a></li>
-								<li><a>Log Out</a></li>
 							</ul>
 						</div>
 						<div>
@@ -171,7 +170,12 @@
                                         <br>
                                         <div class="columns">
                                             <div class="column">
-                                                <button class="button is-responsive is-block is-fullwidth is-link">Edit</button>
+                                                <button class="button is-block is-link is-fullwidth">
+                                                    <span class="icon is-left">
+                                                        <i class="fa-solid fa-edit"></i>
+                                                    </span>
+                                                    <span>Edit</span>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -253,20 +257,85 @@
 							</section>
 							<section class="tab-content">
 								<h4 class="title is-4">My Addresses</h4>
+                                <div class="column is-8 is-offset-2">
+                                    <div class="box">
+                                        <h4 class="title is-4">Delivery Address</h4>
+                                        <button class="button is-block is-fullwidth is-link">
+                                            <span class="icon is-left">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </span>
+                                            <span>Add a new address</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="column is-8 is-offset-2">
+                                    <div class="box">
+                                        <h4 class="title is-4">Billing Address</h4>
+                                        <button class="button is-block is-fullwidth is-link">
+                                            <span class="icon is-left">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </span>
+                                            <span>Add a new address</span>
+                                        </button>
+                                    </div>
+                                </div>
 								<div class="column is-8 is-offset-2">
 									<div class="box">
+                                        <h4 class="title is-4">Delivery Address</h4>
 										<p>Full Name: </p>
 										<p>House No., Street Name, Building:</p>
 										<p>Barangay, Province, Region:</p>
 										<p>Zip Code: </p>
 										<p>Phone Number: </p>
+                                        <br>
+                                        <div class="columns">
+                                            <div class="column">
+                                                <button class="button is-responsive is-block is-fullwidth is-link">
+                                                    <span class="icon is-left">
+                                                        <i class="fa-solid fa-edit"></i>
+                                                    </span>
+                                                    <span>Edit</span>
+                                                </button>
+                                            </div>
+                                            <div class="column">
+                                                <button class="button is-responsive is-block is-fullwidth is-danger">
+                                                    <span class="icon is-left">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                    </span>
+                                                    <span>Delete</span>
+                                                </button>
+                                            </div>
+                                        </div>
 									</div>
-									<button class="button is-block is-link is-fullwidth">
-										<span class="icon is-left">
-											<i class="fa-solid fa-circle-plus"></i>
-										</span>
-										<span>Add a new address</span>
-									</button>
+								</div>
+								<div class="column is-8 is-offset-2">
+									<div class="box">
+                                        <h4 class="title is-4">Billing Address</h4>
+										<p>Full Name: </p>
+										<p>House No., Street Name, Building:</p>
+										<p>Barangay, Province, Region:</p>
+										<p>Zip Code: </p>
+										<p>Phone Number: </p>
+                                        <br>
+                                        <div class="columns">
+                                            <div class="column">
+                                                <button class="button is-responsive is-block is-fullwidth is-link">
+                                                    <span class="icon is-left">
+                                                        <i class="fa-solid fa-edit"></i>
+                                                    </span>
+                                                    <span>Edit</span>
+                                                </button>
+                                            </div>
+                                            <div class="column">
+                                                <button class="button is-responsive is-block is-fullwidth is-danger">
+                                                    <span class="icon is-left">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                    </span>
+                                                    <span>Delete</span>
+                                                </button>
+                                            </div>
+                                        </div>
+									</div>
 								</div>
                                 <div class="column is-8 is-offset-2">
                                     <form action="">
