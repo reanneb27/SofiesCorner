@@ -23,7 +23,11 @@
             <div class="navbar-item">
                 <div class="field has-addons">
                     <div class="control">
-                      <input id="searchInput" class="input is-small" type="text" placeholder="Search">
+                        <% if (locals.search_query) { %>
+                            <input id="searchInput" class="input is-small" value="<%= search_query %>" type="text" placeholder="Search">
+                        <% } else { %>
+                            <input id="searchInput" class="input is-small" type="text" placeholder="Search">
+                        <% } %>
                     </div>
                     <div class="control">
                       <a id="searchBtn" class="button is-link is-small">
@@ -37,7 +41,7 @@
                   <button class="button is-medium is-primary" aria-haspopup="true" aria-controls="dropdown-menu6">
                     <span>
                         <i class="fa fa-shopping-cart fa-lg"></i>
-                        <span class="badge">0</span>
+                        <span id="cartItemsCount" class="badge">0</span>
                     </span>
                   </button>
                 </div>
@@ -45,37 +49,41 @@
                   <div class="dropdown-content">
                     <div class="dropdown-item">
                         <div class="container">
-                            <div class="columns">
-                                <div class="column is-two-thirds">
-                                    <div class="columns is-mobile is-centered">
-                                        <div class="column is-one-third">
-                                          <img src="https://unsplash.it/g/200/200" alt="">
-                                        </div>
-                                        <div class="column">
-                                          <p class="plant-name has-text-weight-bold">Plant Name</p>
-                                          <p class="price is-size-5">&#8369;0.00</p>
-                                          <a href="">Remove</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="field">
-                                        <div class="control">
-                                          <div class="field has-addons" style="width: 100px; border: 2px solid #9baa9f">
-                                            <p class="control is-small">
-                                              <a class="button has-text-centered">-</a>
-                                              </span>
-                                            </p>
-                                            <p class="control is-small">
-                                              <input class="input has-text-centered" type="text" placeholder="" value="1">
-                                            </p>
-                                            <p class="control is-small">
-                                              <a class="button has-text-centered">+</a>
-                                            </p>
-                                          </div>
+                            <div id="navCartDiv">
+                                <!-- S A M P L E  P R O D U C T  H T M L  C O D E
+                                <div class="columns">
+                                    <div class="column is-two-thirds">
+                                        <div class="columns is-mobile is-centered">
+                                            <div class="column is-one-third">
+                                            <img src="https://unsplash.it/g/200/200" alt="">
+                                            </div>
+                                            <div class="column">
+                                            <p class="plant-name has-text-weight-bold">Plant Name</p>
+                                            <p class="price is-size-5">&#8369;0.00</p>
+                                            <a href="">Remove</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="column">
+                                        <div class="field">
+                                            <div class="control">
+                                            <div class="field has-addons" style="width: 100px; border: 2px solid #9baa9f">
+                                                <p class="control is-small">
+                                                <a class="button has-text-centered">-</a>
+                                                </span>
+                                                </p>
+                                                <p class="control is-small">
+                                                <input class="input has-text-centered" type="text" placeholder="" value="1">
+                                                </p>
+                                                <p class="control is-small">
+                                                <a class="button has-text-centered">+</a>
+                                                </p>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                                -->
                             </div>
                             <hr class="dropdown-divider">
                             <div id="total">
@@ -87,7 +95,7 @@
                                     </div>
                                     <div class="level-right">
                                     <div class="level-item">
-                                        <p class="total subtitle">&#8369;0.00 </p>
+                                        <p id="cartTotalPrice" class="total subtitle">&#8369;0.00 </p>
                                     </div>
                                     </div>
                                 </div>
@@ -110,7 +118,7 @@
                   </div>
                 </div>
             </div>
-            <a href="account_profile" class="px-2 py-1">
+            <!-- <a href="account_profile" class="px-2 py-1">
                 <button class="button is-primary">
                     <span class="icon">
                         <i class="fas fa-user fa-lg"></i>
@@ -124,11 +132,67 @@
                     
                     </span>
                 </button>
-            </a>
+            </a> -->
+
+            <div class="px-2 py-1">
+                <div class="dropdown is-right is-hoverable">
+
+                    <% if (locals.first_name) { %> 
+                    <button class="button is-primary">
+                    <% } else { %>
+                    <button class="button is-primary" onclick="window.location.href = '/login'" >
+                    <% } %>
+                        <span class="icon">
+                            <i class="fas fa-user fa-lg"></i>
+                        </span>
+                        <span id="nav_profile_first_name">
+                            <% if (locals.first_name) { %> 
+                                <%= first_name %> 
+                            <% } else { %>
+                                Log In
+                            <% } %>
+                        </span>
+                    </button>
+                    <% if (locals.first_name) { %> 
+                        <div class="dropdown-menu" role="menu">
+                            <div class="dropdown-content">
+                                <div class="dropdown-item">
+                                    <a href="/account_profile">
+                                        <span>Profile</span>
+                                    </a>
+                                </div>
+                                <div class="dropdown-item">
+                                    <form action="/logout" method="post">
+                                        <a href="javascript:;" onclick="parentNode.submit();">Logout</a>
+                                        <input type="hidden" name="mess"/>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                    
+                </div>
+            </div>
+
+
         </div>
     </div>
 
+    
+    <% if (locals.cart) { %> 
+        <script>
+            var cart = '<%- JSON.stringify(cart) %>';
+            cart = JSON.parse(cart);
+        </script>    
+    <% } else { %>
+        <script>
+            var cart = null;
+        </script>
+    <% } %>
     <script>
+        const navCartDiv = document.getElementById('navCartDiv');
+        const cartItemsCount = document.getElementById('cartItemsCount');
+        const cartTotalPrice = document.getElementById('cartTotalPrice') 
         const searchBtn = document.getElementById('searchBtn');
         const searchInput = document.getElementById('searchInput');
 
@@ -140,5 +204,100 @@
                 window.location.href = "/plants?query="+searchInput.value.trim();
             }
         })
+
+        function removeFromCart(e){
+            let plantID = e.parentNode.parentNode.parentNode.parentNode.querySelector('input[type=hidden]').value;
+            fetch('/plants/remove_from_cart', {
+                method: 'POST',
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    plant_id: plantID
+                })
+            })
+            .then(async response => {
+                let data = await response.json();
+                updateNavCart(data);
+            });
+        }
+
+        function navAddToCart(e){
+            let amount = parseInt(e.value);
+            let plantID = e.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('input[type=hidden]').value;
+            
+            fetch('/plants/add_to_cart', {
+                method: 'POST',
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    plant_id: plantID,
+                    amount: amount,
+                    action: 'rewrite'
+                })
+            })
+            .then(async response => {
+                let data = await response.json();
+                updateNavCart(data);
+            });
+        }
+
+        function updateNavCart(cart){
+            // add products to nav cart
+            console.log(cart);
+            let resultingHTML = ''
+            let totalPrice = 0;
+            Object.keys(cart).forEach(key => {
+                let cartItem = cart[key];
+                resultingHTML += '<div class="columns">\
+                                    <div class="column is-two-thirds">\
+                                        <div class="columns is-mobile is-centered">\
+                                            <div class="column is-one-third">\
+                                                <img src="'+ cartItem.plant.image_path +'" alt="">\
+                                            </div>\
+                                            <div class="column">\
+                                                <p class="plant-name has-text-weight-bold">'+ cartItem.plant.plant_name +'</p>\
+                                                <p class="price is-size-5">&#8369;'+ cartItem.plant.price.$numberDecimal +'</p>\
+                                                <a onclick="'+ "removeFromCart(this);" +'">Remove</a>\
+                                            </div>\
+                                        </div>\
+                                    </div>\
+                                    <div class="column">\
+                                        <div class="field">\
+                                            <div class="control">\
+                                                <div class="field has-addons" style="width: 100px; border: 2px solid #9baa9f">\
+                                                    <p class="control is-small">\
+                                                        <input onchange="'+ "navAddToCart(this);" +'" class="input has-text-centered" type="number" placeholder="" value="'+ cartItem.amount +'">\
+                                                    </p>\
+                                                </div>\
+                                            </div>\
+                                        </div>\
+                                    </div>\
+                                    <input type="hidden" value="'+ key +'">\
+                                </div>';
+                totalPrice += cartItem.amount * parseFloat(cartItem.plant.price.$numberDecimal);
+            });
+
+            if (resultingHTML){
+                navCartDiv.innerHTML = resultingHTML;
+                cartItemsCount.innerText = Object.keys(cart).length;
+                cartTotalPrice.innerText = '\u20B1'+totalPrice;
+            } else { // when cart is empty
+                navCartDiv.innerHTML = "No items added to cart";
+                cartItemsCount.innerText = 0;
+                cartTotalPrice.innerText = '\u20B1'+0;
+            }
+        }
+
+        // get session cart
+        if (cart){
+            updateNavCart(cart)
+        }
+        else{
+            console.log('no cart!');
+        }
     </script>
 </nav>
