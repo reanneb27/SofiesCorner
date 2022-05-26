@@ -138,28 +138,96 @@
                                 </section>
 
                                 <section class="tab-content">
-                                    <h4 class="title is-4">My Addresses</h4>
-                                    <div class="column is-8 is-offset-2">
+                                    <div id="deliveryAddressContainer" class="column is-8 is-offset-2">
                                         <div class="box">
-                                            <p>Full Name: </p>
-                                            <p>House No., Street Name, Building:</p>
-                                            <p>Barangay, Province, Region:</p>
-                                            <p>Zip Code: </p>
-                                            <p>Phone Number: </p>
+                                            <h4 class="title is-4">Delivery Address</h4>
+                                            <div id="deliveryAddressDynamicContainer">
+                                            <% if (locals.profileData.delivery_address) { %> 
+                                                <p>Full Name: <span id="DA_full_name_span"><%= profileData.delivery_address.full_name %></span></p>
+                                                <p>House No., Street Name, Building: <span id="DA_houseNo_Street_Building_span"><%= profileData.delivery_address.houseNo_Street_Building %></span></p>
+                                                <p>Barangay, Province, Region: <span id="DA_brgy_province_region_span"><%= profileData.delivery_address.brgy_province_region %></span></p>
+                                                <p>Zip Code: <span id="DA_zipcode_span"><%= profileData.delivery_address.zipcode %></span></p>
+                                                <p>Phone Number: <span id="DA_phoneNo_span"><%= profileData.delivery_address.phoneNo %></span></p>
+                                                <br>
+                                                <div class="columns">
+                                                    <div class="column">
+                                                        <button onclick="editAddress('Delivery Address');" class="button is-responsive is-block is-fullwidth is-link">
+                                                            <span class="icon is-left">
+                                                                <i class="fa-solid fa-edit"></i>
+                                                            </span>
+                                                            <span>Edit</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="column">
+                                                        <button onclick="deleteAddress('Delivery Address');" class="button is-responsive is-block is-fullwidth is-danger">
+                                                            <span class="icon is-left">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </span>
+                                                            <span>Delete</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            <% } else { %>
+                                                <button onclick='editAddress("Delivery Address")' class="button is-block is-fullwidth is-link">
+                                                    <span class="icon is-left">
+                                                        <i class="fa-solid fa-plus"></i>
+                                                    </span>
+                                                    <span>Add new delivery address</span>
+                                                </button>
+                                            <% } %>
+                                            </div>
                                         </div>
-                                        <button class="button is-block is-link is-fullwidth">
-                                            <span class="icon is-left">
-                                                <i class="fa-solid fa-circle-plus"></i>
-                                            </span>
-                                            <span>Add a new address</span>
-                                        </button>
                                     </div>
-                                    <div class="column is-8 is-offset-2">
-                                        <form id="addNewAddressForm">
+
+                                    <div id="billingAddressContainer" class="column is-8 is-offset-2">
+                                        <div class="box">
+                                            <h4 class="title is-4">Billing Address</h4>
+                                            <div id="billingAddressDynamicContainer">
+                                            <% if (locals.profileData.billing_address) { %> 
+                                                <p>Full Name: <span id="BA_full_name_span"><%= profileData.billing_address.full_name %></span></p>
+                                                <p>House No., Street Name, Building: <span id="BA_houseNo_Street_Building_span"><%= profileData.billing_address.houseNo_Street_Building %></span></p>
+                                                <p>Barangay, Province, Region: <span id="BA_brgy_province_region_span"><%= profileData.billing_address.brgy_province_region %></span></p>
+                                                <p>Zip Code: <span id="BA_zipcode_span"><%= profileData.billing_address.zipcode %></span></p>
+                                                <p>Phone Number: <span id="BA_phoneNo_span"><%= profileData.billing_address.phoneNo %></span></p>
+                                                <br>
+                                                <div class="columns">
+                                                    <div class="column">
+                                                        <button onclick="editAddress('Billing Address');" class="button is-responsive is-block is-fullwidth is-link">
+                                                            <span class="icon is-left">
+                                                                <i class="fa-solid fa-edit"></i>
+                                                            </span>
+                                                            <span>Edit</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="column">
+                                                        <button onclick="deleteAddress('Billing Address');" class="button is-responsive is-block is-fullwidth is-danger">
+                                                            <span class="icon is-left">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </span>
+                                                            <span>Delete</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            <% } else { %>
+                                                <button onclick='editAddress("Billing Address")' class="button is-block is-fullwidth is-link">
+                                                    <span class="icon is-left">
+                                                        <i class="fa-solid fa-plus"></i>
+                                                    </span>
+                                                    <span>Add new billing address</span>
+                                                </button>
+                                            <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="addressFormContainer" class="column is-8 is-offset-2">
+                                        <h4 id="addressFormContainerHeader" class="title is-4">Delivery Address</h4>
+
+                                        <form id="addressForm">
                                             <div class="field">
                                                 <label class="label">Full Name</label>
                                                 <div class="control">
-                                                    <input class="input is-primary" type="text"
+                                                    <input id="full_name_input" class="input is-primary" type="text" required
                                                         placeholder="Enter Full Name">
                                                 </div>
                                             </div>
@@ -167,7 +235,7 @@
                                                 <label class="label">House No., Street Name,
                                                     Building</label>
                                                 <div class="control">
-                                                    <input class="input is-primary" type="text"
+                                                    <input id="houseNo_Street_Building_input" class="input is-primary" type="text" required
                                                         placeholder="Enter House No., Street Name, Building...">
                                                 </div>
                                             </div>
@@ -175,36 +243,36 @@
                                                 <label class="label">Barangay, Province,
                                                     Region</label>
                                                 <div class="control">
-                                                    <input class="input is-primary" type="text"
+                                                    <input id="brgy_province_region_input" class="input is-primary" type="text" required
                                                         placeholder="Enter Barangay, Province, Region...">
                                                 </div>
                                             </div>
                                             <div class="field">
                                                 <label class="label">Zip Code</label>
                                                 <div class="control">
-                                                    <input class="input is-primary" type="text"
+                                                    <input id="zipcode_input" class="input is-primary" type="text" required
                                                         placeholder="Enter Zip Code">
                                                 </div>
                                             </div>
                                             <div class="field">
                                                 <label class="label">Phone Number</label>
                                                 <div class="control">
-                                                    <input class="input is-primary" type="email"
+                                                    <input id="phoneNo_input" class="input is-primary" type="text" required
                                                         placeholder="Enter phone number">
                                                 </div>
                                             </div>
                                             <div class="columns">
                                                 <div class="column">
-                                                    <button
+                                                    <button type="submit" onclick="updateAddress()"
                                                         class="button is-responsive is-block is-fullwidth is-link">Update</button>
                                                 </div>
-                                                <div class="column">
-                                                    <button
-                                                        class="button is-responsive is-block is-fullwidth is-primary">Cancel</button>
+                                                <div id="copyDeliveryAddressBtnContainer" class="column">
+                                                    <button onclick="copyDeliveryAddress();"
+                                                        class="button is-responsive is-block is-fullwidth is-link">Copy Delivery Address</button>
                                                 </div>
                                                 <div class="column">
-                                                    <button
-                                                        class="button is-responsive is-block is-fullwidth is-primary">Delete</button>
+                                                    <button type="reset" onclick="cancelAddressUpdate()"
+                                                        class="button is-responsive is-block is-fullwidth is-primary">Cancel</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -266,7 +334,9 @@
 
             <script src="scripts/script.js"></script>
             <script src="scripts/edit_profile.js"></script>
+            <script src="scripts/edit_address.js"></script>
             <script src="scripts/change_password.js"></script>
+
     </body>
 
 </html>

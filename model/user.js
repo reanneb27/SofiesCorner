@@ -18,6 +18,12 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    delivery_address: {
+        type: String
+    },
+    billing_address: {
+        type: String
     }
 }, {timestamps: true});
 

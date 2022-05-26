@@ -361,7 +361,7 @@ app.get('/account_profile', authedOnly, async (req, res) => {
 
     // populate forms with authenticated user's data; Data is retrieved using user's ID stored in session
     const authedUser = await User.findOne({_id: req.session.userID});
-
+    
     res.render('account_profile', {
         title: 'Profile',
         first_name: req.session.first_name, 
@@ -375,9 +375,8 @@ app.get('/account_profile', authedOnly, async (req, res) => {
             orders: {
 
             },
-            addresses: {
-
-            }
+            delivery_address: authedUser.delivery_address ? JSON.parse(authedUser.delivery_address) : authedUser.delivery_address,
+            billing_address: authedUser.billing_address ? JSON.parse(authedUser.billing_address) : authedUser.billing_address
         },
         cart: req.session.cart
     });
@@ -416,6 +415,47 @@ app.post('/account_profile/edit_profile', authedOnly, async (req, res) => {
             }
         }
     );
+});
+
+app.post('/account_profile/edit_address', authedOnly, async (req, res) => {
+    const {address_type, full_name, houseNo_Street_Building, brgy_province_region, zipcode, phoneNo } = req.body;
+    const newAddress = JSON.stringify({
+        full_name: full_name,
+        houseNo_Street_Building: houseNo_Street_Building,
+        brgy_province_region: brgy_province_region,
+        zipcode: zipcode,
+        phoneNo: phoneNo
+    });
+
+    let authedUser = await User.findOne({_id: req.session.userID});
+
+    if (address_type == 'Delivery Address'){
+        authedUser.delivery_address = newAddress;
+        authedUser.save();
+    }
+    else if (address_type == 'Billing Address'){
+        authedUser.billing_address = newAddress;
+        authedUser.save();
+    }
+
+    res.send(req.body);
+})
+
+app.post('/account_profile/delete_address', authedOnly, async (req, res) => {
+    const {address_type } = req.body;
+
+    let authedUser = await User.findOne({_id: req.session.userID});
+
+    if (address_type == 'Delivery Address'){
+        authedUser.delivery_address = undefined;
+        authedUser.save();
+    }
+    else if (address_type == 'Billing Address'){
+        authedUser.billing_address = undefined;
+        authedUser.save();
+    }
+
+    res.send(req.body);
 });
 
 app.post('/account_profile/change_password', authedOnly, async (req, res) => {
