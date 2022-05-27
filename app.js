@@ -426,9 +426,7 @@ app.get('/account_profile', authedOnly, async (req, res) => {
                 lastName: authedUser.last_name,
                 email: authedUser.email
             },
-            orders: {
-
-            },
+            orders: authedUser.orders ? JSON.parse(authedUser.orders) : authedUser.orders,
             delivery_address: authedUser.delivery_address ? JSON.parse(authedUser.delivery_address) : authedUser.delivery_address,
             billing_address: authedUser.billing_address ? JSON.parse(authedUser.billing_address) : authedUser.billing_address
         },
@@ -593,10 +591,78 @@ app.post('/checkout', authedOnly, async (req, res) => {
 
     if (req.session.cart && Object.keys(req.session.cart).length != 0){
         if (authedUser.delivery_address && authedUser.billing_address){ // success checkout
+            // add order to order history
+            if (!authedUser.orders){
+                authedUser.orders = JSON.stringify([]);
+                await authedUser.save();
+            }
+            let orders = JSON.parse(authedUser.orders);
+            orders.push({
+                cart: req.session.cart,
+                order_date: new Date()
+            });
+            authedUser.orders = JSON.stringify(orders);
+
+            
+
+            // perform email
+            const transporter = nodemailer.createTransport({
+                service: 'hotmail',
+                auth: {
+                    user: process.env.OUTLOOK_EMAIL,
+                    pass: process.env.OUTLOOK_EMAIL_PASS
+                }
+            });
+            // build text of order confirmation
+            let emailText = 'You ordered: ';
+            let total = 0;
+            let cartKeys = Object.keys(req.session.cart);
+            let i = 0;
+            cartKeys.forEach(key => {
+                let cartItem = req.session.cart[key];
+                let itemTotal = cartItem.amount * parseFloat(cartItem.plant.price.toString());
+                total += itemTotal;
+
+                let prefix = '';
+                let suffix = ', ';
+                if (i == cartKeys.length - 1){
+                    prefix = 'and ';
+                    if (i == 0)
+                        prefix = '';
+                    suffix = '. ';
+                }
+                emailText += prefix + cartItem.amount + ' ' + cartItem.plant.plant_name + ' for ₱' + cartItem.plant.price.toString() + suffix;
+                i++;
+            });
+            emailText += ' Adding the shipping fee of ₱50.00, the order total is: ₱' + (total + 50) + '.00';
+
+
+            // delete guest cart and database cart
             delete req.session.cart;
             authedUser.cart = undefined;
             authedUser.save();
-            res.redirect('/order_complete');
+
+            const options = {
+                from: process.env.OUTLOOK_EMAIL,
+                to: authedUser.email,
+                subject: "Order Confirmation | Sofies Corner",
+                text: emailText
+            };
+        
+            transporter.sendMail(options, async (err, info) => {
+                if (err){
+                    console.log(err);
+                    req.flash('type', 'error');
+                    req.flash('message', 'Unable to send order confirmation to ' + email + '.');
+        
+                    req.session.save(() => res.redirect('/checkout'));
+                }
+                else { // email order confirmation sent successfully
+                    res.redirect('/order_complete');
+                }
+            })
+
+            
         }
         else {
             req.flash('type', 'error');

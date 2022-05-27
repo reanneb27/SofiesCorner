@@ -27,6 +27,9 @@ const userSchema = new Schema({
     },
     cart: {
         type: String
+    },
+    orders: {
+        type: String
     }
 }, {timestamps: true});
 

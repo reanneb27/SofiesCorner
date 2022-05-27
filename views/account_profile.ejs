@@ -92,48 +92,51 @@
                                 </section>
 
                                 <section class="tab-content">
-                                    <h4 class="title is-4">My Orders</h4>
-                                    <div class="column is-8 is-offset-2">
-                                        <div class="is-centered has-text-centered">
-                                            <p>You haven't placed any orders yet.</p>
-                                            <br>
-                                            <button class="button is-block is-fullwidth is-link">Shop
-                                                Now</button>
+                                    <div id="order_history_container" class="column is-8 is-offset-2">
+                                        <h4 class="title is-4">My Orders</h4>
+                                        <div class="column is-8 is-offset-2">
+                                            <div class="is-centered has-text-centered">
+                                                <p>You haven't placed any orders yet.</p>
+                                                <br>
+                                                <button onclick="window.location.href='/plants'" class="button is-block is-fullwidth is-link">Shop
+                                                    Now</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="column is-8 is-offset-2">
-                                        <div class="box">
-                                            <div class="columns">
-                                                <div class="column is-one-quarter">
-                                                    <img src="https://unsplash.it/g/200/200" alt="">
-                                                </div>
-                                                <div class="column">
+                                        <!--  // S A M P L E  O R D E R  H I S T O R Y  I T E M
+                                            <div class="box">
+                                                <p class="price is-size-5">Date ordered: <span id="orderrr"></span> <script>document.getElementById('orderrr').innerText = new Date();</script></p>
+                                                <div class="columns">
+                                                    <div class="column is-one-quarter">
+                                                        <img src="https://unsplash.it/g/200/200" alt="">
+                                                    </div>
                                                     <div class="column">
-                                                        <p class="plant-name has-text-weight-bold">
-                                                            Plant Name</p>
-                                                        <p>Quantity:</p>
-                                                        <p>Price: ₱0.00</p>
+                                                        <div class="column">
+                                                            <p class="plant-name has-text-weight-bold">
+                                                                Plant Name</p>
+                                                            <p>Quantity:</p>
+                                                            <p>Price: ₱0.00</p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="columns">
-                                                <div class="column is-one-quarter">
-                                                    <img src="https://unsplash.it/g/200/200" alt="">
-                                                </div>
-                                                <div class="column">
+                                                <div class="columns">
+                                                    <div class="column is-one-quarter">
+                                                        <img src="https://unsplash.it/g/200/200" alt="">
+                                                    </div>
                                                     <div class="column">
-                                                        <p class="plant-name has-text-weight-bold">
-                                                            Plant Name</p>
-                                                        <p>Quantity:</p>
-                                                        <p>Price: ₱0.00</p>
+                                                        <div class="column">
+                                                            <p class="plant-name has-text-weight-bold">
+                                                                Plant Name</p>
+                                                            <p>Quantity:</p>
+                                                            <p>Price: ₱0.00</p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <p class="price is-size-5">Order Total: ₱0.00</p>
-                                        </div>
-                                        <button class="button is-block is-fullwidth is-link">Buy
-                                            Again</button>
-
+                                                <p class="price is-size-5">Order Total: ₱0.00</p>
+                                                <button class="button is-block is-fullwidth is-link">Buy
+                                                    Again</button>
+                                                <input type="hidden" value="">
+                                            </div> 
+                                        -->
                                     </div>
                                 </section>
 
@@ -337,6 +340,63 @@
             <script src="scripts/edit_address.js"></script>
             <script src="scripts/change_password.js"></script>
 
+
+            <% if (locals.profileData.orders) { %> 
+                <script>
+                    var orders = '<%- JSON.stringify(profileData.orders) %>';
+                    orders = JSON.parse(orders);
+                </script>    
+            <% } else { %>
+                <script>
+                    var orders = null;
+                </script>
+            <% } %>
+            <script>
+                const order_history_container = document.getElementById('order_history_container');
+                if (orders){
+                    let resultingHTML = '';
+                    let index = 0;
+                    orders.forEach(order => {
+                        let total = 0;
+                        let topHTML = '<div class="box">\
+                                                <p class="price is-size-5">Date ordered: '+ new Date(order.order_date) +'</p>';  
+                        let midHTML = '';    
+                        Object.keys(order.cart).forEach(key => {
+                            let cartItem = order.cart[key];
+                            let itemTotal = cartItem.amount * parseFloat(cartItem.plant.price.$numberDecimal);
+                            total += itemTotal;
+
+                            midHTML += '<div class="columns">\
+                                                <div class="column is-one-quarter">\
+                                                    <img src="'+ cartItem.plant.image_path +'" alt="">\
+                                                </div>\
+                                                <div class="column">\
+                                                    <div class="column">\
+                                                        <p class="plant-name has-text-weight-bold">\
+                                                            '+ cartItem.plant.plant_name +'</p>\
+                                                        <p>Quantity: '+ cartItem.amount +'</p>\
+                                                        <p>Price: ₱'+ cartItem.plant.price.$numberDecimal +'.00</p>\
+                                                    </div>\
+                                                </div>\
+                                            </div>';
+                        });
+                        let bottomHTML = '<p class="price is-size-5">Order Total: ₱'+ (total + 50) +'.00</p>\
+                                            <input type="hidden" value="'+index+'">\
+                                        </div> ';
+                        resultingHTML += topHTML + midHTML + bottomHTML;
+                        index++;
+                    });
+
+                    if (resultingHTML){
+                        order_history_container.innerHTML = resultingHTML;
+                    }
+                }
+
+                function orderAgain(e){
+                    let index = e.parentNode.querySelector('input[type=hidden]').value;
+                    // sorry imma discontinue this feature for now HAHAHAHA
+                }
+            </script>
     </body>
 
 </html>
