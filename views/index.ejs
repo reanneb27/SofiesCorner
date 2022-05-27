@@ -35,7 +35,7 @@
                             </div>
                             <div class="card-content">
                                 <div class="content has-text-centered">
-                                    <span class="button is-link modal-button" data-target="modal-image2">Browse
+                                    <span onclick="browsePlants(this);" class="button is-link modal-button" data-target="modal-image2">Browse
                                         Succulents</span>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                             </div>
                             <div class="card-content">
                                 <div class="content has-text-centered">
-                                    <span class="button is-link modal-button" data-target="modal-card">Browse Air
+                                    <span onclick="browsePlants(this);" class="button is-link modal-button" data-target="modal-card">Browse Air
                                         Plants</span>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                             </div>
                             <div class="card-content">
                                 <div class="content has-text-centered">
-                                    <span class="button is-link modal-button" data-target="modal-card">Browse Hanging
+                                    <span onclick="browsePlants(this);" class="button is-link modal-button" data-target="modal-card">Browse Hanging
                                         Plants</span>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                             </div>
                             <div class="card-content">
                                 <div class="content has-text-centered">
-                                    <span class="button is-link modal-button" data-target="modal-image2">Browse Moon
+                                    <span onclick="browsePlants(this);" class="button is-link modal-button" data-target="modal-image2">Browse Moon
                                         Cactus</span>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                             </div>
                             <div class="card-content">
                                 <div class="content has-text-centered">
-                                    <span class="button is-link modal-button" data-target="modal-card">Browse
+                                    <span onclick="browsePlants(this);" class="button is-link modal-button" data-target="modal-card">Browse
                                         Pots</span>
                                 </div>
                             </div>
@@ -163,6 +163,27 @@
             <script src="scripts/target.js"></script>
             <script src="scripts/script.js"></script>
             <script>
+                function browsePlants(e){
+                    switch (e.innerText.trim()){
+                        case "Browse Succulents":
+                            document.cookie = 'categories=' + JSON.stringify({"Succulent with Pots":true,"Succulent without Pots":true,"Moon Cactus":false,"Air Plants":false,"Hanging Plants":false,"Pots":false});
+                            break;
+                        case "Browse Air Plants":
+                        document.cookie = 'categories=' + JSON.stringify({"Succulent with Pots":false,"Succulent without Pots":false,"Moon Cactus":false,"Air Plants":true,"Hanging Plants":false,"Pots":false});
+                            break;
+                        case "Browse Hanging Plants":
+                        document.cookie = 'categories=' + JSON.stringify({"Succulent with Pots":false,"Succulent without Pots":false,"Moon Cactus":false,"Air Plants":false,"Hanging Plants":true,"Pots":false});
+                            break;
+                        case "Browse Moon Cactus":
+                        document.cookie = 'categories=' + JSON.stringify({"Succulent with Pots":false,"Succulent without Pots":false,"Moon Cactus":true,"Air Plants":false,"Hanging Plants":false,"Pots":false});
+                            break;
+                        case "Browse Pots":
+                        document.cookie = 'categories=' + JSON.stringify({"Succulent with Pots":false,"Succulent without Pots":false,"Moon Cactus":false,"Air Plants":false,"Hanging Plants":false,"Pots":true});
+                            break;
+                    }
+                    window.location.href = '/plants';
+                }
+
                 document.addEventListener('DOMContentLoaded', () => {
 
                     const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);

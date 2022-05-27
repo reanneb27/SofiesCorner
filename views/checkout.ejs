@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head') %>
+
+    <body>
+        <%- include('partials/nav2') %>
+
+            <section class="hero is-fullheight-with-navbar">
+                <div class="hero-body">
+                    <div class="container">
+
+                        <div class="container mb-2">
+                            <nav class="breadcrumb is-small" aria-label="breadcrumbs">
+                                <ul>
+                                    <li><a href="/cart">Cart</a></li>
+                                    <li class="is-active"><a href="">Payment</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <div class="columns">
+                            
+                            <div class="column is-half">
+                                <% if (locals.flashObj) { %>
+                                    <% if (flashObj.type=='error' ) { %>
+                                        <%- include('partials/flash-msgs/error'); %>
+                                    <% } %>
+                                <% } %>
+                                <form class="box">
+                                    
+                                    <div class="columns">
+                                        <div class="column is-one-quarter">
+                                            <label class="label">Contact</label>
+                                        </div>
+                                        <div class="column">
+                                            <p><%= email %></p>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="control">
+                                        </div>
+                                    </div>
+
+                                    <hr class="mb-5"
+                                        style="height:2px; border-width:0; color:gray; background-color:gray; width: 100%; margin: auto;">
+
+                                    <div class="columns">
+                                        <div class="column is-one-quarter">
+                                            <label class="label">Deliver to</label>
+                                        </div>
+                                        <% if (!locals.delivery_address) { %>
+                                            <div class="column">
+                                                <p>No Delivery Address Set Yet</p>
+                                            </div>
+                                        <% } else { %>
+                                            <div class="column">
+                                                <p><%= delivery_address.houseNo_Street_Building %></p>
+                                            </div>
+                                        <% } %>
+                                        
+                                    </div>
+                                    <div class="field">
+                                        <div class="control">
+                                        </div>
+                                    </div>
+
+                                    <hr class="mb-5"
+                                        style="height:2px; border-width:0; color:gray; background-color:gray; width: 100%; margin: auto;">
+
+                                    <div class="columns">
+                                        <div class="column is-one-quarter">
+                                            <label class="label">Method</label>
+                                        </div>
+                                        <div class="column">
+                                            <p>Standard <span class="has-text-weight-bold">&#8369;50.00</span></p>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <h5 class="title is-5 checkout-label">Payment Method</h5>
+
+                                <form action="" class="box">
+                                    <div class="control">
+                                        <label class="radio">
+                                            <input type="radio" name="answer" checked>
+                                            Cash on Delivery
+                                        </label>
+                                    </div>
+                                </form>
+
+                                <h5 class="title is-5 checkout-label">Delivery Address</h5>
+                                <% if (!locals.delivery_address) { %>
+                                    <button onclick="window.location.href='/account_profile'" class="button is-block is-fullwidth is-link">
+                                        <span class="icon is-left">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </span>
+                                        <span>Add a new address</span>
+                                    </button>
+                                    <br>
+                                <% } else { %>
+                                    <div class="box">
+                                        <p>Full Name: <%= delivery_address.full_name %></p>
+                                        <p>House No., Street Name, Building: <%= delivery_address.houseNo_Street_Building %></p>
+                                        <p>Barangay, Province, Region: <%= delivery_address.brgy_province_region %></p>
+                                        <p>Zip Code: <%= delivery_address.zipcode %></p>
+                                        <p>Phone Number: <%= delivery_address.phoneNo %></p>
+                                        <br>
+                                        <button onclick="window.location.href='/account_profile'" class="button is-responsive is-block is-fullwidth is-link">
+                                            <span class="icon is-left">
+                                                <i class="fa-solid fa-edit"></i>
+                                            </span>
+                                            <span>Edit</span>
+                                        </button>
+                                    </div>
+                                <% } %>
+
+                                <h5 class="title is-5 checkout-label">Billing Address</h5>
+                                <% if (!locals.billing_address) { %>
+                                    <button onclick="window.location.href='/account_profile'" class="button is-block is-fullwidth is-link">
+                                        <span class="icon is-left">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </span>
+                                        <span>Add a new address</span>
+                                    </button>
+                                    <br>
+                                <% } else { %>
+                                    <div class="box">
+                                        <p>Full Name: <%= billing_address.full_name %></p>
+                                        <p>House No., Street Name, Building: <%= billing_address.houseNo_Street_Building %></p>
+                                        <p>Barangay, Province, Region: <%= billing_address.brgy_province_region %></p>
+                                        <p>Zip Code: <%= billing_address.zipcode %></p>
+                                        <p>Phone Number: <%= billing_address.phoneNo %></p>
+                                        <br>
+                                        <button onclick="window.location.href='/account_profile'" class="button is-responsive is-block is-fullwidth is-link">
+                                            <span class="icon is-left">
+                                                <i class="fa-solid fa-edit"></i>
+                                            </span>
+                                            <span>Edit</span>
+                                        </button>
+                                    </div>
+                                <% } %>
+                                
+                                <div class="columns">
+                                    <div class="column is-half">
+                                        <a href="/cart">Return to cart</a>
+                                    </div>
+                                    <div class="column">
+                                        <form action="/checkout" method="post">
+                                            <button class="button is-block is-link is-fullwidth"
+                                            id="complete_order_btn">Complete Order</button>
+                                        </form>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column ml-5">
+                                <div id="checkout_cart">
+                                    <!-- S A M P L E  C A R T  I T E M
+                                    <div class="columns">
+                                        <div class="column is-one-fifth">
+                                            <img src="https://unsplash.it/g/200/200" alt="">
+                                        </div>
+                                        <div class="column">
+                                            <p class="plant-name has-text-weight-bold">Plant Name</p>
+                                        </div>
+                                        <div class="column">
+                                            <p class="price is-size-5 has-text-right">x1</p>
+                                        </div>
+                                        <div class="column">
+                                            <p class="price is-size-5 has-text-right">&#8369;0.00</p>
+                                        </div>
+                                    </div> 
+                                -->
+                                </div>
+                                
+                                <div id="checkout_calculations">
+                                    <hr class="mt-5 mb-5"
+                                        style="height:2px; border-width:0; color:gray; background-color:gray; width: 100%; margin: auto;">
+
+                                    <div class="container">
+                                        <div class="columns">
+                                            <div class="column">
+                                                <p class="has-text-weight-bold">Subtotal</p>
+                                                <br>
+                                                <p class="has-text-weight-bold">Shipping</p>
+                                            </div>
+                                            <div class="column">
+                                                <p class="has-text-right">&#8369;<span id="sub_total_span">0.00</span></p>
+                                                <br>
+                                                <p class="has-text-right">&#8369;50.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr class="mt-5 mb-5"
+                                        style="height:2px; border-width:0; color:gray; background-color:gray; width: 100%; margin: auto;">
+
+                                    <div class="container mt-5 mb-5">
+                                        <div class="columns">
+                                            <div class="column">
+                                                <h5 class="title is-5 total-label">Total</p>
+                                            </div>
+                                            <div class="column">
+                                                <p class="price is-size-5 has-text-right">&#8369;<span id="total_span">0.00</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <script src="scripts/target.js"></script>
+
+
+            <% if (locals.cart) { %> 
+                <script>
+                    var cart = '<%- JSON.stringify(cart) %>';
+                    cart = JSON.parse(cart);
+                </script>    
+            <% } else { %>
+                <script>
+                    var cart = null;
+                </script>
+            <% } %>
+            <script>
+                const checkout_cart = document.getElementById('checkout_cart');
+                const checkout_calculations = document.getElementById('checkout_calculations');
+                const sub_total_span = document.getElementById('sub_total_span');
+                const total_span = document.getElementById('total_span');
+                if (cart){
+                    let total = 0;
+                    let resultingHTML = '';
+                    Object.keys(cart).forEach(key => {
+                        let cartItem = cart[key];
+                        let itemTotal = cartItem.amount * parseFloat(cartItem.plant.price.$numberDecimal);
+                        total += itemTotal;
+
+                        resultingHTML += '<div class="columns">\
+                                            <div class="column is-one-fifth">\
+                                                <img src="'+ cartItem.plant.image_path +'" alt="">\
+                                            </div>\
+                                            <div class="column">\
+                                                <p class="plant-name has-text-weight-bold">'+ cartItem.plant.plant_name +'</p>\
+                                            </div>\
+                                            <div class="column">\
+                                                <p class="price is-size-5 has-text-right">&#8369;'+ cartItem.plant.price.$numberDecimal +'</p>\
+                                            </div>\
+                                            <div class="column">\
+                                                <p class="price is-size-5 has-text-right">x'+ cartItem.amount +'</p>\
+                                            </div>\
+                                        </div> ';
+                    });
+
+                    if (resultingHTML){
+                        checkout_cart.innerHTML = resultingHTML;
+                        sub_total_span.innerText = total + '.00';
+                        total_span.innerText = total + 50 + '.00';
+                    }
+                    else {
+                        checkout_cart.innerHTML = 'No items added to cart';
+                        checkout_calculations.innerHTML = '';
+                    }
+                }
+            </script>
+    </body>
+
+</html>

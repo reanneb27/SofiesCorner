@@ -24,6 +24,9 @@ const userSchema = new Schema({
     },
     billing_address: {
         type: String
+    },
+    cart: {
+        type: String
     }
 }, {timestamps: true});
 

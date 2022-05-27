@@ -205,6 +205,15 @@ app.post('/plants/add_to_cart', async (req, res) => {
             req.session.cart = {};
             req.session.cart[plant_id] = {plant: plant, amount: amount};
         }
+
+        // update user's cart in DB, if logged in
+        if (req.session.isAuth){
+            const authedUser = await User.findOne({_id: req.session.userID});
+            authedUser.cart = JSON.stringify(req.session.cart);
+            authedUser.save();
+        }
+        
+
         res.send(req.session.cart);
     }
 
@@ -214,6 +223,14 @@ app.post('/plants/add_to_cart', async (req, res) => {
 app.post('/plants/remove_from_cart', async (req, res) => {
     const { plant_id } = req.body;
     delete req.session.cart[plant_id];
+
+    // update user's cart in DB, if logged in
+    if (req.session.isAuth){
+        const authedUser = await User.findOne({_id: req.session.userID});
+        authedUser.cart = JSON.stringify(req.session.cart);
+        authedUser.save();
+    }
+
     res.send(req.session.cart);
 });
 
@@ -248,6 +265,36 @@ app.post('/login', unauthedOnly, async (req, res) => {
             req.session.isAuth = true;
             req.session.first_name = existingUser.first_name;
             req.session.userID = existingUser._id;
+
+
+            // handle guest cart and existing acocunt cart conflict on login
+            if (!req.session.cart) // guest cart is undefined, make it an empty object instead to avoid errors
+                req.session.cart = {};
+            if (existingUser.cart){ // check if there's a cart saved in database
+                let databaseCart = JSON.parse(existingUser.cart);
+                let databaseCartKeys = Object.keys(databaseCart);
+                if (databaseCartKeys.length != 0){ // check if that cart has at least 1 product inside; merge distinct products; and update similar products with higher product amount
+                    databaseCartKeys.forEach(key => {
+                        if (key in req.session.cart) // database cart item is also in guest cart; get highest product amount and update guest cart
+                            req.session.cart[key].amount = Math.max(databaseCart[key].amount, req.session.cart[key].amount);
+                        else // database cart item is not in guest cart; merge into guest cart
+                            req.session.cart[key] = databaseCart[key];
+                    });
+
+                    // now save resulting cart to database
+                    existingUser.cart = JSON.stringify(req.session.cart);
+                    existingUser.save();
+                } 
+                else{ // no products inside database cart; save guest cart to database
+                    existingUser.cart = JSON.stringify(req.session.cart);
+                    existingUser.save();
+                }
+            }
+            else{ // no cart saved in database; save guest cart to database
+                existingUser.cart = JSON.stringify(req.session.cart);
+                existingUser.save();
+            }
+            
             req.session.save(() => res.redirect('/account_profile'));
         }
     }
@@ -389,12 +436,6 @@ app.get('/account_profile', authedOnly, async (req, res) => {
     });
 })
 
-// test routes
-// app.get('/test', (req, res) => {
-//     console.log(req.session);
-//     req.flash('flashMsg', 'boyow');
-//     res.send('braaah test');
-// });
 app.post('/account_profile/edit_profile', authedOnly, async (req, res) => {
     const { first_name, last_name, email } = req.body;
 
@@ -530,8 +571,53 @@ app.get('/cart', authedOnly, async (req, res) => {
     res.render('cart', {title: 'Cart', first_name: req.session.first_name, cart: req.session.cart, suggested_plants: suggestedPlants} )
 });
 
+
+app.get('/checkout', authedOnly, async (req, res) => {
+    const flashType = req.flash('type')
+    const flashMsg = req.flash('message');
+
+    const authedUser = await User.findOne({_id: req.session.userID});
+
+    res.render('checkout', {
+        title: 'Checkout',
+        flashObj: {type: flashType, message: flashMsg},
+        email: authedUser.email,
+        delivery_address: authedUser.delivery_address ? JSON.parse(authedUser.delivery_address) : authedUser.delivery_address,
+        billing_address: authedUser.billing_address ? JSON.parse(authedUser.billing_address) : authedUser.billing_address,
+        cart: req.session.cart
+    });
+});
+
+app.post('/checkout', authedOnly, async (req, res) => {
+    const authedUser = await User.findOne({_id: req.session.userID});
+
+    if (req.session.cart && Object.keys(req.session.cart).length != 0){
+        if (authedUser.delivery_address && authedUser.billing_address){ // success checkout
+            delete req.session.cart;
+            authedUser.cart = undefined;
+            authedUser.save();
+            res.redirect('/order_complete');
+        }
+        else {
+            req.flash('type', 'error');
+            req.flash('message', 'Delivery/Billing Address is not yet set.');
+            req.session.save(() => res.redirect('/checkout'));
+        }
+    }
+    else {
+        req.flash('type', 'error');
+        req.flash('message', 'No items added to cart yet.');
+        req.session.save(() => res.redirect('/checkout'));
+        
+    }
+});
+
+app.get('/order_complete', authedOnly, (req, res) => {
+    res.render('order_complete', {title: 'Order Complete'});
+});
+
 // 404 page
 app.use((req, res) => {
-    res.render('error_page', {title: '404'});
+    res.render('error_page', { title: '404' });
 });
 
